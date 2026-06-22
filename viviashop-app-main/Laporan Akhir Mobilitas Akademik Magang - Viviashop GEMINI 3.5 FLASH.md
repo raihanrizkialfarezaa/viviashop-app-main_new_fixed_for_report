@@ -660,3 +660,112 @@ Penyusun,
 
 ............................................................  
 NIM. ......................................................
+
+---
+
+## BAB VII PENUTUP
+
+### 7.1. Simpulan
+
+Berdasarkan seluruh tahapan pelaksanaan program magang Mobilitas Akademik yang telah diselesaikan di Viviashop selama kurang lebih enam bulan (960 jam), dapat ditarik simpulan sebagai berikut:
+1. **Pembaruan Kode Program Monolitik Laravel 10 Berhasil Diselesaikan:** Sistem informasi kasir ritel Viviashop telah ditingkatkan keandalannya, mencakup modul penjualan ritel online, manajemen transaksi kasir offline, pengelolaan insentif bonus kinerja staf kasir, serta modul pengadaan barang dari supplier (procurement) (sumber: app/Http/Controllers/).
+2. **AI Agent dengan Gemini API Berhasil Diintegrasikan:** Mengembangkan asisten virtual cerdas berbasis loop interaksi fungsional (agentic loop) pada kelas `AIAgentService.php` dengan 14 alat bantu (tools) backend yang dilindungi sistem otorisasi peran (RBAC) server-side untuk melayani kebutuhan data pelanggan dan administrator secara aman. Pemanggilan tools diaudit secara terpusat pada tabel `ai_tool_calls` (sumber: app/Services/AI/).
+3. **Modul Stock Opname Proporsional Berhasil Diimplementasikan:** Menyelesaikan inkonsistensi pencatatan stok gudang hibrida antara tabel persediaan produk simple (`product_inventories`) dan varian (`product_variants`) menggunakan algoritma pembagian proporsional dalam transaksi database (`DB::transaction`) guna menekan risiko kerugian selisih barang di gudang.
+4. **Integrasi Gerbang Pembayaran Midtrans Snap Berjalan Stabil:** Mengamankan proses pembayaran ritel online dan cetak kustom menggunakan signature SHA512 pada webhook `/payments/notification` dengan pembebasan CSRF guna memastikan transaksi terverifikasi dan stok terpotong secara real-time.
+5. **Modul PDF Report Tester Berhasil Dibangun:** Menyediakan perkakas penguji render laporan keuangan PDF berbasis DOMPDF dengan pelacakan metrik waktu eksekusi ($0.18$ detik CLI / $1.23$ detik Web) untuk mencegah penurunan kinerja server akibat N+1 query issue sebelum sistem dirilis (sumber: app/Console/Commands/TestPdfReportCommand.php).
+
+### 7.2. Saran
+
+Untuk menjamin keberlanjutan kegunaan dan performa aplikasi Viviashop di masa mendatang, diajukan beberapa saran:
+1. **Peningkatan Automated Test Coverage:** Mengembangkan unit dan feature testing menggunakan PHPUnit secara menyeluruh untuk memvalidasi alur kritis (seperti checkout pembayaran Midtrans, input Stock Opname, dan data audit trail stok) guna mencegah bug regresi saat pembaruan framework Laravel di masa depan.
+2. **Pembersihan Berkala Berkas Unggahan Sesi Print:** Menjadwalkan pengoperasian cron job / task scheduling untuk membersihkan berkas dokumen digital milik pelanggan di folder local storage yang telah selesai dicetak secara berkala demi menghemat ruang penyimpanan server.
+3. **Penyusunan Modul API Gateway Mobile:** Mengembangkan lapisan API gateway yang terproteksi Sanctum guna mendukung rencana pembuatan aplikasi kasir mobile (Android/iOS) pemindai barcode di masa depan.
+
+---
+
+## DAFTAR PUSTAKA
+
+Carbon. (2026). *Carbon: A simple PHP API extension for DateTime*. [https://carbon.nesbot.com/docs/](https://carbon.nesbot.com/docs/)
+
+Dompdf. (2025). *dompdf: HTML to PDF converter for PHP*. GitHub Repository. [https://github.com/dompdf/dompdf](https://github.com/dompdf/dompdf)
+
+Google. (2025). *Gemini API documentation: Get started with function calling*. Google AI for Developers. [https://ai.google.dev/docs/](https://ai.google.dev/docs/)
+
+Laravel. (2023). *Laravel 10: The PHP framework for web artisans*. Laravel Documentation. [https://laravel.com/docs/10.x](https://laravel.com/docs/10.x)
+
+Midtrans. (2025). *Midtrans payment gateway integration guide*. Midtrans Technical Docs. [https://docs.midtrans.com/](https://docs.midtrans.com/)
+
+Yajra. (2024). *Laravel DataTables integration manual*. YajraBox Docs. [https://yajrabox.com/docs/laravel-datatables](https://yajrabox.com/docs/laravel-datatables)
+
+---
+
+## LAMPIRAN
+
+### Lampiran 1. Biodata Mahasiswa
+
+#### A. Data Pribadi
+* **Nama Lengkap:** [NAMA LENGKAP MAHASISWA — PERLU INPUT MANUAL]
+* **Tempat, Tanggal Lahir:** [TEMPAT, TANGGAL LAHIR — PERLU INPUT MANUAL]
+* **NIM:** [NIM MAHASISWA — PERLU INPUT MANUAL]
+* **Jenis Kelamin:** [PERLU INPUT MANUAL]
+* **Program Studi:** S1 Teknik Informatika
+* **Fakultas:** Fakultas Teknik
+* **Universitas:** Universitas Negeri Surabaya (UNESA)
+* **Alamat Rumah:** [PERLU INPUT MANUAL]
+* **No. Telepon/HP:** [NO TELEPON — PERLU INPUT MANUAL]
+* **Alamat Email:** [EMAIL — PERLU INPUT MANUAL]
+
+#### B. Riwayat Pendidikan Formal
+1. **Sekolah Dasar:** [PERLU INPUT MANUAL] (Lulus Tahun [TAHUN — PERLU INPUT MANUAL])
+2. **Sekolah Menengah Pertama:** [PERLU INPUT MANUAL] (Lulus Tahun [TAHUN — PERLU INPUT MANUAL])
+3. **Sekolah Menengah Atas/Kejuruan:** [PERLU INPUT MANUAL] (Lulus Tahun [TAHUN — PERLU INPUT MANUAL])
+4. **Perguruan Tinggi:** S1 Teknik Informatika Universitas Negeri Surabaya (Tahun 2022 - Sekarang)
+
+#### C. Keterlibatan Proyek Magang
+* **Posisi:** Full Stack Web Developer & AI Integration Specialist
+* **Nama Proyek:** Sistem E-Commerce, Smart Print, dan AI Assistant Viviashop
+* **Tanggal Pelaksanaan:** 26 Januari 2026 - 1 Juni 2026 (960 Jam)
+* **Lokasi Pelaksanaan:** Kantor Percetakan Viviashop Surabaya
+
+### Lampiran 2. Inventaris Teknis Project
+
+Berikut adalah rekapitulasi kuantitatif dari basis kode (codebase) sistem Viviashop yang diaudit secara riil:
+
+#### A. Jumlah Komponen Teknis
+1. **Model Eloquent:** 35 model (app/Models/)
+2. **Controller (Total):** 49 controller (app/Http/Controllers/)
+   - Controller Admin: 23 controller
+   - Controller Api: 1 controller
+   - Controller Auth: 7 controller
+   - Controller Frontend: 8 controller (termasuk 1 berkas cadangan)
+   - Controller Root: 10 controller
+3. **Service Class:** 5 service class utama + AI Agent System (app/Services/)
+4. **AI Core Files:** 8 berkas inti AI Agent (app/Services/AI/)
+5. **AI Tool Files:** 14 berkas perkakas AI (app/Services/AI/Tools/)
+6. **Database Migration:** 76 berkas migrasi database (database/migrations/)
+7. **Custom Artisan Command:** 29 berkas command console (app/Console/Commands/)
+8. **Excel Export Class:** 9 berkas kelas ekspor Excel (app/Exports/)
+9. **Excel Import Class:** 2 berkas kelas impor Excel (app/Imports/)
+10. **Helper Functions:** 4 berkas/fungsi pembantu kustom (app/helpers.php)
+
+#### B. Daftar Lengkap 35 Model Eloquent (app/Models/)
+AiToolCall, Attribute, AttributeOption, AttributeVariant, Brand, Category, EmployeeBonus, EmployeePerformance, Order, OrderItem, PaperType, Payment, Pembelian, PembelianDetail, Pengeluaran, PrintFile, PrintOrder, PrintSession, PrintType, Product, ProductAttributeValue, ProductCategory, ProductImage, ProductInventory, ProductVariant, RekamanStok, Setting, Shipment, Slide, StockMovement, Supplier, Testimonial, User, VariantAttribute, WishList.
+
+#### C. Daftar Lengkap 14 AI Agent Tools (app/Services/AI/Tools/)
+AddToCartTool, AggregateBusinessMetricsTool, CalculatePrintCostTool, CheckOrderStatusTool, CreatePrintCartItemTool, CreatePurchaseDraftTool, ExportReportTool, GreetingTool, QuickBuyRedirectTool, ResolvePrintVariantTool, ScanCriticalStockTool, SearchProductsViaSqlTool, SuggestSupplierTool, TopEmployeePerformanceTool.
+
+#### D. Daftar Lengkap 5 Service Class (app/Services/)
+1. **StockService.php:** Mengelola pencatatan mutasi stok, sinkronisasi tabel stok hibrida, serta pemrosesan stok pembelian supplier.
+2. **StockManagementService.php:** Menyediakan kueri stok varian menipis, sorting stok, serta pengecekan duplikasi varian cetak.
+3. **PrintService.php:** Menangani logika sesi print service, kalkulasi biaya cetak berbasis lembar, unggah dokumen kustom, serta order checkout.
+4. **ProductVariantService.php:** Mengatur perancangan atribut varian produk serta pembentukan harga perkalian varian.
+5. **SmartPrintVariantService.php:** Menyelaraskan ukuran kertas (paper size) dan tipe cetak varian media cetak secara otomatis.
+
+Semua data yang tercantum dalam laporan akhir magang ini disusun berdasarkan implementasi sistem riil yang ada pada direktori aplikasi Viviashop, tanpa adanya manipulasi informasi.
+
+Surabaya, 1 Juni 2026
+
+Penyusun,
+
+**[NAMA MAHASISWA — PERLU INPUT MANUAL]**  
+NIM. [NIM MAHASISWA — PERLU INPUT MANUAL]

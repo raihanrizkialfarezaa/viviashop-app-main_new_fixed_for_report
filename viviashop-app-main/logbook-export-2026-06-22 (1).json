@@ -1,0 +1,674 @@
+[
+  {
+    "id": 1312,
+    "title": "Kerja Remote Finalisasi Laporan",
+    "description": "Hari ini libur Hari Lahir Pancasila, saya kerja WFA. Saya selesaikan laporan akhir magang dan kumpulkan. Saya juga bantu final push ke repo, update README. Saya cek satu kali lagi semua fitur yang saya kerjakan sudah berfungsi di staging. Pamit sama tim. Selesai sudah masa magang, banyak pelajaran berharga.",
+    "activityDate": "2026-06-01T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1311,
+    "title": "Dokumentasi dan Handover",
+    "description": "Hari Sabtu, saya menyelesaikan dokumentasi teknis untuk fitur-fitur yang saya kerjakan. Saya tulis di Notion tentang alur AI agent, cara setup Midtrans, dan catatan penting lainnya. Saya juga bantu buatkan panduan untuk tim QA. Sorenya saya review kode teman dan beri masukan. Senang bisa menyelesaikan magang dengan baik.",
+    "activityDate": "2026-05-30T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1310,
+    "title": "Final Testing dan Bug Fixing",
+    "description": "Hari ini saya fokus final testing sebelum rilis update terbaru. Saya jalankan suite test yang ada dan perbaiki beberapa error. Saya temukan bug di halaman wishlist yang tidak sinkron setelah login. Saya perbaiki di WishListController. Saya juga bantu update dependencies di package.json. Sorenya kami meeting untuk review progress. Semua on track.",
+    "activityDate": "2026-05-29T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1309,
+    "title": "Update App Production",
+    "description": "Hari ini saya ikut update production app. Saya bantu ubah environment production di server staging. Saya update .env, migrate database, dan compile asset dengan Vite. Ada issue dengan permission storage, saya fix. Saya juga test beberapa halaman kritis: login, produk, order. Semua berjalan. Saya catat beberapa update teknis untuk dokumentasi tim.",
+    "activityDate": "2026-05-28T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1308,
+    "title": "Kerja Remote: Perbaikan Modul Stok",
+    "description": "Hari ini libur Idul Adha, saya kerja WFA. Saya lanjut perbaikan modul stok berdasarkan feedback tim. Ada bug di stock movement ketika barang dikembalikan. Saya buka StockMovement model dan StockService. Saya tambah logika untuk reversal stok. Saya juga update halaman stock card agar menampilkan mutasi dengan jelas. Semua beres dan saya push sore ini.",
+    "activityDate": "2026-05-27T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1307,
+    "title": "Testing End to End Order Flow",
+    "description": "Hari ini saya lakukan testing end-to-end alur order dari customer sampai selesai. Saya buat akun dummy, tambah produk ke keranjang, checkout, bayar pakai Midtrans sandbox, lalu cek notifikasi. Semua berjalan mulus. Saya catat sedikit kendala di callback URL yang harus disesuaikan. Saya juga update dokumentasi internal untuk alur testing.",
+    "activityDate": "2026-05-26T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1306,
+    "title": "Membantu Finalisasi Fitur Smart Print",
+    "description": "Hari ini saya bantu finalisasi fitur smart print converter. Ada SmartPrintVariantController dan SmartPrintVariantService. Saya test flow dari pilih varian cetak sampai generate biaya. Sempat error di perhitungan ongkir karena menggunakan API RajaOngkir yang disimulasikan. Saya bantu buat mock data agar testing lancar. Selesai, fitur siap untuk uji coba tim.",
+    "activityDate": "2026-05-25T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1305,
+    "title": "Optimasi Query Varian Produk",
+    "description": "Hari Sabtu, saya diberi tugas optimasi query varian produk. Meski sebelumnya ada sudah ada yang saya perbaiki di bagian ini, Ada keluhan halaman produk admin lambat. Saya lihat ProductVariantController menggunakan eager loading yang kurang tepat. Saya ubah query dengan join yang lebih efisien dan tambah indexing di database. Saya test pake data dummy 1000 produk, waktu loading turun drastis. Puas bisa optimasi.",
+    "activityDate": "2026-05-23T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1304,
+    "title": "Perbaikan Fitur Slider dan Testimonial",
+    "description": "Hari ini saya diperbaiki fitur slider homepage dan testimonial. Ada controller SlideController dan TestimonialsController. Saya coba tambah slide baru via admin, tapi gambar tidak muncul. Ternyata path storage tidak terlink. Saya jalankan php artisan storage:link dan perbaiki view. Untuk testimonial, saya tambah validasi rating. Semua beres.",
+    "activityDate": "2026-05-22T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1303,
+    "title": "Mengelola Data Karyawan dan Performance",
+    "description": "Hari ini saya bantu modul karyawan. Ada EmployeePerformanceController dan model EmployeePerformance. Saya buka halaman daftar performa dan coba input data bonus. Saya juga jalankan command DiagnoseEmployeeTrackingCommand untuk debug. Ada anomali data tracking, saya bantu perbaiki query di model. Saya juga tambahin filter bulan di halaman index.",
+    "activityDate": "2026-05-21T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1302,
+    "title": "Setup Integrasi Midtrans untuk Pembayaran",
+    "description": "Hari ini saya belajar integrasi Midtrans. Saya baca route yang ada: /debug-midtrans, payments/notification. Saya setup sandbox akun Midtrans di .env. Saya coba simulasi transaksi pembayaran dari order. Ada kendala di signature key, setelah periksa dokumentasi akhirnya cocok. Saya juga tulis catatan untuk deployment nanti. Puas bisa lihat flow pembayaran berfungsi.",
+    "activityDate": "2026-05-20T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1301,
+    "title": "Perbaiki Bug di Halaman Produk Customer",
+    "description": "Hari ini ada laporan bug: halaman detail produk customer tidak menampilkan gambar. Saya buka Frontend/ProductController dan view detail. Ternyata URL gambar menggunakan path dari Cloudinary yang belum di-set dengan benar. Saya perbaiki helper image dan tambah fallback gambar default. Saya juga cek slider produk di homepage, berfungsi normal. Bug fixed.",
+    "activityDate": "2026-05-19T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1300,
+    "title": "Eksplorasi Fitur Report dan Export",
+    "description": "Hari ini saya belajar ulang fitur laporan tambahan. Seperti sebelumnya, ReportController dengan method untuk ekspor Excel, PDF. Saya lihat file Exports seperti ReportRevenue, ReportProduct. Saya coba generate laporan pendapatan bulan ini dan download file Excel. Formatnya lumayan rapi. Saya juga tambahin filter tanggal agar user bisa milih periode. Saya push perubahan ke branch.",
+    "activityDate": "2026-05-18T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1299,
+    "title": "Membantu Testing Fitur Pembelian",
+    "description": "Hari Sabtu, saya bantu testing fitur pembelian barang. Ada controller PembelianController dan PembelianDetail. Saya jalankan skenario: buat pembelian baru, tambah item, hitung total. Saya temukan bug di perhitungan subtotal karena rounding. Saya perbaiki di helper fungsi. Saya juga cek export laporan pembelian, hasilnya sesuai. Senang bisa ikut quality assurance.",
+    "activityDate": "2026-05-16T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1298,
+    "title": "Refactor Service Stok Management",
+    "description": "Hari ini saya mendapat tugas refactor service stok. Ada beberapa method di StockManagementService yang redundan. Saya gabungin logika update stok dari berbagai tempat (order, pembelian) agar konsisten. Saya juga nambahin unit test sederhana untuk memastikan stok berkurang saat order dibuat. Saya diskusi dengan senior untuk validasi approach. Hasilnya lebih rapi.",
+    "activityDate": "2026-05-15T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1297,
+    "title": "Kerja Remote: Perbaikan Halaman Checkout",
+    "description": "Hari ini libur Kenaikan Yesus Kristus, saya kerja WFA dari rumah. Saya diminta perbaiki halaman checkout customer. Ada masalah saat pilih alamat pengiriman, data tidak muncul. Saya buka CartControllerNew dan view checkout. Ternyata ada perubahan di model Shipment yang belum disesuaikan. Saya update query dan tampilan. Selesai dites, checkout berjalan normal.",
+    "activityDate": "2026-05-14T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1296,
+    "title": "Implementasi AI Tool: Scan Critical Stock",
+    "description": "Hari ini saya diberi tugas mengimplementasikan tool AI untuk scan stok kritis. Saya buka ScanCriticalStockTool dan lihat logikanya. Saya integrasikan dengan route baru di AI agent. Setelah selesai, saya test dengan perintah 'cek stok menipis' di halaman chat. Hasilnya menampilkan produk dengan stok di bawah minimum. Ada sedikit bug di format output, saya perbaiki. Selesai dan siap demo.",
+    "activityDate": "2026-05-13T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1295,
+    "title": "Mempelajari AI Agent System",
+    "description": "Hari ini saya penasaran dengan fitur AI agent di project ini. Saya baca file-file di app/Services/AI, seperti GeminiClient, AIAgentService, dan berbagai Tool. Ada tools untuk cek stok, hitung biaya cetak, dan lain-lain. Saya coba simulasi chat dengan AI via route yang ada. Lumayan keren bisa tanya stok produk dan AI jawab. Saya catat cara kerja tool dispatcher.",
+    "activityDate": "2026-05-12T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1294,
+    "title": "Perbaikan Halaman Dashboard Admin",
+    "description": "Hari ini saya diperintahkan untuk memperbaiki tampilan dashboard admin. Ada keluhan dari pengguna bahwa grafik tidak muncul. Saya buka DashboardController dan view-nya. Ternyata data grafik diambil dari JavaScript yang error karena URL API salah. Saya perbaiki endpoint di JS dan tambahin fallback data. Dashboard sekarang loading dengan baik. Puas bisa menyelesaikan.",
+    "activityDate": "2026-05-11T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1283,
+    "title": "Membantu Debugging dan Finalisasi Sebelum Launch",
+    "description": "Hari ini saya bantu finalisasi sebelum launch. Saya check semua fitur: order, produk, pembayaran, print, laporan. Saya catat bug minor dan fix. Saya juga bantu update .env production. Setelah semua siap, saya dan tim lakukan uji coba terakhir. Alhamdulillah, semua berjalan lancar. Besok launching!",
+    "activityDate": "2026-04-28T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1282,
+    "title": "Belajar dan Implementasi SweetAlert untuk Notifikasi",
+    "description": "Hari ini saya belajar SweetAlert2. Saya ganti alert standar dengan SweetAlert di beberapa aksi: sukses simpan, konfirmasi hapus, error validasi. Saya integrasikan dengan Ajax. Tampilan jadi lebih interaktif. Saya juga bikin notifikasi realtime untuk order baru pake Pusher (masih belajar).",
+    "activityDate": "2026-04-27T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1281,
+    "title": "Membantu Perbaikan UI/UX Frontend Homepage",
+    "description": "Hari ini saya bantuan perbaikan UI homepage. Saya edit file frontend/css/style.css dan frontend/js/main.js. Saya perbaiki navbar responsive dan tambahin animasi hover. Saya juga optimasi gambar produk pake lazy loading. Tampilan jadi lebih modern. Senior suka.",
+    "activityDate": "2026-04-25T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1280,
+    "title": "Testing Fitur Dual Input System (Order & Print)",
+    "description": "Hari ini saya testing dual input system: order produk dan order print dalam satu transaksi. Ada command TestDualInputSystemCommand dan StressDualInputSystemCommand. Saya running dan lihat hasilnya. Saya juga test manual dari frontend. Sempat error di sinkronisasi, tapi saya fix dengan update logic di OrderController. Sekarang dual input berfungsi.",
+    "activityDate": "2026-04-24T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1278,
+    "title": "Belajar Fitur Logging dan Debugging dengan Log Viewer",
+    "description": "Hari ini saya belajar logging di Laravel. Saya lihat file log di storage/logs. Saya juga pasang Log Viewer biar bisa lihat log dari web. Saya konfigurasi channel daily. Saya tambahin log di beberapa controller untuk tracking error. Sekarang lebih gampang debug.",
+    "activityDate": "2026-04-22T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1277,
+    "title": "Membantu Dokumentasi Pengguna (User Manual)",
+    "description": "Hari ini saya bantu buat dokumentasi pengguna. Saya jelasin cara login, belanja, checkout, dan lacak pesanan. Saya buat file md tambahan dan juga docs di folder public. Saya pake markdown. Senior review dan kasih masukan. Dokumentasi berguna untuk customer.",
+    "activityDate": "2026-04-21T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1276,
+    "title": "Refaktor dan Membersihkan Kode Command Console",
+    "description": "Hari ini saya bersihin command console yang banyak banget (ada sekitar 30). Saya hapus yang ga dipake dan gabungin yang mirip. Saya juga nambahin deskripsi setiap command. Saya test beberapa command masih berfungsi. Sekarang folder Commands lebih rapi. Senang bisa kontribusi ke maintainability.",
+    "activityDate": "2026-04-20T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1274,
+    "title": "Membantu Finalisasi Fitur Laporan Keuangan Bulanan",
+    "description": "Hari ini saya bantu finalisasi laporan keuangan bulanan. Saya edit ReportController dan LaporanExport. Saya buat halaman laporan dengan grafik pendapatan dan pengeluaran. Saya pake Chart.js dari frontend. Data laporan diambil dari tabel orders dan pengeluarans. Hasilnya informatif. Senior setuju.",
+    "activityDate": "2026-04-17T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1273,
+    "title": "Belajar Fitur Cache dan Optimasi Performa",
+    "description": "Hari ini saya belajar caching untuk optimasi. Saya pake Cache facade untuk nyimpen hasil query produk. Saya set TTL 10 menit. Saya test halaman produk dan load time berkurang drastis. Saya juga belajar cache tag biar bisa flush per kategori. Keren banget fitur caching Laravel.",
+    "activityDate": "2026-04-16T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1272,
+    "title": "Implementasi Fitur Export User ke Excel (UserExport)",
+    "description": "Hari ini saya ngerjain export data user ke Excel. Ada file UserExport di folder Exports. Saya buat halaman admin untuk export user dengan filter role. Saya atur kolom yang diexport: nama, email, role, tanggal daftar. Setelah diuji, file Excel berisi data user. Saya juga tambahin tombol export di halaman user.",
+    "activityDate": "2026-04-15T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1270,
+    "title": "Belajar Deployment dengan Laravel Forge (Manual)",
+    "description": "Hari ini saya belajar proses deployment manual. Saya clone repo ke server, setup .env, install composer, dan migrate. Saya juga setup cron job untuk php artisan schedule:run. Saya test akses website dan berfungsi. Saya catat langkah-langkahnya biar bisa jadi panduan. Lumayan capek tapi puas.",
+    "activityDate": "2026-04-13T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1269,
+    "title": "Code Review dan Testing Akhir Modul Print",
+    "description": "Hari ini saya code review modul print bersama senior. Kami lihat PrintServiceController dan PrintService. Ada beberapa method yang redundan, saya refaktor. Saya juga nambahin unit test untuk CalculatePrintCostTool. Setelah review, semua modul print siap untuk staging. Senang akhirnya kelar.",
+    "activityDate": "2026-04-11T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1268,
+    "title": "Membantu Finalisasi Fitur AI Agent untuk Customer",
+    "description": "Hari ini saya bantu finalisasi AI Agent biar bisa dipake customer. Saya integrasikan chatbot ke frontend homepage. Saya pake file viviashop_chatbot_enhanced_product.html sebagai referensi. Saya sesuaikan dengan backend AI Agent Service. Setelah testing, chatbot bisa menjawab pertanyaan produk dan rekomendasi. Keren!",
+    "activityDate": "2026-04-10T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1267,
+    "title": "Debugging Fitur Checkout dan Ongkos Kirim",
+    "description": "Hari ini ada bug di halaman checkout terkait ongkir. Saya buka CartController frontend dan OrderController. Ternyata perhitungan ongkir tidak muncul. Saya debug dengan lihat response dari RajaOngkir. Ada error karena API key tidak terbaca. Saya fix konfigurasi di .env. Setelah itu ongkir muncul dan total pesanan sesuai.",
+    "activityDate": "2026-04-09T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1266,
+    "title": "Implementasi Fitur Export Laporan Produk ke PDF",
+    "description": "Hari ini saya ngerjain export laporan produk ke PDF. Saya edit ReportProduct export dan bikin view PDF. Saya tambahin tabel dengan kolom nama, kategori, harga, stok. Saya atur styling dan ukuran kertas. Hasil PDF rapi dan bisa didownload. Saya juga nambahin filter kategori sebelum export.",
+    "activityDate": "2026-04-08T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1264,
+    "title": "Membantu Penambahan Fitur Brand untuk Produk",
+    "description": "Hari ini saya bantu nambahin fitur brand untuk produk. Ada model Brand yang sudah ada, tapi belum terintegrasi penuh. Saya buat halaman admin untuk manage brand, dan tambahin kolom brand_id di form produk. Saya juga update relasi di Product model. Sekarang produk bisa punya brand. Saya test input dan tampil di frontend.",
+    "activityDate": "2026-04-06T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1263,
+    "title": "WFA: Ngerjain Fitur Profile User dan Update Avatar (Paskah)",
+    "description": "Hari ini Paskah, WFA. Saya ngerjain fitur profile user. Saya edit Auth/ProfileController dan buat halaman edit profile. Saya tambahin upload foto profil pake Cloudinary. Saya juga validasi input nama dan email. Setelah selesai, user bisa update data diri dan lihat profile. Lumayan puas.",
+    "activityDate": "2026-04-05T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1262,
+    "title": "Testing Fitur Reset Password dan Verifikasi Email",
+    "description": "Hari ini saya testing fitur reset password dan verifikasi email. Saya buka ForgotPasswordController, ResetPasswordController, dan VerificationController. Saya coba lupa password dan klik link reset. Sempat error karena token tidak valid. Saya perbaiki dengan generate token yang benar. Sekarang alur reset password lancar.",
+    "activityDate": "2026-04-04T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1261,
+    "title": "WFA: Debugging Error 500 di Server Production (Jumat Agung)",
+    "description": "Hari ini libur Jumat Agung, WFA. Tapi ada error 500 di server production. Saya remote dan check log. Ternyata ada file yang hilang di storage. Saya jalankan php artisan storage:link. Setelah itu, error hilang. Saya juga nambahin monitoring error pake log viewer. Semoga ga error lagi.",
+    "activityDate": "2026-04-03T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1260,
+    "title": "Implementasi Fitur Restock Produk",
+    "description": "Hari ini saya ngerjain fitur restock produk. Saya buat halaman admin untuk menambah stok ke produk tertentu. Saya pake model ProductInventory dan StockMovement. Saya buat form input jumlah dan keterangan. Setelah simpan, stok terupdate dan tercatat di movement. Saya juga tambahin notifikasi stok menipis pake ScanCriticalStockTool.",
+    "activityDate": "2026-04-02T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1258,
+    "title": "Refaktor CategoryController dan View",
+    "description": "Hari ini saya refaktor CategoryController. Saya buat service CategoryService untuk memisahkan logic bisnis. Saya juga perbaiki view kategori di admin biar pake datatable. Saya tambahin fitur sort dan search. Setelah refaktor, controller lebih ramping dan view lebih interaktif. Seneng bisa improve kode.",
+    "activityDate": "2026-03-31T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1257,
+    "title": "Testing Fitur Order Frontend dan Payment",
+    "description": "Hari ini saya testing alur order dari frontend sampai payment. Saya login sebagai customer, tambah produk ke cart, checkout, dan pilih pembayaran Midtrans. Sempat error di halaman konfirmasi karena session hilang. Saya debug OrderController frontend dan perbaiki penyimpanan session. Setelah itu, order berhasil dan redirect ke halaman sukses.",
+    "activityDate": "2026-03-30T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1256,
+    "title": "Membantu Migration Database ke Server Staging",
+    "description": "Hari ini saya bantu migration ke server staging. Saya ekspor database lokal dan import ke server. Saya juga jalankan php artisan migrate dan seed data dummy. Sempat error karena versi MySQL berbeda. Saya sesuaikan collation dan berhasil. Saya test beberapa fitur di staging dan berfungsi.",
+    "activityDate": "2026-03-28T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1255,
+    "title": "Belajar Vite dan Asset Compilation",
+    "description": "Hari ini saya belajar Vite untuk bundling asset. Ada file vite.config.js dan package.json. Saya coba jalankan npm run dev dan lihat perubahan real-time di browser. Saya edit file CSS di frontend dan langsung keupdate. Saya juga belajar build untuk production pake npm run build. Keren, memudahkan development.",
+    "activityDate": "2026-03-27T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1254,
+    "title": "Membantu Optimasi Query di ProductController",
+    "description": "Hari ini saya bantu optimasi query di ProductController. Ada halaman produk yang lambat karena N+1 problem. Saya tambahin eager loading untuk relasi image, category, dan variant. Saya juga pake pagination. Setelah diuji, load time turun dari 5 detik jadi 1 detik. Senior puas. Saya belajar pentingnya query optimization.",
+    "activityDate": "2026-03-26T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1253,
+    "title": "Implementasi Fitur Pengeluaran dan Laporan Keuangan",
+    "description": "Hari ini saya ngerjain modul pengeluaran. Ada PengeluaranController dan model Pengeluaran. Saya buat halaman admin untuk catat pengeluaran harian. Saya juga buat laporan keuangan sederhana yang menggabungkan pemasukan (dari order) dan pengeluaran. Agak rumit karena harus kalkulasi manual, tapi akhirnya jadi.",
+    "activityDate": "2026-03-25T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1252,
+    "title": "Belajar PHPUnit dan Testing Controller",
+    "description": "Hari ini saya belajar PHPUnit untuk testing. Saya buat test untuk ProductController method index. Saya pake factory model Product. Saya jalankan php artisan test dan lihat hasilnya. Ada beberapa test gagal karena data factory, saya perbaiki. Setelah itu semua test passing. Saya tambahin beberapa test case lagi.",
+    "activityDate": "2026-03-24T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1251,
+    "title": "Testing dan Fixing Modul PrintService",
+    "description": "Hari ini saya testing modul print service lebih dalam. Saya coba buat print order dari frontend. Sempat error karena session ga kebaca. Saya debug PrintSession model dan perbaiki logic session. Saya juga nambahin validasi file upload (tipe dan ukuran). Sekarang alur print order lancar dari pilih produk sampai checkout.",
+    "activityDate": "2026-03-23T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1250,
+    "title": "WFA: Refaktor PromptBuilder dan Context (Hari Raya Idul Fitri)",
+    "description": "Hari ini masih Idul Fitri, WFA. Saya refaktor PromptBuilder dan Context di folder AI Services. Saya perbaiki cara build prompt biar lebih dinamis. Saya juga tambahin context dari data produk dan order. Hasilnya AI Agent bisa ngasih jawaban yang lebih relevan. Saya test beberapa skenario dan hasilnya memuaskan.",
+    "activityDate": "2026-03-22T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1249,
+    "title": "WFA: Ngerjain Fitur AI Tools Lain (Hari Raya Idul Fitri)",
+    "description": "Hari ini Idul Fitri, WFA dari rumah. Saya ngerjain nambah tool AI baru. Saya buat SuggestSupplierTool yang ngasih rekomendasi supplier berdasarkan produk. Saya daftarkan ke ToolRegistry dan uji di chatbot. Tool bisa dipanggil dan ngasih output. Saya juga nambahin sedikit unit test biar kualitas terjaga.",
+    "activityDate": "2026-03-21T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1248,
+    "title": "Normal Day: Ngerjain Fitur Slide Homepage",
+    "description": "Hari ini saya lanjut ngerjain fitur slide homepage. Saya edit SlideController dan view slider. Saya tambahin fitur urutan slide (order) dan aktif/nonaktif. Saya juga bikin preview slider di frontend pake OwlCarousel. Sempat ribet soal responsive, tapi setelah debug akhirnya tampil dengan baik.",
+    "activityDate": "2026-03-20T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1247,
+    "title": "WFA: Ngerjain Fitur Setting dan Konfigurasi (Hari Suci Nyepi)",
+    "description": "Hari ini libur Nyepi, tapi saya WFA dari rumah. Saya ngerjain fitur setting aplikasi. Ada SettingController dan model Setting. Saya bikin halaman admin untuk ubah pengaturan toko (nama, alamat, logo). Saya juga buat helper function untuk ambil setting pake cache biar cepet. Setelah diuji, pengaturan toko tersimpan dan tampil di frontend.",
+    "activityDate": "2026-03-19T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1246,
+    "title": "Implementasi Fitur Attribute dan Opsi",
+    "description": "Hari ini saya ngerjain fitur attribute dan opsi. Saya buka AttributeController dan AttributeOptionController. Saya buat halaman admin untuk manage attribute (warna, ukuran) dan opsi-opsinya. Saya pake Ajax biar nambah opsi tanpa reload. Sempat error pas simpan opsi, ternyata foreign key salah. Saya perbaiki dan sekarang lancar.",
+    "activityDate": "2026-03-18T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1245,
+    "title": "Membantu Debugging Command DiagnoseEmployeeTracking",
+    "description": "Hari ini saya bantu debug command DiagnoseEmployeeTrackingCommand. Ada masalah tracking karyawan ga tercatat. Saya jalankan command dan lihat output error. Ternyata ada kolom yang typo di database. Saya benerin migration dan update model. Setelah itu, command berjalan normal. Saya juga nambahin test command VerifyEmployeePerformancePageCommand untuk verifikasi.",
+    "activityDate": "2026-03-17T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1244,
+    "title": "Memperbaiki Halaman Cetak PDF Laporan",
+    "description": "Hari ini ada laporan PDF yang tidak rapi. Saya buka laporan export dan lihat styling CSS ga kebawa. Saya perbaiki view PDF dengan inline CSS dan atur margin. Saya juga tambahin logo perusahaan di header. Setelah diuji, hasil PDF jadi rapi dan sesuai standar. Lumayan puas, besok lanjut ke modul lain.",
+    "activityDate": "2026-03-16T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1243,
+    "title": "Belajar Integrasi dengan Axios untuk Ajax Request",
+    "description": "Hari ini saya belajar pake Axios untuk Ajax di frontend. Saya lihat ada file main.js di frontend/js yang pake Axios. Saya coba integrasikan ke halaman cart biar update quantity pake Ajax. Saya buat endpoint API di ProductVariantController. Sempat error CORS, tapi saya tambahin header di backend. Sekarang cart bisa update tanpa reload.",
+    "activityDate": "2026-03-14T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1242,
+    "title": "Refaktor Service StockManagementService",
+    "description": "Hari ini saya refaktor StockManagementService. Saya lihat ada duplikasi logic untuk update stok. Saya gabungin fungsi updateStock dan kurangi redundancy. Saya juga tambahin logging biar gampang debug. Setelah refaktor, service jadi lebih modular. Saya test dengan buat transaksi pembelian dan penjualan, stok berubah sesuai.",
+    "activityDate": "2026-03-13T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1241,
+    "title": "Membantu Testing Fitur Bonus Karyawan",
+    "description": "Hari ini saya bantu testing fitur bonus karyawan. Ada command TestBonusSystemCommand dan TestCompleteBonusSystemCommand. Saya running command tersebut dan lihat output perhitungan bonus. Saya juga test halaman admin employee performance. Ada bug di tampilan summary, saya perbaiki view-nya. Sekarang data performa dan bonus tampil dengan benar.",
+    "activityDate": "2026-03-12T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1240,
+    "title": "Belajar Event dan Listener di Laravel",
+    "description": "Hari ini saya belajar event dan listener. Saya lihat EventServiceProvider dan beberapa event yang terdaftar. Saya coba buat event OrderCreated dan listener SendNotification. Saya daftarkan dan test dengan buat order baru. Listener terpanggil dan ngirim notifikasi ke log. Keren, jadi paham pola event-driven di Laravel.",
+    "activityDate": "2026-03-11T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1239,
+    "title": "Testing Sendiri Fitur AI Agent: Chat dengan Tool",
+    "description": "Hari ini saya test fitur AI Agent secara langsung. Saya buka halaman chatbot dan coba tanya 'produk apa yang stoknya kritis?'. Ternyata AI manggil ScanCriticalStockTool dan ngasih hasil. Saya juga test 'cek status pesanan #123' dan AI pake CheckOrderStatusTool. Berfungsi dengan baik. Saya catat beberapa skenario untuk testing lebih lanjut.",
+    "activityDate": "2026-03-10T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1238,
+    "title": "Membantu Pembuatan Dokumentasi API Internal",
+    "description": "Hari ini saya bantu tim bikin dokumentasi API internal. Saya catat endpoint-endpoint penting dari route list. Saya buat file markdown di project (mirip DOKUMENTASI_TEKNIS_VIVIASHOP.md). Saya jelasin parameter request dan response. Senior review dan kasih masukan. Dokumentasi jadi lebih rapi. Seneng bisa kontribusi ke dokumentasi.",
+    "activityDate": "2026-03-09T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1237,
+    "title": "Implementasi Fitur Rekaman Stok dan Movement",
+    "description": "Hari ini saya ngerjain fitur rekaman stok. Saya buat halaman admin untuk lihat history movement stok per produk. Saya pake model StockMovement dan RekamanStok. Saya tambahin filter tanggal dan tipe movement (masuk/keluar). Agak rumit karena harus join dengan tabel pembelian dan penjualan. Tapi akhirnya jadi dan tampil datanya.",
+    "activityDate": "2026-03-07T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1236,
+    "title": "Debugging Fitur Cetak Struk dan PrintFile",
+    "description": "Hari ini ada masalah di cetak struk. Saya buka PrintFile model dan PrintService controller. Ternyata file yang dicetak tidak muncul. Saya debug dengan FixPrintFileStorage command yang sudah ada. Setelah itu, saya juga perbaiki view cetak struk biar rapi. Sekarang cetak struk berjalan lancar.",
+    "activityDate": "2026-03-06T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1235,
+    "title": "Belajar Middleware Custom: AdminMiddleware",
+    "description": "Hari ini saya pelajari middleware khusus admin. Saya buka AdminMiddleware dan lihat cara kerjanya. Saya coba bikin middleware baru untuk log aktivitas admin. Saya daftarkan di Kernel dan tambahin ke route group. Saya test dengan akses halaman admin tanpa login, ternyata redirect ke login. Berhasil.",
+    "activityDate": "2026-03-05T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1234,
+    "title": "Membantu Fitur Export Laporan ke Excel",
+    "description": "Hari ini saya bantu bikin export laporan inventori ke Excel. Saya edit ReportInventory export dan tambahin kolom stok dan harga. Saya juga bikin filter kategori sebelum export. Sempat error karena query terlalu lambat, saya optimasi pake chunk. Hasil export berhasil dengan 5000 baris data. Cukup puas.",
+    "activityDate": "2026-03-04T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1233,
+    "title": "Implementasi Validasi Input dengan Form Request",
+    "description": "Hari ini saya belajar Laravel Form Request untuk validasi. Saya buka file AttributeRequest, ProductRequest, dll. Saya bikin AttributeRequest baru untuk validasi input attribute. Saya terapin ke controller dan test. Error validation muncul dengan baik. Saya juga nambahin custom error message biar user friendly.",
+    "activityDate": "2026-03-03T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1232,
+    "title": "Review Kode dan Refaktor AttributeVariantController",
+    "description": "Hari ini saya code review bareng senior. Kami lihat AttributeVariantController yang agak panjang. Saya bantu refaktor dengan memisahkan logic ke service. Saya buat AttributeVariantService dan pindahin beberapa fungsi. Setelah refaktor, controller jadi lebih bersih. Senior ngasih tips pake repository pattern, tapi belum saya terapin. Besok lanjut belajar.",
+    "activityDate": "2026-03-02T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1231,
+    "title": "Testing Fitur Print Type dan Paper Type",
+    "description": "Hari ini saya testing fitur print service. Ada PrintTypeController, PaperTypeController, dan model PrintOrder. Saya coba buat print type baru dan assign ke produk. Saya juga test kalkulasi biaya cetak pake CalculatePrintCostTool dari AI. Hasilnya sesuai. Saya nambahin form tambah paper type di admin. Lumayan paham alur smart print.",
+    "activityDate": "2026-02-28T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1230,
+    "title": "Membantu Setup Environment Production di Server",
+    "description": "Hari ini saya bantu tim setup environment production. Saya belajar konfigurasi .env, cache config, dan optimize Laravel. Saya juga bantu migrate database di server. Sempat ada kendala koneksi database, ternyata firewall blok. Setelah tambahin aturan, koneksi lancar. Saya juga running php artisan key:generate dan storage:link. Siap deploy.",
+    "activityDate": "2026-02-27T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1229,
+    "title": "Debugging Fitur Wishlist dan Ajax",
+    "description": "Hari ini ada bug di fitur wishlist. Saya buka WishListController dan frontend view. Ternyata tombol wishlist tidak berfungsi karena error JavaScript. Saya debug pake console browser dan nemu masalah di route name. Saya perbaiki route dan fungsi Ajax, lalu test. Sekarang wishlist bisa add dan remove tanpa reload. Puas bisa fix UI/UX.",
+    "activityDate": "2026-02-26T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1228,
+    "title": "Belajar Sistem Shipment dan Tracking",
+    "description": "Hari ini saya pelajari modul shipment. Ada ShipmentController dan model Shipment. Saya lihat ada integrasi dengan RajaOngkir (file rajaongkir_komerce.php). Saya coba test hitung ongkir pake API RajaOngkir. Sempat error karena API key, saya minta key ke senior dan berhasil. Saya juga nambahin status pengiriman di admin.",
+    "activityDate": "2026-02-25T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1227,
+    "title": "Implementasi Report Revenue dan Export PDF",
+    "description": "Hari ini saya ngerjain fitur laporan revenue. Saya buka ReportController dan ReportRevenue export. Saya bikin halaman laporan dengan filter tanggal. Saya juga nambahin export ke PDF pake DomPDF yang udah ada di project. Sempat ribet soal styling PDF, tapi akhirnya jadi. Hasil laporan revenue bulanan keluar rapi. Besok rencana nambahin grafik.",
+    "activityDate": "2026-02-24T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1226,
+    "title": "Membantu Migrasi Sistem Variant Baru",
+    "description": "Hari ini saya bantu proses migrasi ke sistem variant baru. Ada command MigrateToNewVariantSystem yang udah dibuat. Saya running command itu di lokal dan lihat perubahan di database. Saya juga update ProductVariantService biar kompatibel. Sempat ada error karena data lama ga sesuai format, tapi saya bantu bersihin data. Lumayan melelahkan tapi beres.",
+    "activityDate": "2026-02-23T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1225,
+    "title": "Belajar Fitur Supplier dan Pembelian Detail",
+    "description": "Hari ini saya dalemin modul supplier dan detail pembelian. Saya buka SupplierController dan PembelianDetailController. Saya lihat ada relasi ke model Pembelian dan Product. Saya coba buat supplier baru dan input detail pembelian. Sempat error karena foreign key constraint, ternyata harus isi product_id dulu. Setelah bener, data tersimpan. Saya nambahin fitur search supplier pake Ajax.",
+    "activityDate": "2026-02-21T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1224,
+    "title": "Debugging Route API dan Response JSON",
+    "description": "Hari ini saya debugging route API. Ada beberapa endpoint yang ngembaliin error 500. Saya buka route/api.php dan cek controller Api/ProductVariantController. Ternyata ada query yang pake kolom ga ada di database. Saya perbaiki dengan nambah kolom atau ganti query. Saya uji pake Postman dan semua endpoint berfungsi normal. Seneng bisa fix masalah.",
+    "activityDate": "2026-02-20T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1223,
+    "title": "Implementasi Fitur Testimonials dan Slide",
+    "description": "Hari ini saya ngerjain fitur testimonial dan slide untuk homepage. Ada TestimonialsController dan SlideController. Saya buat halaman admin untuk manage testimonial: tambah, edit, hapus. Saya juga nambahin inputan rating bintang. Untuk slide, saya bikin carousel di frontend pake OwlCarousel yang udah ada. Cukup puas dengan hasilnya, tampilan homepage jadi lebih hidup.",
+    "activityDate": "2026-02-19T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1222,
+    "title": "Membantu Testing Modul Stock Card dan Stock Movement",
+    "description": "Hari ini saya bantu testing modul stock card. Ada StockCardController, model StockMovement, dan RekamanStok. Saya coba buat movement stok dari pembelian dan penjualan. Saya ngetest endpoint API ProductVariantController buat lihat stok varian. Cukup rumit karena ada perhitungan stok masuk dan keluar. Saya catat alurnya biar ga bingung lagi.",
+    "activityDate": "2026-02-18T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1221,
+    "title": "Memperbaiki Tampilan Dashboard Admin",
+    "description": "Hari ini libur Tahun Baru Imlek, tapi saya WFA dari rumah. Saya ngerjain perbaikan tampilan dashboard admin. Saya edit file view dashboard dan tambahin grafik penjualan pake Chart.js. Sempat error waktu load data, ternyata route API belum ada. Saya bikin endpoint baru di DashboardController. Alhamdulillah dashboard jadi lebih informatif.",
+    "activityDate": "2026-02-17T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1220,
+    "title": "Belajar Fitur Payment Midtrans dan Debugging",
+    "description": "Hari ini saya belajar integrasi pembayaran Midtrans. Ada route POST payments/notification dan beberapa route debug. Saya baca Payment model dan controller payment. Saya test kirim notifikasi dummy pake Postman. Sempat bingung soal signature key, tapi setelah baca dokumentasi Midtrans, saya bisa verifikasi. Saya juga ngeliat halaman debug-midtrans buat cek konfigurasi.",
+    "activityDate": "2026-02-16T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1219,
+    "title": "Debugging dan Fixing Fitur Cart dengan CartControllerNew",
+    "description": "Hari ini ada isu di keranjang belanja. Saya buka CartControllerNew dan CartController (lama). Ternyata ada duplikasi fungsi. Saya analisis dan putuskan untuk pake CartControllerNew yang lebih rapi. Saya perbaiki route dan hapus method yang ga dipake. Testing tambah item ke cart berhasil. Saya juga tambahin fitur update quantity pake Ajax. Lumayan puas.",
+    "activityDate": "2026-02-14T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1218,
+    "title": "Ngobrol Sama Senior Tentang Arsitektur AI Tools",
+    "description": "Hari ini saya diskusi sama senior tentang arsitektur AI Tools yang ada di project. Kami bahas ToolRegistry, ToolDispatcher, dan pola Contract ToolHandler. Saya jadi lebih paham cara nambah tool baru. Senior kasih tugas kecil: bikin tool sederhana untuk nampilin jam server. Saya implementasi dalam 2 jam dan berhasil. Seru bisa belajar design pattern.",
+    "activityDate": "2026-02-13T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1217,
+    "title": "Implementasi Fitur Upload Gambar Produk dengan Cloudinary",
+    "description": "Hari ini saya ngerjain fitur upload gambar produk pake Cloudinary. Ada CloudinaryController dan model ProductImage. Saya setel konfigurasi API key dan testing upload. Sempat gagal karena CORS, tapi setelah tambahin header di controller berhasil. Saya juga update view produk biar gambar tampil dari Cloudinary. Hasilnya bagus, loading gambar jadi cepet.",
+    "activityDate": "2026-02-12T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1216,
+    "title": "Belajar Membuat Command Artisan Kustom",
+    "description": "Hari ini saya belajar bikin command Artisan sendiri. Saya lihat banyak command di app/Console/Commands, misal FixPrintFileStorage, ScanCriticalStockCommand, dll. Saya buat command sederhana untuk log aktivitas harian. Saya daftarkan di Kernel dan coba jalankan. Berhasil muncul output. Keren, jadi paham cara automation task di Laravel.",
+    "activityDate": "2026-02-11T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1215,
+    "title": "Eksplorasi Fitur Employee Performance dan Bonus",
+    "description": "Hari ini saya eksplorasi fitur performance karyawan. Ada EmployeePerformanceController dengan 12 method, model EmployeePerformance dan EmployeeBonus. Saya baca kode dan lihat ada sistem bonus berdasarkan performa. Saya coba test route /test-employee-performance dan liat tampilan summary. Lumayan paham alur perhitungan bonus. Saran saya besok mau tanya ke senior soal validasi input.",
+    "activityDate": "2026-02-10T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1214,
+    "title": "Membantu Testing Modul Pembelian dan Supplier",
+    "description": "Hari ini saya bantu testing modul pembelian. Ada PembelianController, PembelianDetailController, dan SupplierController. Saya coba buat pembelian baru lewat admin, isi detail barang, lalu simpan. Sempat error karena validasi stock, ternyata harus ada stok minimal. Saya fix dengan nambah rule di request. Saya juga coba export laporan pembelian pake LaporanExport.",
+    "activityDate": "2026-02-09T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1213,
+    "title": "Testing Fitur Smart Print dan PrintService",
+    "description": "Hari ini saya belajar fitur smart print yang ada di project. Ada SmartPrintConverterController, SmartPrintVariantService, dan PrintService. Saya coba test alur pembuatan pesanan print. Saya buat print order baru dan upload file, ternyata ada kendala di penyimpanan file. Saya debug pake FixPrintFileStorage command yang udah ada. Alhamdulillah setelah dijalankan, filenya tersimpan dengan benar.",
+    "activityDate": "2026-02-07T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1212,
+    "title": "Mengenal Fitur AI Agent: Chatbot dan Tools",
+    "description": "Hari ini saya dikenalin sama fitur AI Agent yang ada di project. Ada folder app/Services/AI yang berisi GeminiClient, ToolDispatcher, dan berbagai tools seperti SearchProductsViaSqlTool, CheckOrderStatusTool, dll. Saya baca kode AIAgentService dan coba test chatbot di localhost. Keren banget bisa tanya stok produk langsung dari chat. Saya coba panggil tool ScanCriticalStockTool dan berhasil.",
+    "activityDate": "2026-02-06T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1211,
+    "title": "Membuat Fitur Filter Produk di Frontend",
+    "description": "Hari ini saya mulai ngerjain fitur frontend. Saya bantu bikin filter kategori di halaman produk customer. Saya edit frontend controller ProductController dan view produk. Saya pake Ajax biar filter tanpa reload. Sempat stuck karena data kategori ga ke-load, ternyata masalah di route. Setelah konsultasi, saya tambahin route baru dan berhasil.",
+    "activityDate": "2026-02-05T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1210,
+    "title": "Debugging Sistem Order dan OrderItem",
+    "description": "Hari ini ada laporan bug di halaman order admin. Saya buka OrderController dan Order model. Ternyata ada query yang salah di method show, jadi data item tidak tampil. Saya perbaiki dengan eager loading relasi OrderItem. Saya juga nambahin alert warning kalau order belum bayar. Setelah diuji, halaman order udah normal lagi. Seru bisa bantu fix bug.",
+    "activityDate": "2026-02-04T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1209,
+    "title": "Implementasi Login dan Register dengan Laravel Auth",
+    "description": "Hari ini saya belajar fitur autentikasi yang udah ada. Saya buka Auth controllers: LoginController, RegisterController, dan lain-lain. Saya coba tes registrasi user baru di localhost. Sempat error validasi password, tapi saya fix dengan update request. Saya juga tambahin sedikit styling biar form lebih rapi pake Bootstrap. Lumayan puas bisa liat fitur auth berfungsi.",
+    "activityDate": "2026-02-03T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1208,
+    "title": "Setup Fitur Instagram Integration untuk Posting",
+    "description": "Minggu kedua dimulai, hari ini saya diberi tugas memahami fitur integrasi Instagram. Ada InstagramController yang handle authorization dan posting konten. Saya baca dokumentasi dan lihat flow OAuth. Sempat bingung dengan redirect URI dan token, tapi setelah diskusi dengan senior akhirnya paham. Saya coba daftarkan aplikasi di Facebook Developer dan dapet client ID.",
+    "activityDate": "2026-02-02T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1207,
+    "title": "Belajar Import dan Export Data (Laravel Excel)",
+    "description": "Hari ini saya belajar fitur import/export yang ada di project. Saya buka folder app/Exports dan app/Imports. Ada export buat laporan revenue, inventory, product, dan payment. Saya coba jalankan export product ke Excel dan hasilnya berhasil. Saya juga lihat import produk dari file Excel pake ProdukImport. Keren juga Laravel Excel ini, memudahkan manajemen data.",
+    "activityDate": "2026-01-31T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1206,
+    "title": "Memahami Sistem Variant Produk dan Attribute",
+    "description": "Hari ini saya pelajari fitur variant produk yang cukup kompleks. Ada model Attribute, AttributeOption, AttributeVariant, ProductVariant, dan ProductAttributeValue. Saya baca controller AttributeController dan ProductVariantController biar ngerti alur input varian. Cukup rumit karena ada relasi many-to-many. Saya coba bikin varian baru di local dan berhasil. Seneng bisa ngeliat hasilnya langsung.",
+    "activityDate": "2026-01-30T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1205,
+    "title": "Eksplorasi Controller Admin: Product dan Order",
+    "description": "Lanjut eksplorasi kode, hari ini saya buka beberapa controller admin: ProductController dan OrderController. Saya liat ada method index, create, store, update, delete. Lumayan paham alur CRUD sederhana. Saya juga coba jalankan beberapa fitur di localhost, seperti daftar produk dan detail order. Ada error di halaman produk karena missing parameter, tapi saya coba debug sendiri dan ketemu solusinya.",
+    "activityDate": "2026-01-29T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1204,
+    "title": "Belajar Routing Laravel dan Middleware Admin",
+    "description": "Hari ini saya fokus belajar routing Laravel. Saya buka file routes/web.php dan lihat ada banyak route, termasuk group route untuk admin yang pake middleware AdminMiddleware. Saya coba buat route sederhana sendiri buat latihan. Sempat bingung soal perbedaan route dengan middleware dan tanpa, tapi setelah baca dokumentasi di laravel.com jadi agak paham. Besok rencana mulai eksplor controller.",
+    "activityDate": "2026-01-28T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1203,
+    "title": "Eksplorasi Struktur Project dan Model Eloquent",
+    "description": "Hari ini saya eksplorasi struktur folder project, terutama bagian Models. Saya lihat ada banyak model seperti Product, Order, Category, dan EmployeePerformance. Saya coba pahami relasi antar model biar ngerti alur data. Sempat buka file Product.php dan Category.php buat liat method relasi. Agak pusing karena banyak model, tapi saya catat diagram sederhana biar gampang diingat.",
+    "activityDate": "2026-01-27T00:00:00.000Z",
+    "durationMinutes": 600
+  },
+  {
+    "id": 1202,
+    "title": "Onboarding dan Setup Lingkungan Development",
+    "description": "Hari pertama magang di CV Sinar Agung Jaya. Saya dikenalin sama tim developer dan dikasih akses ke repository project Vivia App. Setup lingkungan development mulai dari install Laravel, Node.js, dan konfigurasi database lokal. Cukup lancar, cuma sempat bingung bedain branch staging sama production. Sorenya saya baca dokumentasi project biar paham alur bisnisnya. Rencana besok mulai eksplor kode lebih dalam.",
+    "activityDate": "2026-01-26T00:00:00.000Z",
+    "durationMinutes": 600
+  }
+]
