@@ -1,0 +1,205 @@
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<h2 class="sr-only">Widget chatbot ViviaShop dengan product card yang ditingkatkan</h2>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.stage{background:#0d1f15;padding:40px 28px 40px;display:flex;justify-content:center;align-items:flex-end;gap:22px;border-radius:20px;min-height:660px;position:relative}
+
+.fab-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding-bottom:4px}
+.fab-label{font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.38);letter-spacing:.4px}
+.fab{width:58px;height:58px;border-radius:50%;background:#1e7a45;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative}
+.fab-pulse{position:absolute;inset:-5px;border-radius:50%;border:1.5px solid rgba(30,122,69,.45);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.15);opacity:.1}}
+.fab-badge{position:absolute;top:1px;right:1px;width:17px;height:17px;background:#e85d2b;border-radius:50%;border:2px solid #0d1f15;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:600;color:#fff;display:flex;align-items:center;justify-content:center}
+
+.widget{width:368px;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.08);background:#ffffff;animation:rise .32s cubic-bezier(.34,1.3,.64,1)}
+@keyframes rise{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
+
+.w-head{background:#15532e;padding:16px 16px 0}
+.w-head-row{display:flex;align-items:center;gap:10px;padding-bottom:14px}
+.bot-av{width:42px;height:42px;border-radius:13px;background:rgba(255,255,255,.13);border:1.5px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bot-av i{font-size:21px;color:#fff}
+.bot-info{flex:1}
+.bot-name{font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:600;color:#fff;line-height:1.25}
+.bot-status{display:flex;align-items:center;gap:5px;margin-top:2px}
+.sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.bot-sub{font-family:'DM Sans',sans-serif;font-size:11.5px;color:rgba(255,255,255,.55)}
+.x-btn{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.1);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75)}
+.x-btn i{font-size:15px}
+
+.chips-row{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 14px}
+.chip{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.82);cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;transition:all .15s}
+.chip i{font-size:11px}
+.chip:hover{background:#fff;color:#15532e;border-color:#fff}
+
+.w-body{background:#f7f9f8;padding:12px 14px 14px;display:flex;flex-direction:column;gap:11px}
+.div-label{text-align:center;font-family:'DM Sans',sans-serif;font-size:10.5px;color:#a3a3a3;letter-spacing:.3px;padding-bottom:2px}
+
+.msg-row{display:flex;gap:8px;align-items:flex-end}
+.msg-row.me{flex-direction:row-reverse}
+.av{width:28px;height:28px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.av-bot{background:#dcfce7;border:1px solid #bbf7d0}
+.av-bot i{font-size:14px;color:#15803d}
+.av-me{background:#15532e;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:#fff}
+.bbl{font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.6}
+.bbl-bot{background:#fff;border:1px solid #e8ede9;border-radius:14px 14px 14px 3px;padding:9px 13px;color:#1a1a1a;max-width:260px}
+.bbl-me{background:#15532e;border-radius:14px 14px 3px 14px;padding:9px 13px;color:#fff;max-width:220px}
+.ts{font-size:10px;color:#b0b0b0;margin-top:3px}
+.msg-row.me .ts{text-align:right}
+
+.typing-row{display:flex;gap:8px;align-items:flex-end}
+.typing-bbl{background:#fff;border:1px solid #e8ede9;border-radius:14px 14px 14px 3px;padding:11px 16px;display:flex;gap:4px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:#15532e;opacity:.35;animation:td 1.4s ease-in-out infinite}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,60%,100%{transform:translateY(0);opacity:.3}30%{transform:translateY(-5px);opacity:.85}}
+
+.pcard{margin-top:10px;background:#fff;border:1px solid #e2ede6;border-radius:14px;overflow:hidden}
+.pcard-img{height:80px;background:#eaf4ee;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #e2ede6;position:relative}
+.pcard-img i{font-size:32px;color:#15803d}
+.pcard-badge{position:absolute;top:8px;left:8px;background:#dcfce7;border:1px solid #bbf7d0;border-radius:6px;padding:2px 8px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;color:#15803d}
+.pcard-body{padding:10px 12px 12px}
+.pcard-brand{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;color:#6b7280;letter-spacing:.4px;text-transform:uppercase;margin-bottom:2px}
+.pcard-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#111827;line-height:1.35;margin-bottom:6px}
+.pcard-meta{display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.pcard-price{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;color:#15532e}
+.pcard-per{font-family:'DM Sans',sans-serif;font-size:11px;color:#9ca3af}
+.pcard-stock{display:flex;align-items:center;gap:3px;font-family:'DM Sans',sans-serif;font-size:10.5px;color:#16a34a;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:5px;padding:2px 7px}
+.pcard-stock i{font-size:11px}
+.pcard-actions{display:flex;gap:7px}
+.btn-outline{flex:1;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:7px 0;border-radius:8px;border:1.5px solid #15532e;background:transparent;color:#15532e;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:5px}
+.btn-outline:hover{background:#f0fdf4}
+.btn-outline i{font-size:13px}
+.btn-solid{flex:2;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:7px 0;border-radius:8px;border:none;background:#15532e;color:#fff;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:5px}
+.btn-solid:hover{background:#166534}
+.btn-solid i{font-size:13px}
+
+.w-foot{background:#fff;border-top:1px solid #efefef;padding:10px 13px 13px}
+.input-row{display:flex;align-items:center;gap:7px;background:#f4f6f5;border-radius:14px;padding:7px 7px 7px 14px;border:1.5px solid transparent;transition:border-color .2s,background .2s}
+.input-row:focus-within{background:#fff;border-color:#15532e}
+.input-row input{flex:1;border:none;background:transparent;outline:none;font-family:'DM Sans',sans-serif;font-size:13px;color:#111}
+.input-row input::placeholder{color:#a3a3a3}
+.ico{width:31px;height:31px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;flex-shrink:0}
+.ico-ghost{background:transparent;color:#9ca3af}
+.ico-ghost:hover{background:#e5e7eb;color:#374151}
+.ico-ghost i{font-size:16px}
+.ico-send{background:#15532e;color:#fff;transition:transform .15s}
+.ico-send:hover{background:#166534;transform:scale(1.07)}
+.ico-send i{font-size:16px}
+.foot-hint{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding:0 2px}
+.sec-badges{display:flex;gap:10px}
+.sec-b{display:flex;align-items:center;gap:3px;font-family:'DM Sans',sans-serif;font-size:10px;color:#9ca3af}
+.sec-b i{font-size:12px;color:#22c55e}
+.pwrd{font-family:'DM Sans',sans-serif;font-size:10px;color:#c8c8c8}
+</style>
+
+<div class="stage">
+
+  <div class="widget">
+
+    <div class="w-head">
+      <div class="w-head-row">
+        <div class="bot-av"><i class="ti ti-robot" aria-hidden="true"></i></div>
+        <div class="bot-info">
+          <div class="bot-name">Asisten ViviaShop</div>
+          <div class="bot-status">
+            <div class="sdot"></div>
+            <div class="bot-sub">Online · siap membantu</div>
+          </div>
+        </div>
+        <button class="x-btn" aria-label="Tutup"><i class="ti ti-x" aria-hidden="true"></i></button>
+      </div>
+      <div class="chips-row">
+        <div class="chip"><i class="ti ti-search" aria-hidden="true"></i>Cari produk</div>
+        <div class="chip"><i class="ti ti-printer" aria-hidden="true"></i>Layanan cetak</div>
+        <div class="chip"><i class="ti ti-truck-delivery" aria-hidden="true"></i>Cek pesanan</div>
+        <div class="chip"><i class="ti ti-tag" aria-hidden="true"></i>Promo</div>
+      </div>
+    </div>
+
+    <div class="w-body">
+      <div class="div-label">Hari ini · 14.22</div>
+
+      <div class="msg-row">
+        <div class="av av-bot"><i class="ti ti-robot" aria-hidden="true"></i></div>
+        <div>
+          <div class="bbl bbl-bot">Halo! Ada yang bisa saya bantu hari ini?</div>
+          <div class="ts">14.22</div>
+        </div>
+      </div>
+
+      <div class="msg-row me">
+        <div class="av av-me">RZ</div>
+        <div>
+          <div class="bbl bbl-me">Ada kertas HVS A4 80gr?</div>
+          <div class="ts">14.22</div>
+        </div>
+      </div>
+
+      <div class="msg-row">
+        <div class="av av-bot"><i class="ti ti-robot" aria-hidden="true"></i></div>
+        <div>
+          <div class="bbl bbl-bot">
+            Ada! Ini pilihan terlaris kami saat ini.
+            <div class="pcard">
+              <div class="pcard-img">
+                <i class="ti ti-file-text" aria-hidden="true"></i>
+                <div class="pcard-badge"><i class="ti ti-flame" style="font-size:9px" aria-hidden="true"></i> Terlaris</div>
+              </div>
+              <div class="pcard-body">
+                <div class="pcard-brand">Sinar Dunia</div>
+                <div class="pcard-name">Kertas HVS A4 80gr — 500 lembar</div>
+                <div class="pcard-meta">
+                  <span class="pcard-price">Rp 52.000</span>
+                  <span class="pcard-per">/ rim</span>
+                  <span class="pcard-stock"><i class="ti ti-circle-check" aria-hidden="true"></i>Stok tersedia</span>
+                </div>
+                <div class="pcard-actions">
+                  <button class="btn-outline" aria-label="Simpan ke wishlist"><i class="ti ti-heart" aria-hidden="true"></i></button>
+                  <button class="btn-solid"><i class="ti ti-shopping-cart" aria-hidden="true"></i>Tambah ke keranjang</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ts">14.22</div>
+        </div>
+      </div>
+
+      <div class="typing-row">
+        <div class="av av-bot"><i class="ti ti-robot" aria-hidden="true"></i></div>
+        <div class="typing-bbl">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w-foot">
+      <div class="input-row">
+        <input type="text" placeholder="Ketik pertanyaan kamu…" readonly />
+        <button class="ico ico-ghost" aria-label="Lampirkan file"><i class="ti ti-paperclip" aria-hidden="true"></i></button>
+        <button class="ico ico-send" aria-label="Kirim"><i class="ti ti-send" aria-hidden="true"></i></button>
+      </div>
+      <div class="foot-hint">
+        <div class="sec-badges">
+          <div class="sec-b"><i class="ti ti-shield-check" aria-hidden="true"></i>Aman & terenkripsi</div>
+          <div class="sec-b"><i class="ti ti-lock" aria-hidden="true"></i>HTTPS</div>
+        </div>
+        <div class="pwrd">Powered by AI</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="fab-wrap">
+    <div class="fab" role="button" aria-label="Buka chat">
+      <div class="fab-pulse"></div>
+      <i class="ti ti-message-circle" style="font-size:25px;color:#fff" aria-hidden="true"></i>
+      <div class="fab-badge">2</div>
+    </div>
+    <div class="fab-label">Butuh bantuan?</div>
+  </div>
+
+</div>
