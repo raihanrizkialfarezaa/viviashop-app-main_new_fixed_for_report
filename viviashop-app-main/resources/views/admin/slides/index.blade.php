@@ -18,126 +18,79 @@
                   </a>
                 </div>
               </div>
-              <div class="card-body p-0">
+              <div class="card-body p-4">
                 @if($slides->count())
-                <div class="table-responsive">
-                    <table id="slide-table" class="table table-hover table-striped m-0">
-                    <thead class="bg-light">
-                    <tr>
-                        <th class="text-center" width="50">#</th>
-                        <th width="200">Gambar</th>
-                        <th>Judul</th>
-                        <th class="text-center" width="130">Status</th>
-                        <th class="text-center" width="160">Urutan</th>
-                        <th class="text-center" width="130">Aksi</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($slides as $slide)
-                            <tr>
-                                <td class="text-center align-middle text-muted">{{ $slide->id }}</td>
-                                <td class="align-middle">
-                                  <div class="slide-img-wrap">
-                                    <img
-                                      class="img-fluid slide-img"
-                                      src="{{ $slide->image_url }}"
-                                      alt="{{ $slide->title }}"
-                                      onclick="openSlidePreview(this.src)"
-                                    >
-                                    <div class="slide-img-overlay" onclick="openSlidePreview(this.parentElement.querySelector('img').src)">
-                                      <i class="fa fa-search-plus"></i>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td class="align-middle">
-                                  <div class="d-flex flex-column">
-                                    <strong class="slide-title">{{ $slide->title }}</strong>
-                                    @if($slide->url)
-                                      <small class="text-muted">
-                                        <i class="fa fa-link fa-fw text-primary"></i>
-                                        <a href="{{ $slide->url }}" target="_blank" class="text-muted">{{ Str::limit($slide->url, 35) }}</a>
-                                      </small>
-                                    @endif
-                                    @if($slide->body)
-                                      <small class="text-muted mt-1">
-                                        <i class="fa fa-align-left fa-fw text-info"></i>
-                                        {{ Str::limit($slide->body, 60) }}
-                                      </small>
-                                    @endif
-                                  </div>
-                                </td>
-                                <td class="text-center align-middle">
-                                  @if ($slide->status === 'active')
-                                    <span class="badge badge-success px-3 py-1">
-                                      <i class="fa fa-check-circle mr-1"></i>Aktif
-                                    </span>
-                                  @else
-                                    <span class="badge badge-secondary px-3 py-1">
-                                      <i class="fa fa-times-circle mr-1"></i>Tidak Aktif
-                                    </span>
-                                  @endif
-                                </td>
-                                <td class="text-center align-middle">
-                                  <div class="d-flex align-items-center justify-content-center" style="gap: 4px;">
-                                    @if ($slide->prevSlide())
-                                      <a href="{{ url('admin/slides/' . $slide->id . '/up') }}"
-                                         class="btn btn-outline-primary btn-sm"
-                                         title="Pindah ke atas"
-                                         data-toggle="tooltip">
-                                        <i class="fa fa-chevron-up"></i>
-                                      </a>
-                                    @else
-                                      <button class="btn btn-outline-secondary btn-sm" disabled>
-                                        <i class="fa fa-chevron-up"></i>
-                                      </button>
-                                    @endif
-                                    <span class="badge badge-light border px-2 py-1 mx-1" style="font-size: 13px; min-width: 32px;">
-                                      {{ $slide->position }}
-                                    </span>
-                                    @if ($slide->nextSlide())
-                                      <a href="{{ url('admin/slides/' . $slide->id . '/down') }}"
-                                         class="btn btn-outline-primary btn-sm"
-                                         title="Pindah ke bawah"
-                                         data-toggle="tooltip">
-                                        <i class="fa fa-chevron-down"></i>
-                                      </a>
-                                    @else
-                                      <button class="btn btn-outline-secondary btn-sm" disabled>
-                                        <i class="fa fa-chevron-down"></i>
-                                      </button>
-                                    @endif
-                                  </div>
-                                </td>
-                                <td class="text-center align-middle">
-                                  <div class="btn-group">
-                                    <a href="{{ route('admin.slides.edit', $slide) }}"
-                                       class="btn btn-outline-info btn-sm"
-                                       title="Edit slide"
-                                       data-toggle="tooltip">
-                                      <i class="fa fa-pencil-alt"></i>
-                                    </a>
-                                    <button type="button"
-                                            class="btn btn-outline-danger btn-sm btn-delete-slide"
-                                            data-url="{{ route('admin.slides.destroy', $slide) }}"
-                                            data-title="{{ $slide->title }}"
-                                            title="Hapus slide"
-                                            data-toggle="tooltip">
-                                      <i class="fa fa-trash"></i>
-                                    </button>
-                                  </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                    </table>
+                <div class="row" id="slides-grid">
+                  @foreach ($slides as $slide)
+                  <div class="col-md-6 col-lg-4 col-xl-3 mb-4" data-id="{{ $slide->id }}">
+                    <div class="slide-card">
+                      <div class="slide-card-header">
+                        <span class="slide-position-badge">{{ $slide->position }}</span>
+                        @if ($slide->status === 'active')
+                          <span class="slide-status-badge badge-success">
+                            <i class="fa fa-check-circle"></i> Aktif
+                          </span>
+                        @else
+                          <span class="slide-status-badge badge-secondary">
+                            <i class="fa fa-times-circle"></i> Nonaktif
+                          </span>
+                        @endif
+                      </div>
+                      
+                      <div class="slide-card-image" onclick="openSlidePreview('{{ $slide->image_url }}')">
+                        <img src="{{ $slide->image_url }}" alt="{{ $slide->title }}">
+                        <div class="slide-image-overlay">
+                          <i class="fa fa-search-plus fa-2x"></i>
+                        </div>
+                      </div>
+                      
+                      <div class="slide-card-body">
+                        <h5 class="slide-card-title">{{ $slide->title }}</h5>
+                        @if($slide->body)
+                          <p class="slide-card-description">{{ Str::limit($slide->body, 80) }}</p>
+                        @endif
+                        @if($slide->url)
+                          <div class="slide-card-link">
+                            <i class="fa fa-link"></i>
+                            <a href="{{ $slide->url }}" target="_blank">{{ Str::limit($slide->url, 30) }}</a>
+                          </div>
+                        @endif
+                      </div>
+                      
+                      <div class="slide-card-footer">
+                        <div class="slide-card-actions">
+                          <a href="{{ route('admin.slides.edit', $slide) }}" 
+                             class="btn btn-sm btn-info" 
+                             title="Edit">
+                            <i class="fa fa-edit"></i> Edit
+                          </a>
+                          <button type="button" 
+                                  class="btn btn-sm btn-danger btn-delete-slide"
+                                  data-url="{{ route('admin.slides.destroy', $slide) }}"
+                                  data-title="{{ $slide->title }}"
+                                  title="Hapus">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </div>
+                        <div class="slide-card-meta">
+                          <small class="text-muted">
+                            <i class="fa fa-clock"></i> {{ $slide->updated_at->diffForHumans() }}
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
                 </div>
                 @else
-                <div class="text-center py-5">
-                  <i class="fa fa-sliders-h fa-4x text-muted mb-3 d-block"></i>
-                  <h5 class="text-muted">Belum Ada Slide</h5>
-                  <p class="text-muted mb-3">Mulai dengan menambahkan slide banner pertama Anda.</p>
-                  <a href="{{ route('admin.slides.create') }}" class="btn btn-success px-4">
-                    <i class="fa fa-plus mr-1"></i> Tambah Slide Baru
+                <div class="empty-state">
+                  <div class="empty-state-icon">
+                    <i class="fa fa-images"></i>
+                  </div>
+                  <h4 class="empty-state-title">Belum Ada Slide Banner</h4>
+                  <p class="empty-state-text">Buat slide banner pertama untuk mempercantik halaman utama website Anda.</p>
+                  <a href="{{ route('admin.slides.create') }}" class="btn btn-success btn-lg">
+                    <i class="fa fa-plus mr-2"></i> Buat Slide Pertama
                   </a>
                 </div>
                 @endif
@@ -169,80 +122,208 @@
 @endsection
 
 @push('style-alt')
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
   <style>
-  .card-primary.card-outline {
-      border-top: 3px solid #007bff;
-  }
-  .slide-img-wrap {
-      position: relative;
-      width: 160px;
-      height: 80px;
-      border-radius: 6px;
+  /* Card Container */
+  .slide-card {
+      background: white;
+      border-radius: 12px;
       overflow: hidden;
-      border: 1px solid #e9ecef;
-      background: #f8f9fa;
-  }
-  .slide-img {
-      width: 100%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
       height: 100%;
-      object-fit: cover;
+      display: flex;
+      flex-direction: column;
+  }
+  .slide-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  
+  /* Card Header */
+  .slide-card-header {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+  }
+  .slide-position-badge {
+      background: rgba(0,0,0,0.75);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 13px;
+      backdrop-filter: blur(8px);
+  }
+  .slide-status-badge {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+  }
+  .slide-status-badge.badge-success {
+      background: rgba(40, 167, 69, 0.95);
+      color: white;
+  }
+  .slide-status-badge.badge-secondary {
+      background: rgba(108, 117, 125, 0.95);
+      color: white;
+  }
+  
+  /* Card Image */
+  .slide-card-image {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 aspect ratio */
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
       cursor: pointer;
-      transition: transform 0.3s ease;
   }
-  .slide-img-wrap:hover .slide-img {
-      transform: scale(1.1);
-  }
-  .slide-img-overlay {
+  .slide-card-image img {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.3);
+      object-fit: cover;
+      transition: transform 0.4s ease;
+  }
+  .slide-card-image:hover img {
+      transform: scale(1.08);
+  }
+  .slide-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       transition: opacity 0.3s ease;
-      cursor: pointer;
       color: white;
-      font-size: 20px;
   }
-  .slide-img-wrap:hover .slide-img-overlay {
+  .slide-card-image:hover .slide-image-overlay {
       opacity: 1;
   }
-  .slide-title {
-      font-size: 14px;
-      line-height: 1.3;
+  
+  /* Card Body */
+  .slide-card-body {
+      padding: 16px;
+      flex: 1;
   }
-  #slide-table th {
-      border-bottom: 2px solid #dee2e6 !important;
+  .slide-card-title {
+      font-size: 16px;
       font-weight: 600;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #6c757d;
+      color: #2d3748;
+      margin: 0 0 8px 0;
+      line-height: 1.4;
   }
-  #slide-table td {
-      vertical-align: middle;
+  .slide-card-description {
       font-size: 13px;
+      color: #718096;
+      margin: 0 0 12px 0;
+      line-height: 1.5;
   }
-  .btn-outline-primary.btn-sm,
-  .btn-outline-info.btn-sm,
-  .btn-outline-danger.btn-sm {
-      padding: 3px 8px;
+  .slide-card-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       font-size: 12px;
+      color: #4299e1;
   }
-  .btn-outline-secondary:disabled {
-      opacity: 0.25;
-      cursor: not-allowed;
+  .slide-card-link i {
+      font-size: 11px;
+  }
+  .slide-card-link a {
+      color: #4299e1;
+      text-decoration: none;
+  }
+  .slide-card-link a:hover {
+      text-decoration: underline;
+  }
+  
+  /* Card Footer */
+  .slide-card-footer {
+      padding: 12px 16px;
+      background: #f7fafc;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .slide-card-actions {
+      display: flex;
+      gap: 6px;
+  }
+  .slide-card-actions .btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 500;
+  }
+  .slide-card-meta {
+      font-size: 11px;
+      color: #a0aec0;
+  }
+  .slide-card-meta i {
+      margin-right: 4px;
+  }
+  
+  /* Empty State */
+  .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+  }
+  .empty-state-icon {
+      font-size: 72px;
+      color: #cbd5e0;
+      margin-bottom: 24px;
+  }
+  .empty-state-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 12px;
+  }
+  .empty-state-text {
+      font-size: 16px;
+      color: #718096;
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  /* Grid Responsive */
+  #slides-grid {
+      margin: 0 -8px;
+  }
+  #slides-grid > [class*="col-"] {
+      padding: 0 8px;
+  }
+  
+  /* Modal Enhancements */
+  #image-modal .modal-content {
+      border: none;
+      background: transparent;
+  }
+  #image-modal .modal-body {
+      background: #1a202c;
   }
   </style>
 @endpush
 
 @push('script-alt')
-    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
     <script>
     function openSlidePreview(src) {
         $('#modal-image').attr('src', src);
@@ -250,32 +331,23 @@
     }
 
     $(document).ready(function () {
-        $('#slide-table').DataTable({
-            language: {
-                url: '//cdn.datatables.net/plug-ins/1.13.3/i18n/id.json'
-            },
-            pageLength: 25,
-            order: [[4, 'asc']],
-            columnDefs: [
-                { targets: [0, 1, 3, 4, 5], orderable: false }
-            ]
-        });
-
+        // Initialize tooltips
         $('[data-toggle="tooltip"]').tooltip();
 
+        // Delete confirmation
         $('.btn-delete-slide').on('click', function () {
             var url = $(this).data('url');
             var title = $(this).data('title');
 
             Swal.fire({
                 title: 'Hapus Slide',
-                html: 'Apakah Anda yakin ingin menghapus slide <strong>"' + $('<span>').text(title).html() + '"</strong>?<br>Tindakan ini tidak dapat dibatalkan.',
+                html: 'Apakah Anda yakin ingin menghapus slide <strong>"' + $('<span>').text(title).html() + '"</strong>?<br><small class="text-muted">Gambar akan dihapus dari Cloudinary.</small><br>Tindakan ini tidak dapat dibatalkan.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#dc3545',
                 cancelButtonColor: '#6c757d',
-                confirmButtonText: 'Ya, hapus!',
-                cancelButtonText: 'Batal',
+                confirmButtonText: '<i class="fa fa-trash mr-1"></i> Ya, hapus!',
+                cancelButtonText: '<i class="fa fa-times mr-1"></i> Batal',
                 showLoaderOnConfirm: true,
                 preConfirm: function () {
                     return new Promise(function (resolve) {
