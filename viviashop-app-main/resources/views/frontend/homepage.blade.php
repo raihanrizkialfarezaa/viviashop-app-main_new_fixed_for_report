@@ -71,7 +71,7 @@
                     </div>
                     @php
                         $carouselItems = $slides->isNotEmpty()
-                            ? $slides->map(fn($s) => ['src' => asset('storage/' . $s->path), 'label' => 'Promo'])
+                            ? $slides->map(fn($s) => ['src' => $s->image_url, 'label' => 'Promo'])
                             : $popular->take(4)->filter(fn($p) => $p->productImages->isNotEmpty())
                                       ->map(fn($p) => ['src' => asset('storage/' . $p->productImages->first()->path), 'label' => $p->name]);
                     @endphp

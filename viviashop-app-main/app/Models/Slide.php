@@ -38,4 +38,22 @@ class Slide extends Model
 			->orderBy('position', 'ASC')
 			->first();
 	}
+
+	/**
+	 * Get the image URL (supports both local and Cloudinary paths)
+	 */
+	public function getImageUrlAttribute()
+	{
+		if (!$this->path) {
+			return null;
+		}
+		
+		// If it's already a full URL (Cloudinary), return as-is
+		if (filter_var($this->path, FILTER_VALIDATE_URL)) {
+			return $this->path;
+		}
+		
+		// Otherwise, it's a local path
+		return asset('storage/' . $this->path);
+	}
 }

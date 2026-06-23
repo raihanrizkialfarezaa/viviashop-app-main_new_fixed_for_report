@@ -85,41 +85,20 @@ class SlideController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SlideRequest $request)
     {
-        Log::debug('=== SLIDE STORE DEBUG ===');
-        Log::debug('All input keys: ' . json_encode(array_keys($request->all())));
-        Log::debug('Has path input: ' . ($request->has('path') ? 'yes' : 'no'));
-        Log::debug('HasFile path: ' . ($request->hasFile('path') ? 'yes' : 'no'));
-        Log::debug('Content-Type: ' . ($_SERVER['CONTENT_TYPE'] ?? 'not set'));
-        Log::debug('Content-Length: ' . ($_SERVER['CONTENT_LENGTH'] ?? 'not set'));
-        Log::debug('Request-Method: ' . ($_SERVER['REQUEST_METHOD'] ?? 'not set'));
-        
-        if ($request->hasFile('path')) {
-            $file = $request->file('path');
-            Log::debug('File original name: ' . $file->getClientOriginalName());
-            Log::debug('File size: ' . $file->getSize());
-            Log::debug('File mime: ' . $file->getMimeType());
-            Log::debug('File valid: ' . ($file->isValid() ? 'yes' : 'no'));
-            Log::debug('File error: ' . $file->getError());
-            Log::debug('File path: ' . $file->getPathname());
-            Log::debug('File realPath: ' . $file->getRealPath());
-        } else {
-            Log::debug('File path NOT present in $request->file()');
-            Log::debug('$_FILES: ' . json_encode($_FILES, JSON_PRETTY_PRINT));
-            Log::debug('$_POST: ' . json_encode($_POST));
-            Log::debug('ini_get upload_max_filesize: ' . ini_get('upload_max_filesize'));
-            Log::debug('ini_get post_max_size: ' . ini_get('post_max_size'));
-            Log::debug('ini_get upload_tmp_dir: ' . ini_get('upload_tmp_dir'));
-        }
-        Log::debug('========================');
-
         try {
-            $data = $request->except('_token', '_method');
+            $data = $request->validated();
 
-            if ($request->hasFile('path')) {
-                $data['path'] = $request->file('path')->store('assets/slides', 'public');
-            }
+        if ($request->hasFile('path')) {
+            // Upload to Cloudinary instead of local storage
+            $file = $request->file('path');
+            $data['path'] = \App\Http\Controllers\CloudinaryController::upload(
+                $file->getRealPath(),
+                $file->getClientOriginalName(),
+                'slides' // Custom folder for slides
+            );
+        }
 
             $data['position'] = Slide::max('position') + 1;
             $data['user_id'] = auth()->id();
@@ -166,14 +145,26 @@ class SlideController extends Controller
         try {
             $data = $request->validated();
 
-            if ($request->hasFile('path')) {
-                if ($slide->path && Storage::disk('public')->exists($slide->path)) {
+        if ($request->hasFile('path')) {
+            // Delete old file (check if Cloudinary or local)
+            if ($slide->path) {
+                if ($this->isCloudinaryUrl($slide->path)) {
+                    \App\Http\Controllers\CloudinaryController::delete($slide->path, 'slides');
+                } elseif (Storage::disk('public')->exists($slide->path)) {
                     Storage::disk('public')->delete($slide->path);
                 }
-                $data['path'] = $request->file('path')->store('assets/slides', 'public');
-            } else {
-                unset($data['path']);
             }
+            
+            // Upload new file to Cloudinary
+            $file = $request->file('path');
+            $data['path'] = \App\Http\Controllers\CloudinaryController::upload(
+                $file->getRealPath(),
+                $file->getClientOriginalName(),
+                'slides'
+            );
+        } else {
+            unset($data['path']);
+        }
 
             $data['user_id'] = auth()->id();
 
@@ -199,9 +190,15 @@ class SlideController extends Controller
     public function destroy(Slide $slide)
     {
         try {
-            if ($slide->path && Storage::disk('public')->exists($slide->path)) {
+        if ($slide->path) {
+            if ($this->isCloudinaryUrl($slide->path)) {
+                // Delete from Cloudinary
+                \App\Http\Controllers\CloudinaryController::delete($slide->path, 'slides');
+            } elseif (Storage::disk('public')->exists($slide->path)) {
+                // Delete from local storage
                 Storage::disk('public')->delete($slide->path);
             }
+        }
 
             $slide->delete();
 
@@ -217,5 +214,14 @@ class SlideController extends Controller
                 'alert-type' => 'error'
             ]);
         }
+    }
+
+    /**
+     * Check if path is a Cloudinary URL
+     */
+    private function isCloudinaryUrl($path)
+    {
+        return filter_var($path, FILTER_VALIDATE_URL) !== false && 
+               str_contains($path, 'cloudinary.com');
     }
 }

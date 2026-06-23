@@ -73,7 +73,7 @@
                               <img
                                 id="current-image"
                                 class="img-fluid img-thumbnail"
-                                src="{{ asset('storage/' . $slide->path) }}"
+                                src="{{ $slide->image_url }}"
                                 alt="{{ $slide->title }}"
                                 style="max-height: 200px; cursor: pointer;"
                                 title="Klik untuk melihat ukuran penuh"

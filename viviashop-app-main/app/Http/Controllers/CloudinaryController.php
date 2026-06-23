@@ -12,12 +12,31 @@ class CloudinaryController extends Controller
         return pathinfo($path, PATHINFO_FILENAME);
     }
 
-    public static function upload($image, $filename){
+    public static function upload($image, $filename, $folder = null){
+        // Fix SSL verification issue on local Windows development
+        if (config('app.env') === 'local') {
+            // Temporarily disable SSL verification for this request
+            $streamOptions = stream_context_create([
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ]
+            ]);
+            stream_context_set_default([
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ]
+            ]);
+        }
+        
         $newFilename = str_replace(' ', '_', $filename);
         $public_id = date('Y-m-d_His').'_'.$newFilename;
+        $uploadFolder = $folder ?? self::folder_path;
+        
         $result = cloudinary()->upload($image, [
             "public_id" => self::path($public_id),
-            "folder"    => self::folder_path
+            "folder"    => $uploadFolder
         ])->getSecurePath();
 
         return $result;
@@ -28,8 +47,9 @@ class CloudinaryController extends Controller
         return self::upload($image, $public_id);
     }
 
-    public static function delete($path){
-        $public_id = self::folder_path.'/'.self::path($path);
+    public static function delete($path, $folder = null){
+        $deleteFolder = $folder ?? self::folder_path;
+        $public_id = $deleteFolder.'/'.self::path($path);
         return cloudinary()->destroy($public_id);
     }
 }
