@@ -32,6 +32,41 @@
     </div>
     <div class="col-md-2">
         <div class="form-group border-bottom pb-4">
+            <label for="rating" class="form-label">Rating Produk</label>
+            <input type="number" step="0.01" min="0" max="5" class="form-control" name="rating" value="{{ old('rating', $product->rating) }}" placeholder="0.00 - 5.00" id="rating">
+            <small class="form-text text-muted">Rating 0.00 - 5.00 (0 = belum ada rating)</small>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group border-bottom pb-4">
+            <label for="discount_price" class="form-label">Harga Diskon</label>
+            <input type="number" class="form-control" name="discount_price" value="{{ old('discount_price', $product->discount_price) }}" placeholder="Kosongkan jika tidak ada diskon" id="discount_price">
+            <small class="form-text text-muted">Isi jika produk sedang diskon</small>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group border-bottom pb-4">
+            <label for="discount_percent" class="form-label">Diskon (%)</label>
+            <input type="number" min="0" max="100" class="form-control" name="discount_percent" value="{{ old('discount_percent', $product->discount_percent) }}" placeholder="0-100" id="discount_percent">
+            <small class="form-text text-muted">Persentase diskon untuk badge</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group border-bottom pb-4">
+            <label for="discount_starts_at" class="form-label">Diskon Mulai</label>
+            <input type="datetime-local" class="form-control" name="discount_starts_at" value="{{ old('discount_starts_at', $product->discount_starts_at ? date('Y-m-d\TH:i', strtotime($product->discount_starts_at)) : '') }}" id="discount_starts_at">
+            <small class="form-text text-muted">Tanggal mulai diskon</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group border-bottom pb-4">
+            <label for="discount_ends_at" class="form-label">Diskon Berakhir</label>
+            <input type="datetime-local" class="form-control" name="discount_ends_at" value="{{ old('discount_ends_at', $product->discount_ends_at ? date('Y-m-d\TH:i', strtotime($product->discount_ends_at)) : '') }}" id="discount_ends_at">
+            <small class="form-text text-muted">Tanggal berakhir diskon</small>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group border-bottom pb-4">
             <label for="weight" class="form-label">Berat (kg)</label>
             <input type="number" step="0.01" class="form-control" name="weight" value="{{ old('weight', $product->weight) }}" placeholder="Contoh: 1.5 (untuk 1.5 kg)" id="weight">
         </div>

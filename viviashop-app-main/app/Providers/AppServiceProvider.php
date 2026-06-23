@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Order;
+use App\Observers\OrderObserver;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
@@ -27,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Register Order Observer to auto-increment product sold_count
+        Order::observe(OrderObserver::class);
+        
         // URL::forceScheme('https');
         Paginator::useBootstrap();
         // view()->share('countCart', $cart);

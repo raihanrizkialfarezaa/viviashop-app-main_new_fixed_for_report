@@ -79,6 +79,13 @@
                           <input class="form-control" type="file" name="path_logo" id="logo">
                         </div>
                     </div>
+                    <div class="form-group row border-bottom pb-4">
+                        <label for="free_shipping_threshold" class="col-sm-2 col-form-label">Minimal Gratis Ongkir</label>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control" name="free_shipping_threshold" value="{{ old('free_shipping_threshold', optional($setting)->free_shipping_threshold ?? 50000) }}" id="free_shipping_threshold" placeholder="50000">
+                          <small class="form-text text-muted">Minimal harga pembelian untuk mendapatkan gratis ongkir (dalam Rupiah). Default: Rp50.000</small>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-success">Save</button>
         </form>
         @else

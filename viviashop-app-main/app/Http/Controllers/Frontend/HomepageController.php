@@ -30,7 +30,7 @@ class HomepageController extends Controller
                   ->whereNull('parent_id')
                   ->orWhere('type', 'configurable');
         })->pluck('id');
-        $products = Product::with(['categories', 'productImages', 'productInventory'])
+        $products = Product::with(['categories', 'productImages', 'productInventory', 'brand'])
             ->whereIn('id', $productActiveIds)
             ->limit(8)
             ->get();

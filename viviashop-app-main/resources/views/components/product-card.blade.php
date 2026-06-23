@@ -12,25 +12,56 @@
 ])
 
 @php
-    // Calculate discount if applicable
-    $hasDiscount = false;
-    $discountPercent = 0;
-    $originalPrice = null;
+    // Get real data from database
+    $rating = $product->rating ?? 0; // Real rating from DB
+    $ratingStars = floor($rating);
+    $soldCount = $product->sold_count ?? 0; // Real sold count from DB
     
     // Check for brand to show official store badge
     $hasOfficialStore = $product?->brand?->name ?? false;
     
-    // Random seed based on product ID for consistent "ratings"
-    $seed = $product?->id ?? 1;
-    $rating = 4.5 + (($seed % 5) / 10); // 4.5 to 4.9
-    $ratingStars = floor($rating);
-    $soldCount = (($seed * 37) % 450) + 50; // 50-500
+    // Calculate discount if applicable
+    $hasDiscount = false;
+    $discountPercent = 0;
+    $originalPrice = null;
+    $currentPrice = $product?->price ?? 0;
     
-    // Check if free shipping applicable (products over certain price)
-    $hasFreeShipping = ($product?->price ?? 0) >= 50000;
+    // Check if discount fields exist and are valid
+    if (isset($product->discount_price) && $product->discount_price > 0 && $product->discount_price < $currentPrice) {
+        // Check if discount is within valid date range (if date fields exist)
+        $now = now();
+        $discountValid = true;
+        
+        if (isset($product->discount_starts_at) && $product->discount_starts_at && $now < $product->discount_starts_at) {
+            $discountValid = false;
+        }
+        
+        if (isset($product->discount_ends_at) && $product->discount_ends_at && $now > $product->discount_ends_at) {
+            $discountValid = false;
+        }
+        
+        if ($discountValid) {
+            $hasDiscount = true;
+            $originalPrice = $currentPrice;
+            $currentPrice = $product->discount_price;
+            $discountPercent = round((($originalPrice - $currentPrice) / $originalPrice) * 100);
+        }
+    }
+    
+    // Get free shipping threshold from settings (default 50000 if not set)
+    $freeShippingThreshold = 50000; // Default value
+    if (isset($settings) && isset($settings->free_shipping_threshold)) {
+        $freeShippingThreshold = $settings->free_shipping_threshold;
+    }
+    $hasFreeShipping = $currentPrice >= $freeShippingThreshold;
     
     // Check if this is a hot/trending item
     $isTrending = $stockQuantity !== null && $stockQuantity <= 20 && $stockQuantity > 0;
+    
+    // Display helpers
+    $showRating = $rating > 0; // Only show rating if it exists
+    $soldCountDisplay = $soldCount > 0 ? number_format($soldCount) . '+ terjual' : '0 terjual';
+    $ratingDisplay = $showRating ? number_format($rating, 1) : 'Belum ada rating';
 @endphp
 
 <div class="tkpd-card-enhanced">
@@ -118,11 +149,11 @@
                 @if($hasDiscount)
                     <div class="tkpd-price-original">Rp{{ number_format($originalPrice, 0, ',', '.') }}</div>
                     <div class="tkpd-price-row">
-                        <span class="tkpd-price-current">Rp{{ number_format($product?->price ?? 0, 0, ',', '.') }}</span>
+                        <span class="tkpd-price-current">Rp{{ number_format($currentPrice, 0, ',', '.') }}</span>
                         <span class="tkpd-discount-badge">{{ $discountPercent }}%</span>
                     </div>
                 @else
-                    <div class="tkpd-price-current">Rp{{ number_format($product?->price ?? 0, 0, ',', '.') }}</div>
+                    <div class="tkpd-price-current">Rp{{ number_format($currentPrice, 0, ',', '.') }}</div>
                 @endif
             </div>
 
@@ -137,9 +168,9 @@
                         @endif
                     @endfor
                 </div>
-                <span class="tkpd-rating-num">{{ number_format($rating, 1) }}</span>
+                <span class="tkpd-rating-num">{{ $ratingDisplay }}</span>
                 <span class="tkpd-divider">|</span>
-                <span class="tkpd-sold-count">{{ number_format($soldCount) }}+ terjual</span>
+                <span class="tkpd-sold-count">{{ $soldCountDisplay }}</span>
             </div>
 
             <!-- Location/Category Info -->
