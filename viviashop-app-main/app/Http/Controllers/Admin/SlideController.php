@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Slide;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
 use App\Http\Requests\Admin\SlideRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class SlideController extends Controller
 {
@@ -84,18 +85,59 @@ class SlideController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SlideRequest $request)
+    public function store(Request $request)
     {
-
-        if($request->validated()){
-            $image = $request->file('path')->store('assets/slides', 'public'); 
-            Slide::create($request->except('path') + ['path' => $image,'position' => Slide::max('position') + 1, 'user_id' => auth()->id()]);
+        Log::debug('=== SLIDE STORE DEBUG ===');
+        Log::debug('All input keys: ' . json_encode(array_keys($request->all())));
+        Log::debug('Has path input: ' . ($request->has('path') ? 'yes' : 'no'));
+        Log::debug('HasFile path: ' . ($request->hasFile('path') ? 'yes' : 'no'));
+        Log::debug('Content-Type: ' . ($_SERVER['CONTENT_TYPE'] ?? 'not set'));
+        Log::debug('Content-Length: ' . ($_SERVER['CONTENT_LENGTH'] ?? 'not set'));
+        Log::debug('Request-Method: ' . ($_SERVER['REQUEST_METHOD'] ?? 'not set'));
+        
+        if ($request->hasFile('path')) {
+            $file = $request->file('path');
+            Log::debug('File original name: ' . $file->getClientOriginalName());
+            Log::debug('File size: ' . $file->getSize());
+            Log::debug('File mime: ' . $file->getMimeType());
+            Log::debug('File valid: ' . ($file->isValid() ? 'yes' : 'no'));
+            Log::debug('File error: ' . $file->getError());
+            Log::debug('File path: ' . $file->getPathname());
+            Log::debug('File realPath: ' . $file->getRealPath());
+        } else {
+            Log::debug('File path NOT present in $request->file()');
+            Log::debug('$_FILES: ' . json_encode($_FILES, JSON_PRETTY_PRINT));
+            Log::debug('$_POST: ' . json_encode($_POST));
+            Log::debug('ini_get upload_max_filesize: ' . ini_get('upload_max_filesize'));
+            Log::debug('ini_get post_max_size: ' . ini_get('post_max_size'));
+            Log::debug('ini_get upload_tmp_dir: ' . ini_get('upload_tmp_dir'));
         }
+        Log::debug('========================');
 
-		return redirect('admin/slides')->with([
-            'message' => 'berhasil di tambah !',
-            'alert-type' => 'success'
-        ]);
+        try {
+            $data = $request->except('_token', '_method');
+
+            if ($request->hasFile('path')) {
+                $data['path'] = $request->file('path')->store('assets/slides', 'public');
+            }
+
+            $data['position'] = Slide::max('position') + 1;
+            $data['user_id'] = auth()->id();
+
+            Slide::create($data);
+
+            return redirect()->route('admin.slides.index')->with([
+                'message' => 'Slide berhasil ditambahkan!',
+                'alert-type' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Gagal menambahkan slide: ' . $e->getMessage());
+
+            return redirect()->back()->withInput()->with([
+                'message' => 'Gagal menambahkan slide. Silakan coba lagi.',
+                'alert-type' => 'error'
+            ]);
+        }
     }
 
     /**
@@ -121,20 +163,34 @@ class SlideController extends Controller
      */
     public function update(SlideRequest $request, Slide $slide)
     {
-        if($request->validated()) {
-            if($request->path){
-                File::delete('storage/'. $slide->path);
-                $image = $request->file('path')->store('assets/slides', 'public');
-                $slide->update($request->except('path') + ['path' => $image,'position' => Slide::max('position') + 1, 'user_id' => auth()->id()]);
-            }else {
-                $slide->update($request->validated() + ['position' => Slide::max('position') + 1, 'user_id' => auth()->id()]);
-            }
-        }
+        try {
+            $data = $request->validated();
 
-		return redirect('admin/slides')->with([
-            'message' => 'berhasil di edit !',
-            'alert-type' => 'info'
-        ]);
+            if ($request->hasFile('path')) {
+                if ($slide->path && Storage::disk('public')->exists($slide->path)) {
+                    Storage::disk('public')->delete($slide->path);
+                }
+                $data['path'] = $request->file('path')->store('assets/slides', 'public');
+            } else {
+                unset($data['path']);
+            }
+
+            $data['user_id'] = auth()->id();
+
+            $slide->update($data);
+
+            return redirect()->route('admin.slides.index')->with([
+                'message' => 'Slide berhasil diperbarui!',
+                'alert-type' => 'info'
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Gagal memperbarui slide: ' . $e->getMessage());
+
+            return redirect()->back()->withInput()->with([
+                'message' => 'Gagal memperbarui slide. Silakan coba lagi.',
+                'alert-type' => 'error'
+            ]);
+        }
     }
 
     /**
@@ -142,12 +198,24 @@ class SlideController extends Controller
      */
     public function destroy(Slide $slide)
     {
-        File::delete('storage/' . $slide->path);
-        $slide->delete();
+        try {
+            if ($slide->path && Storage::disk('public')->exists($slide->path)) {
+                Storage::disk('public')->delete($slide->path);
+            }
 
-        return redirect()->back()->with([
-            'message' => 'berhasil di hapus !',
-            'alert-type' => 'danger'
-        ]);
+            $slide->delete();
+
+            return redirect()->back()->with([
+                'message' => 'Slide berhasil dihapus!',
+                'alert-type' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Gagal menghapus slide: ' . $e->getMessage());
+
+            return redirect()->back()->with([
+                'message' => 'Gagal menghapus slide. Silakan coba lagi.',
+                'alert-type' => 'error'
+            ]);
+        }
     }
 }

@@ -1,8 +1,17 @@
-// Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+// Viviashop Design System
+// Bootstrap 5 loaded via CDN — this file adds premium custom styles.
 
-// Variables
-@import 'variables';
+// 1. Design Tokens
+@import 'tokens';
 
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
+// 2. Typography
+@import 'typography';
+
+// 3. Animations
+@import 'animations';
+
+// 4. Component Library
+@import 'components';
+
+// 5. Layout
+@import 'layout';

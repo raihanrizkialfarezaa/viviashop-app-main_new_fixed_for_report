@@ -5,22 +5,6 @@
     $cartItemCount = Request::is('register') ? 0 : ($countCart ?? 0);
 @endphp
 <style>
-    :root {
-        --v-primary: #0F5132;
-        --v-primary-soft: #d1e7dd;
-        --v-secondary: #198754;
-        --v-accent: #20c997;
-        --v-dark: #1F2937;
-        --v-light: #F9FAFB;
-        --v-glass-panel: rgba(255, 255, 255, 0.72);
-        --v-glass-panel-strong: rgba(255, 255, 255, 0.9);
-        --v-glass-border: rgba(255, 255, 255, 0.26);
-        --v-glass-shadow: 0 22px 48px rgba(15, 81, 50, 0.14);
-        --site-header-offset: 108px;
-        --sticky-safe-top: 124px;
-        --site-menu-transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
     body.site-menu-open {
         overflow: hidden;
         overscroll-behavior: none;

@@ -1,0 +1,47 @@
+body {
+    font-family: var(--v-font-sans);
+    background-color: var(--v-bg);
+    color: var(--v-text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.title-gradient {
+    background: linear-gradient(135deg, var(--v-primary) 0%, var(--v-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.v-section-title {
+    font-family: var(--v-font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--v-dark);
+}
+
+.v-section-subtitle {
+    color: var(--v-text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.v-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--v-radius-pill);
+    background: var(--v-primary-light);
+    color: var(--v-primary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}

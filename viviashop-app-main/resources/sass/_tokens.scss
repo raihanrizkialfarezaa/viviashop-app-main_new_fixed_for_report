@@ -1,0 +1,52 @@
+:root {
+    /* ─── Primary Palette ─── */
+    --v-primary:       #0F5132;
+    --v-primary-light: #e6f4ed;
+    --v-primary-soft:  #d1e7dd;
+    --v-secondary:     #059669;
+    --v-accent:        #10b981;
+    --v-accent-soft:   #b9f6d0;
+
+    /* ─── Neutral (Tokopedia-like: clean grays) ─── */
+    --v-dark:     #1e293b;
+    --v-muted:    #f8fafc;
+    --v-light:    #ffffff;
+    --v-bg:       #f5f5f5;
+    --v-border:       #e5e7eb;
+    --v-border-hover: #d1d5db;
+    --v-text:         #334155;
+    --v-text-muted:   #94a3b8;
+
+    /* ─── Glass ─── */
+    --v-glass:        rgba(255, 255, 255, 0.8);
+    --v-glass-border: rgba(255, 255, 255, 0.2);
+
+    /* ─── Shadows (subtle, Tokopedia-style) ─── */
+    --v-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --v-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --v-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --v-shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.08);
+
+    /* ─── Radius ─── */
+    --v-radius-sm:   6px;
+    --v-radius-md:   10px;
+    --v-radius-lg:   14px;
+    --v-radius-xl:   20px;
+    --v-radius-pill: 999px;
+
+    /* ─── Typography ─── */
+    --v-font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+    --v-font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* ─── Spacing scale ─── */
+    --v-space-xs: 6px;
+    --v-space-sm: 12px;
+    --v-space-md: 20px;
+    --v-space-lg: 28px;
+    --v-space-xl: 40px;
+
+    /* ─── Header ─── */
+    --site-header-offset: 108px;
+    --sticky-safe-top: 124px;
+    --site-menu-transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}

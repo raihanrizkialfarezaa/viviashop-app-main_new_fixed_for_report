@@ -19,10 +19,23 @@
     {{-- Theme color for Chrome/Android address bar --}}
     <meta name="theme-color" content="#0f5132">
 
+    {{-- Vite: Design system SCSS — tokens, typography, components, layout, animations --}}
+    @php
+        $viteManifest = public_path('build/manifest.json');
+        $viteCssFile = '';
+        if (file_exists($viteManifest)) {
+            $viteData = json_decode(file_get_contents($viteManifest), true);
+            $viteCssFile = $viteData['resources/sass/app.scss']['file'] ?? '';
+        }
+    @endphp
+    @if($viteCssFile)
+        <link rel="stylesheet" href="{{ asset('build/' . $viteCssFile) }}">
+    @endif
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
@@ -32,11 +45,10 @@
     <link href="{{ asset('frontend/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
-
-    <!-- Customized Bootstrap Stylesheet -->
+    <!-- Customized Bootstrap Stylesheet (BS5 via CDN) -->
     <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
+    <!-- Legacy Template Stylesheet -->
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
     {{-- Page-specific styles pushed from child views --}}
