@@ -432,23 +432,33 @@
     .shop-page-header {
         position: relative;
         margin-top: 18px;
-        padding: 5.5rem 0 6.5rem;
-        border-radius: 0 0 42px 42px;
+        padding: 4.5rem 0 5.5rem;
+        border-radius: 0 0 48px 48px;
         background:
-            radial-gradient(circle at top left, rgba(255, 255, 255, 0.16), transparent 24%),
-            radial-gradient(circle at 82% 18%, rgba(32, 201, 151, 0.18), transparent 24%),
-            linear-gradient(135deg, rgba(9, 43, 28, 0.95) 0%, rgba(15, 81, 50, 0.92) 48%, rgba(22, 163, 74, 0.8) 100%);
-        box-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
+            radial-gradient(circle at top left, rgba(255, 255, 255, 0.18), transparent 28%),
+            radial-gradient(circle at 85% 15%, rgba(74, 222, 128, 0.15), transparent 30%),
+            radial-gradient(circle at 50% 80%, rgba(32, 201, 151, 0.1), transparent 40%),
+            linear-gradient(135deg, rgba(5, 30, 20, 0.98) 0%, rgba(10, 60, 38, 0.95) 40%, rgba(15, 81, 50, 0.92) 65%, rgba(22, 163, 74, 0.85) 100%);
+        box-shadow: inset 0 -1px 0 rgba(255,255,255,0.08), 0 4px 20px rgba(5,30,20,0.15);
+        overflow: hidden;
+    }
+
+    .shop-page-header::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        pointer-events: none;
     }
 
     .shop-page-header::after {
         content: '';
         position: absolute;
-        right: -100px;
-        top: -90px;
-        width: 320px;
-        height: 320px;
-        background: radial-gradient(circle, rgba(255,255,255,0.16), rgba(255,255,255,0));
+        right: -60px;
+        top: -60px;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(circle, rgba(74, 222, 128, 0.12), rgba(16, 185, 129, 0.06) 40%, transparent 70%);
         pointer-events: none;
     }
 
@@ -1004,18 +1014,1201 @@
     }
 </style>
 
+<!-- Mobile Optimizations -->
+<style>
+    /* Mobile-First Enhancements */
+    @media (max-width: 991.98px) {
+        /* =============================================
+           PREMIUM MOBILE FILTER TAB BAR
+        ============================================= */
+        .mobile-filter-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 10px 16px 16px;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+        }
+
+        .mobile-filter-tab-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .mobile-filter-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 11px 10px;
+            border: 1.5px solid rgba(15,81,50,0.2);
+            border-radius: 12px;
+            background: #fff;
+            color: #1a3c28;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            letter-spacing: -0.01em;
+        }
+
+        .mobile-filter-btn i {
+            font-size: 0.85rem;
+        }
+
+        .mobile-filter-btn.btn-filter-primary {
+            background: linear-gradient(135deg, #0f5132 0%, #16a34a 100%);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(15,81,50,0.3);
+        }
+
+        .mobile-filter-btn.btn-sort-primary {
+            background: linear-gradient(135deg, #166534 0%, #15803d 100%);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(22,101,52,0.25);
+        }
+
+        .mobile-filter-btn:active {
+            transform: scale(0.95);
+        }
+
+        .mobile-filter-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            min-width: 18px;
+            height: 18px;
+            background: #ef4444;
+            color: white;
+            border-radius: 999px;
+            padding: 0 5px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid #fff;
+            box-shadow: 0 2px 6px rgba(239,68,68,0.4);
+        }
+
+        /* Mobile Filter Drawer - visibility managed by global CSS + JS */
+
+        /* Better Touch Targets */
+        .filter-pill {
+            min-height: 44px;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+        }
+
+        .category-item {
+            min-height: 52px;
+            padding: 14px 16px;
+        }
+
+        /* Mobile Product Grid Spacing */
+        .product-grid {
+            --bs-gutter-x: 12px;
+            --bs-gutter-y: 16px;
+        }
+
+        /* Hide Desktop Elements on Mobile */
+        .shop-toolbar-subtitle {
+            display: none;
+        }
+
+        /* Mobile Header Compact */
+        .shop-page-header {
+            padding: 3rem 0 4rem !important;
+        }
+
+        .shop-page-header h1 {
+            font-size: 1.75rem !important;
+        }
+
+        /* Mobile Toolbar Card */
+        .shop-toolbar-card {
+            margin-top: -40px !important;
+            padding: 16px !important;
+        }
+
+        .shop-toolbar-title {
+            font-size: 1.2rem !important;
+        }
+
+        /* Add bottom padding for fixed filter bar */
+        body {
+            padding-bottom: 88px;
+        }
+
+        /* Mobile Sort Form */
+        #sortForm select {
+            font-size: 0.9rem;
+        }
+
+        /* Compact Active Filters on Mobile */
+        .filter-pills {
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        /* Mobile Category Sidebar - hide on mobile, use mobile drawer */
+        .category-sidebar {
+            display: none !important;
+        }
+
+        /* On mobile: full-width product grid (no sidebar) */
+        .col-lg-9 {
+            width: 100% !important;
+            max-width: 100% !important;
+            flex: 0 0 100% !important;
+        }
+    }
+
+    /* Tablet Optimizations */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        .product-grid .col-6 {
+            flex: 0 0 auto;
+            width: 33.333333%;
+        }
+    }
+
+    /* Small Mobile Optimizations */
+    @media (max-width: 575.98px) {
+        .filter-pill {
+            font-size: 0.8rem;
+            padding: 10px 12px;
+        }
+
+        .shop-toolbar-kicker {
+            font-size: 0.7rem;
+        }
+
+        .reset-btn, .view-all-btn {
+            width: 100%;
+            margin-top: 8px;
+        }
+    }
+</style>
+
+<!-- ==========================================
+     PREMIUM MOBILE FILTER DRAWER GLOBAL STYLES
+     (outside @media so JS .active class works)
+     ========================================== -->
+<style>
+    /* ---- Overlay / Backdrop ---- */
+    .mobile-filter-drawer {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: none;
+        pointer-events: none;
+    }
+
+    .mobile-filter-drawer.active {
+        display: block !important;
+        pointer-events: auto;
+    }
+
+    .mobile-filter-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0);
+        transition: background 0.32s ease;
+    }
+
+    .mobile-filter-drawer.active .mobile-filter-backdrop {
+        background: rgba(0,0,0,0.48);
+    }
+
+    /* ---- Bottom Sheet ---- */
+    .mobile-filter-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-height: 92vh;
+        background: #fff;
+        border-radius: 20px 20px 0 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transform: translateY(102%);
+        transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 -12px 60px rgba(0,0,0,0.16);
+    }
+
+    .mobile-filter-drawer.active .mobile-filter-content {
+        transform: translateY(0);
+    }
+
+    /* ---- Drag Handle ---- */
+    .mf-drag-handle {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0 6px;
+        cursor: grab;
+    }
+    .mf-drag-handle span {
+        width: 36px;
+        height: 4px;
+        border-radius: 99px;
+        background: #d1d5db;
+    }
+
+    /* ---- Header ---- */
+    .mf-header {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 18px 12px;
+        border-bottom: 1px solid #f3f4f6;
+    }
+    .mf-header-left {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    .mf-header-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #111827;
+        letter-spacing: -0.02em;
+    }
+    .mf-header-subtitle {
+        font-size: 0.72rem;
+        color: #6b7280;
+    }
+    .mf-close-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: none;
+        background: #f3f4f6;
+        color: #374151;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background 0.15s, transform 0.15s;
+    }
+    .mf-close-btn:active { transform: scale(0.9); }
+    .mf-close-btn:hover { background: #e5e7eb; }
+
+    /* ---- Scrollable body ---- */
+    .mf-body {
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 16px 18px 8px;
+    }
+
+    /* ---- Section ---- */
+    .mf-section {
+        margin-bottom: 20px;
+    }
+    .mf-section-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #9ca3af;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    /* ---- Category icon-chip grid ---- */
+    .mf-cat-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .mf-cat-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: 1.5px solid #e5e7eb;
+        background: #fafafa;
+        color: #374151;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.18s ease;
+        white-space: nowrap;
+    }
+    .mf-cat-chip i { font-size: 0.72rem; color: #9ca3af; }
+    .mf-cat-chip:hover {
+        background: #f0fdf4;
+        border-color: #16a34a;
+        color: #15803d;
+    }
+    .mf-cat-chip:hover i { color: #16a34a; }
+    .mf-cat-chip.active {
+        background: #0f5132;
+        border-color: #0f5132;
+        color: #fff;
+    }
+    .mf-cat-chip.active i { color: rgba(255,255,255,0.7); }
+
+    /* ---- Price / general pill chips ---- */
+    .mf-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .mf-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: 1.5px solid #e5e7eb;
+        background: #fafafa;
+        color: #374151;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.18s ease;
+        white-space: nowrap;
+    }
+    .mf-chip:hover {
+        background: #f0fdf4;
+        border-color: #16a34a;
+        color: #15803d;
+    }
+    .mf-chip.active {
+        background: #0f5132;
+        border-color: #0f5132;
+        color: #fff;
+    }
+
+    /* ---- Rating row ---- */
+    .mf-rating-row {
+        display: flex;
+        gap: 6px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .mf-rating-row::-webkit-scrollbar { display: none; }
+    .mf-rating-chip {
+        flex-shrink: 0;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        padding: 8px 14px;
+        border-radius: 10px;
+        border: 1.5px solid #e5e7eb;
+        background: #fafafa;
+        color: #374151;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.18s ease;
+    }
+    .mf-rating-chip .stars { font-size: 0.7rem; letter-spacing: 1px; color: #f59e0b; }
+    .mf-rating-chip:hover {
+        background: #fffbeb;
+        border-color: #f59e0b;
+    }
+    .mf-rating-chip.active {
+        background: #0f5132;
+        border-color: #0f5132;
+        color: #fff;
+    }
+    .mf-rating-chip.active .stars { color: #fde68a; }
+
+    /* ---- Footer ---- */
+    .mf-footer {
+        flex-shrink: 0;
+        display: flex;
+        gap: 8px;
+        padding: 12px 18px 20px;
+        border-top: 1px solid #f3f4f6;
+        background: #fff;
+    }
+    .mf-btn-reset {
+        flex: 1;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1.5px solid #e5e7eb;
+        background: #fff;
+        color: #6b7280;
+        font-weight: 600;
+        font-size: 0.88rem;
+        cursor: pointer;
+        transition: all 0.18s;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+    .mf-btn-reset:hover { background: #fef2f2; border-color: #fca5a5; color: #dc2626; }
+
+    .mf-btn-apply {
+        flex: 2;
+        padding: 12px;
+        border-radius: 12px;
+        border: none;
+        background: linear-gradient(135deg, #0f5132, #16a34a);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.18s;
+        box-shadow: 0 4px 16px rgba(15,81,50,0.28);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+    .mf-btn-apply:active { transform: scale(0.97); }
+
+    /* ---- Sort Drawer Sort Items ---- */
+    .mf-sort-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .mf-sort-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 14px;
+        border-radius: 12px;
+        border: 1.5px solid transparent;
+        background: transparent;
+        color: #374151;
+        font-size: 0.88rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.18s ease;
+    }
+    .mf-sort-item .mf-sort-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: #f3f4f6;
+        color: #6b7280;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        transition: all 0.18s;
+    }
+    .mf-sort-item span { flex: 1; }
+    .mf-sort-item .mf-check { font-size: 0.8rem; color: #16a34a; opacity: 0; transition: opacity 0.18s; }
+    .mf-sort-item:hover {
+        background: #f9fafb;
+        border-color: #e5e7eb;
+    }
+    .mf-sort-item:hover .mf-sort-icon { background: #ecfdf5; color: #15803d; }
+    .mf-sort-item.active {
+        background: #f0fdf4;
+        border-color: #86efac;
+        color: #0f5132;
+        font-weight: 700;
+    }
+    .mf-sort-item.active .mf-sort-icon { background: #0f5132; color: #fff; }
+    .mf-sort-item.active .mf-check { opacity: 1; }
+
+    /* ---- Search input in drawer ---- */
+    .mf-search-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #f9fafb;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 0 12px;
+        transition: border-color 0.18s;
+    }
+    .mf-search-wrap:focus-within {
+        border-color: #16a34a;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(22,163,74,0.1);
+    }
+    .mf-search-wrap i { color: #9ca3af; font-size: 0.85rem; flex-shrink: 0; }
+    .mf-search-wrap input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        padding: 11px 0;
+        font-size: 0.88rem;
+        color: #111827;
+        outline: none;
+    }
+    .mf-search-wrap input::placeholder { color: #d1d5db; }
+    .mf-search-btn {
+        flex-shrink: 0;
+        padding: 6px 12px;
+        border-radius: 7px;
+        border: none;
+        background: #0f5132;
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s;
+    }
+    .mf-search-btn:hover { background: #16a34a; }
+</style>
+
+<!-- Enhanced Sidebar Styles -->
+<style>
+    /* Sidebar Section Headers */
+    .sidebar-section-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+        background: linear-gradient(135deg, #0f5132, #198754);
+        color: white;
+        border-radius: 12px 12px 0 0;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+
+    .sidebar-section-header i {
+        font-size: 1.1rem;
+    }
+
+    /* Modern Category List */
+    .category-list-modern {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .category-item-modern {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: white;
+        border: 1px solid rgba(15,81,50,0.08);
+        text-decoration: none;
+        transition: all 0.25s ease;
+        position: relative;
+    }
+
+    .category-item-modern:hover {
+        background: rgba(236,253,245,0.5);
+        border-color: rgba(15,81,50,0.2);
+        transform: translateX(4px);
+        text-decoration: none;
+    }
+
+    .category-item-modern.active {
+        background: linear-gradient(135deg, #0f5132, #198754);
+        border-color: transparent;
+        box-shadow: 0 8px 20px rgba(15,81,50,0.2);
+    }
+
+    .category-item-modern.active .category-icon {
+        background: rgba(15,81,50,0.15);
+        color: #0f5132;
+    }
+
+    .category-item-modern.active .category-name,
+    .category-item-modern.active .category-count,
+    .category-item-modern.active .category-arrow {
+        color: #0f5132 !important;
+    }
+
+    .category-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(15,81,50,0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0f5132;
+        font-size: 1rem;
+        flex-shrink: 0;
+        transition: all 0.25s ease;
+    }
+
+    .category-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .category-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #1c3644;
+        transition: color 0.25s ease;
+    }
+
+    .category-count {
+        font-size: 0.75rem;
+        color: #667970;
+        transition: color 0.25s ease;
+    }
+
+    .category-arrow {
+        color: #667970;
+        font-size: 0.8rem;
+        transition: all 0.25s ease;
+    }
+
+    .category-item-modern:hover .category-arrow {
+        transform: translateX(4px);
+        color: #0f5132;
+    }
+
+    .category-show-more {
+        width: 100%;
+        padding: 10px;
+        border: 1px dashed rgba(15,81,50,0.2);
+        border-radius: 10px;
+        background: rgba(236,253,245,0.3);
+        color: #0f5132;
+        font-weight: 600;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease;
+        cursor: pointer;
+    }
+
+    .category-show-more:hover {
+        background: rgba(236,253,245,0.6);
+        border-color: rgba(15,81,50,0.4);
+    }
+
+    .category-list-extra {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* Filter Option - Modern Pill Style */
+    .filter-option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1.5px solid rgba(15,81,50,0.06);
+        text-decoration: none;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .filter-option::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: #0f5132;
+        transform: scaleY(0);
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .filter-option:hover {
+        background: rgba(236,253,245,0.5);
+        border-color: rgba(15,81,50,0.15);
+        transform: translateX(4px);
+        text-decoration: none;
+    }
+
+    .filter-option.active {
+        background: linear-gradient(135deg, rgba(15,81,50,0.06), rgba(25,135,84,0.04));
+        border-color: #0f5132;
+        box-shadow: 0 4px 16px rgba(15,81,50,0.12);
+    }
+
+    .filter-option.active::before {
+        transform: scaleY(1);
+    }
+
+    /* Filter Checkbox - Animated */
+    .filter-checkbox {
+        flex-shrink: 0;
+        color: #adb5bd;
+        font-size: 1.2rem;
+        transition: all 0.25s ease;
+        width: 22px;
+        text-align: center;
+    }
+
+    .filter-option:hover .filter-checkbox {
+        color: #6c757d;
+    }
+
+    .filter-option.active .filter-checkbox {
+        color: #0f5132;
+        transform: scale(1.1);
+    }
+
+    /* Filter Label - Better Typography */
+    .filter-label {
+        flex: 1;
+        font-size: 0.88rem;
+        color: #1c3644;
+        font-weight: 500;
+        line-height: 1.4;
+        transition: color 0.2s ease;
+    }
+
+    .filter-option:hover .filter-label {
+        color: #0f5132;
+    }
+
+    .filter-option.active .filter-label {
+        color: #0f5132;
+        font-weight: 600;
+    }
+
+    /* Rating Stars - Large & Gold */
+    .rating-stars {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        font-size: 1rem;
+    }
+
+    .rating-stars i {
+        font-size: 1.05rem;
+        transition: transform 0.2s ease;
+    }
+
+    .rating-stars i.text-warning {
+        color: #f59e0b !important;
+        filter: drop-shadow(0 1px 2px rgba(245,158,11,0.3));
+    }
+
+    .filter-option:hover .rating-stars i.text-warning {
+        transform: scale(1.15);
+    }
+
+    .rating-stars span {
+        font-size: 0.8rem;
+        color: #667970;
+        font-weight: 500;
+        margin-left: 4px;
+    }
+
+    /* Stock Status - Color Coded */
+    .filter-option .filter-label .fa-check-circle {
+        color: #16a34a;
+    }
+
+    .filter-option .filter-label .fa-exclamation-circle {
+        color: #f59e0b;
+    }
+
+    .filter-option.active .filter-label .fa-check-circle,
+    .filter-option.active .filter-label .fa-exclamation-circle {
+        color: inherit;
+    }
+
+    /* Sidebar Section - Improved Spacing */
+    .sidebar-section-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 18px;
+        background: linear-gradient(135deg, #0a3d28, #166534);
+        color: white;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.01em;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sidebar-section-header::after {
+        content: '';
+        position: absolute;
+        right: -20px;
+        top: -20px;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
+        pointer-events: none;
+    }
+
+    .sidebar-section-header i {
+        font-size: 1rem;
+        width: 20px;
+        text-align: center;
+    }
+
+    .category-sidebar .border-bottom {
+        border-color: rgba(15,81,50,0.08) !important;
+    }
+
+    .filter-section {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 14px 14px 6px;
+    }
+
+    /* Category Items - More Premium */
+    .category-item-modern {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: transparent;
+        border: 1.5px solid transparent;
+        text-decoration: none;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+    .category-item-modern::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 6px;
+        bottom: 6px;
+        width: 3px;
+        background: #0f5132;
+        border-radius: 3px;
+        transform: scaleY(0);
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .category-item-modern:hover {
+        background: rgba(236,253,245,0.5);
+        border-color: rgba(15,81,50,0.1);
+        transform: translateX(4px);
+        text-decoration: none;
+    }
+
+    .category-item-modern:hover::before {
+        transform: scaleY(1);
+    }
+
+    .category-item-modern.active {
+        background: linear-gradient(135deg, rgba(15,81,50,0.06), rgba(25,135,84,0.04));
+        border-color: rgba(15,81,50,0.15);
+        box-shadow: 0 4px 16px rgba(15,81,50,0.08);
+    }
+
+    .category-item-modern.active::before {
+        transform: scaleY(1);
+    }
+
+    .category-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: rgba(15,81,50,0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0f5132;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+        transition: all 0.25s ease;
+    }
+
+    .category-item-modern:hover .category-icon {
+        background: rgba(15,81,50,0.14);
+        transform: scale(1.05);
+    }
+
+    .category-item-modern.active .category-icon {
+        background: rgba(15,81,50,0.15);
+        color: #0f5132;
+    }
+
+    .category-item-modern.active .category-name,
+    .category-item-modern.active .category-count {
+        color: #0f5132;
+    }
+
+    .category-name {
+        font-weight: 600;
+        font-size: 0.88rem;
+        color: #02151fff;
+        transition: color 0.25s ease;
+    }
+
+    .category-count {
+        font-size: 0.72rem;
+        color: #889f96;
+        transition: color 0.25s ease;
+    }
+
+    .category-arrow {
+        color: #c5d5ce;
+        font-size: 0.75rem;
+        transition: all 0.25s ease;
+        opacity: 0.5;
+    }
+
+    .category-item-modern:hover .category-arrow {
+        transform: translateX(4px);
+        opacity: 1;
+        color: #0f5132;
+    }
+
+    .category-item-modern.active .category-arrow {
+        opacity: 1;
+        color: #0f5132;
+    }
+
+    /* Show More Button */
+    .category-show-more {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1.5px dashed rgba(15,81,50,0.2);
+        border-radius: 10px;
+        background: rgba(236,253,245,0.2);
+        color: #0f5132;
+        font-weight: 600;
+        font-size: 0.82rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease;
+        cursor: pointer;
+        margin-top: 4px;
+    }
+
+    .category-show-more:hover {
+        background: rgba(236,253,245,0.6);
+        border-color: rgba(15,81,50,0.4);
+        border-style: solid;
+    }
+
+    /* Category Sidebar - Visual Container */
+    .category-sidebar {
+        background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,251,248,0.96));
+        border: 1px solid rgba(15,81,50,0.08);
+        border-radius: 20px;
+        box-shadow: 0 8px 28px rgba(15,81,50,0.06);
+        /* Sticky positioning and scroll already defined in main CSS - don't override */
+    }
+
+    /* Inner wrapper for proper border-radius clipping */
+    .category-sidebar-inner {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    /* Mobile Adjustments for Sidebar */
+    @media (max-width: 991.98px) {
+        .category-sidebar {
+            margin-bottom: 16px;
+        }
+
+        .category-item-modern {
+            padding: 10px 12px;
+        }
+
+        .category-icon {
+            width: 34px;
+            height: 34px;
+            font-size: 0.85rem;
+        }
+
+        .category-name {
+            font-size: 0.85rem;
+        }
+
+        .category-count {
+            font-size: 0.7rem;
+        }
+
+        .filter-option {
+            padding: 10px 12px;
+        }
+
+        .rating-stars i {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+
+    <!-- Hero Section CSS Enhancement -->
+    <style>
+        .shop-hero-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            font-size: 1.4rem;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .shop-hero-title {
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
+            font-weight: 800;
+            color: white;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+
+        .shop-hero-subtitle {
+            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            max-width: 520px;
+        }
+
+        .shop-hero-stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .shop-hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .shop-hero-stat i {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .shop-hero-badge {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 16px 20px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+            color: #0f5132;
+        }
+
+        .shop-hero-badge-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #0f5132, #16a34a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .shop-hero-badge-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #6b7280;
+        }
+
+        @media (max-width: 767.98px) {
+            .shop-hero-badge {
+                display: none;
+            }
+            .shop-hero-stats {
+                gap: 8px;
+            }
+            .shop-hero-stat {
+                padding: 6px 12px;
+                font-size: 0.78rem;
+            }
+            .shop-hero-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+
     <div class="container-fluid page-header shop-page-header py-5">
         <div class="container">
-            <div class="text-center">
-                <h1 class="text-white display-4 fw-bold mb-3">
-                    <i class="fas fa-store me-3"></i>
-                    Katalog Produk
-                </h1>
-                <p class="text-white-50 lead">Temukan produk berkualitas untuk kebutuhan Anda</p>
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="{{ route('index') }}" class="text-white-50">Home</a></li>
-                    <li class="breadcrumb-item active text-white">Shop</li>
-                </ol>
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="shop-hero-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <ol class="breadcrumb mb-0" style="background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 999px; backdrop-filter: blur(8px);">
+                            <li class="breadcrumb-item"><a href="{{ route('index') }}" class="text-white-50"><i class="fas fa-home me-1"></i>Home</a></li>
+                            <li class="breadcrumb-item active text-white fw-bold">Katalog Produk</li>
+                        </ol>
+                    </div>
+                    <h1 class="shop-hero-title mb-3">
+                        Jelajahi <span style="color: #86efac;">{{ $products->count() }}</span> Produk Pilihan
+                    </h1>
+                    <p class="shop-hero-subtitle mb-4">
+                        Temukan produk berkualitas untuk kebutuhan cetak, ATK, dan perlengkapan kantor Anda dengan harga terbaik.
+                    </p>
+                    <div class="shop-hero-stats">
+                        <div class="shop-hero-stat">
+                            <i class="fas fa-box"></i>
+                            <span>{{ $products->count() }} Produk</span>
+                        </div>
+                        <div class="shop-hero-stat">
+                            <i class="fas fa-tags"></i>
+                            <span>{{ $categories->count() }} Kategori</span>
+                        </div>
+                        <div class="shop-hero-stat">
+                            <i class="fas fa-star text-warning"></i>
+                            <span>Kualitas Premium</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1024,75 +2217,126 @@
         <div class="container">
             <!-- Search and Filter Section -->
             <div class="search-container shop-toolbar-card">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6">
+                <div class="row g-3 align-items-end mb-3">
+                    <div class="col-lg-5">
                         <div class="shop-toolbar-copy">
-                            <span class="shop-toolbar-kicker"><i class="fas fa-sparkles"></i> Kurasi katalog</span>
-                            <h5 class="shop-toolbar-title">Temukan produk yang paling relevan untuk kebutuhan Anda</h5>
-                            <p class="shop-toolbar-subtitle">Filter, kategori, dan pengurutan dibuat lebih cepat dibaca agar pengunjung lebih mudah memilih lalu lanjut membeli.</p>
+                            <span class="shop-toolbar-kicker"><i class="fas fa-sparkles"></i> Katalog Lengkap</span>
+                            <h5 class="shop-toolbar-title mb-2">Jelajahi {{ $products->count() }} Produk Berkualitas</h5>
+                            <p class="shop-toolbar-subtitle mb-0">Temukan produk terbaik dengan filter pintar dan pencarian toleran typo</p>
                         </div>
                     </div>
                     
-                    <div class="col-md-3">
+                    <div class="col-lg-4">
                         <form action="{{ route('shop') }}" method="GET" id="sortForm">
-                            @if(request('search'))
-                                <input type="hidden" name="search" value="{{ request('search') }}">
-                            @endif
-                            <label class="form-label fw-bold text-primary">
-                                <i class="fas fa-sort me-2"></i>Urutkan:
+                            @foreach(request()->except(['sort', 'perPage', 'page']) as $key => $value)
+                                @if(is_array($value))
+                                    @foreach($value as $v)
+                                        <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">
+                                    @endforeach
+                                @else
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                @endif
+                            @endforeach
+                            <label class="form-label fw-bold text-primary mb-2 d-flex align-items-center">
+                                <i class="fas fa-sort-amount-down me-2"></i>Urutkan Berdasarkan
                             </label>
                             <select name="sort" class="form-select sort-dropdown" onchange="document.getElementById('sortForm').submit()">
-                                <option value="">Default</option>
+                                <option value="">Paling Relevan</option>
+                                <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Terbaru</option>
+                                <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Terpopuler</option>
+                                <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Harga Terendah</option>
+                                <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Harga Tertinggi</option>
                                 <option value="name_asc" {{ request('sort') == 'name_asc' ? 'selected' : '' }}>Nama A-Z</option>
                                 <option value="name_desc" {{ request('sort') == 'name_desc' ? 'selected' : '' }}>Nama Z-A</option>
-                                <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Harga Rendah</option>
-                                <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Harga Tinggi</option>
-                                <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Terbaru</option>
+                                <option value="rating" {{ request('sort') == 'rating' ? 'selected' : '' }}>Rating Tertinggi</option>
                             </select>
                         </form>
                     </div>
                     
-                    <div class="col-md-3 text-end">
-                        <div class="d-flex gap-2 justify-content-end flex-wrap">
-                            @if (request()->has('search'))
-                                <a href="{{ route('shop') }}" class="reset-btn">
-                                    <i class="fas fa-times me-2"></i>Reset Pencarian
-                                </a>
-                            @endif
-                            @if (Request::is('shopCategory*'))
-                                <a href="{{ route('shop') }}" class="view-all-btn">
-                                    <i class="fas fa-th me-2"></i>Semua Produk
-                                </a>
-                            @endif
-                        </div>
+                    <div class="col-lg-3 text-end">
+                        @php
+                            $hasFilters = request()->hasAny(['search', 'sort', 'price_min', 'price_max', 'rating', 'stock_status']) || Request::is('shopCategory*');
+                        @endphp
+                        @if($hasFilters)
+                            <a href="{{ route('shop') }}" class="reset-btn w-100">
+                                <i class="fas fa-sync-alt me-2"></i>Reset Semua Filter
+                            </a>
+                        @endif
                     </div>
                 </div>
                 
-                <!-- Active Filters -->
-                @if(request('search') || request('sort'))
-                    <div class="mt-3">
-                        <div class="d-flex align-items-center mb-2">
-                            <span class="text-muted me-2">Filter aktif:</span>
+                <!-- Active Filters with Remove Buttons -->
+                @if(request()->hasAny(['search', 'sort', 'price_min', 'price_max', 'rating', 'stock_status']) || Request::is('shopCategory*'))
+                    <div class="mt-3 pt-3 border-top">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="text-muted small fw-bold"><i class="fas fa-bookmark me-1"></i> Filter Aktif ({{ collect([request('search'), request('sort'), request('price_min'), request('price_max'), request('rating'), request('stock_status'), Request::is('shopCategory*') ? 'category' : null])->filter()->count() }}):</span>
+                            <a href="{{ route('shop') }}" class="text-danger text-decoration-none small">
+                                <i class="fas fa-times-circle me-1"></i>Hapus Semua
+                            </a>
                         </div>
-                        <div class="filter-pills">
+                        <div class="d-flex flex-wrap gap-2">
                             @if(request('search'))
-                                <span class="filter-pill">
+                                <a href="{{ route('shop') }}?{{ http_build_query(request()->except(['search', 'page'])) }}" 
+                                   class="filter-pill active" style="background: #0f5132; color: white; border-color: #0f5132;">
                                     <i class="fas fa-search me-1"></i>
                                     Pencarian: "{{ request('search') }}"
-                                </span>
+                                    <i class="fas fa-times ms-2"></i>
+                                </a>
                             @endif
                             @if(request('sort'))
-                                <span class="filter-pill">
+                                <a href="{{ route('shop') }}?{{ http_build_query(request()->except(['sort', 'page'])) }}" 
+                                   class="filter-pill active" style="background: #0f5132; color: white; border-color: #0f5132;">
                                     <i class="fas fa-sort me-1"></i>
-                                    Urutkan: 
                                     @switch(request('sort'))
                                         @case('name_asc') Nama A-Z @break
                                         @case('name_desc') Nama Z-A @break
-                                        @case('price_asc') Harga Rendah @break
-                                        @case('price_desc') Harga Tinggi @break
+                                        @case('price_asc') Harga Terendah @break
+                                        @case('price_desc') Harga Tertinggi @break
                                         @case('newest') Terbaru @break
+                                        @case('popular') Terpopuler @break
+                                        @case('rating') Rating Tertinggi @break
+                                        @default {{ request('sort') }}
                                     @endswitch
-                                </span>
+                                    <i class="fas fa-times ms-2"></i>
+                                </a>
+                            @endif
+                            @if(request('price_min') || request('price_max'))
+                                <a href="{{ route('shop') }}?{{ http_build_query(request()->except(['price_min', 'price_max', 'page'])) }}" 
+                                   class="filter-pill active" style="background: #0f5132; color: white; border-color: #0f5132;">
+                                    <i class="fas fa-money-bill-wave me-1"></i>
+                                    Harga: Rp{{ request('price_min') ? number_format(request('price_min'), 0, ',', '.') : '0' }} - Rp{{ request('price_max') ? number_format(request('price_max'), 0, ',', '.') : '∞' }}
+                                    <i class="fas fa-times ms-2"></i>
+                                </a>
+                            @endif
+                            @if(request('rating'))
+                                <a href="{{ route('shop') }}?{{ http_build_query(request()->except(['rating', 'page'])) }}" 
+                                   class="filter-pill active" style="background: #0f5132; color: white; border-color: #0f5132;">
+                                    <i class="fas fa-star me-1"></i>
+                                    Rating {{ request('rating') }}+
+                                    <i class="fas fa-times ms-2"></i>
+                                </a>
+                            @endif
+                            @if(request('stock_status'))
+                                <a href="{{ route('shop') }}?{{ http_build_query(request()->except(['stock_status', 'page'])) }}" 
+                                   class="filter-pill active" style="background: #0f5132; color: white; border-color: #0f5132;">
+                                    <i class="fas fa-box me-1"></i>
+                                    @if(request('stock_status') == 'available') Stok Tersedia
+                                    @elseif(request('stock_status') == 'low') Stok Terbatas
+                                    @else {{ request('stock_status') }}
+                                    @endif
+                                    <i class="fas fa-times ms-2"></i>
+                                </a>
+                            @endif
+                            @if(Request::is('shopCategory*'))
+                                @php
+                                    $currentCategoryName = $categories->where('slug', request()->route('slug'))->first()->name ?? 'Kategori';
+                                @endphp
+                                <a href="{{ route('shop') }}?{{ http_build_query(request()->except(['page'])) }}" 
+                                   class="filter-pill active" style="background: #0f5132; color: white; border-color: #0f5132;">
+                                    <i class="fas fa-folder me-1"></i>
+                                    Kategori: {{ $currentCategoryName }}
+                                    <i class="fas fa-times ms-2"></i>
+                                </a>
                             @endif
                         </div>
                     </div>
@@ -1100,119 +2344,275 @@
             </div>
             <!-- Main Content -->
             <div class="row g-4">
-                <!-- Sidebar Categories -->
+                <!-- Enhanced Professional Sidebar -->
                 <div class="col-lg-3">
                     <div class="category-sidebar">
-                        <form action="{{ route('shop') }}" method="GET" class="mb-3">
-                            @if(request('sort'))
-                                <input type="hidden" name="sort" value="{{ request('sort') }}">
-                            @endif
-                            <div class="search-input-group d-flex align-items-center">
-                                <input type="text"
-                                       name="search"
-                                       class="form-control search-input"
-                                       placeholder="Cari produk..."
-                                       value="{{ request('search') }}"
-                                       aria-label="Cari produk">
-                                <button type="submit" class="btn search-btn ms-2">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                        <div class="category-sidebar-inner">
+                        <!-- Search Section -->
+                        <div class="sidebar-section pb-3 mb-3 border-bottom">
+                            <div class="sidebar-section-header">
+                                <i class="fas fa-search"></i>
+                                <span>Cari Produk</span>
                             </div>
-                            <small class="text-muted d-block mt-2">Pencarian toleran terhadap typo</small>
-                        </form>
-
-                        <h4 class="text-primary fw-bold mb-3">
-                            <i class="fas fa-list me-2"></i>
-                            Kategori Produk
-                        </h4>
-                        <div class="category-list">
-                            @php
-                                $currentCategory = request()->route('slug') ?? '';
-                            @endphp
-                            @foreach ($categories as $item)
-                                <div class="category-item {{ $currentCategory == $item->slug ? 'active' : '' }}">
-                                    <a href="{{ route('shopCategory', $item->slug) }}" 
-                                       class="text-decoration-none d-flex align-items-center justify-content-between">
-                                        <span class="fw-semibold">
-                                            <i class="fas fa-tag me-2"></i>
-                                            {{ $item->name }}
-                                        </span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
+                            <form action="{{ route('shop') }}" method="GET" class="px-3">
+                                @foreach(request()->except(['search', 'page']) as $k => $v)
+                                    @if(is_array($v))
+                                        @foreach($v as $val)
+                                            <input type="hidden" name="{{ $k }}[]" value="{{ $val }}">
+                                        @endforeach
+                                    @else
+                                        <input type="hidden" name="{{ $k }}" value="{{ $v }}">
+                                    @endif
+                                @endforeach
+                                <div class="search-input-group d-flex align-items-center">
+                                    <input type="text" name="search" class="form-control search-input" 
+                                           placeholder="Cari produk..." value="{{ request('search') }}" 
+                                           aria-label="Cari produk">
+                                    <button type="submit" class="btn search-btn ms-2">
+                                        <i class="fas fa-search"></i>
+                                    </button>
                                 </div>
-                            @endforeach
+                                <small class="text-muted d-block mt-2"><i class="fas fa-magic me-1"></i>Pencarian toleran typo</small>
+                            </form>
                         </div>
-                        
-                        <!-- Popular Categories Quick Links -->
-                        <div class="mt-4 pt-4 border-top">
-                            <h6 class="text-muted mb-3">Kategori Popular</h6>
-                            <div class="d-flex flex-wrap gap-2">
-                                @foreach($categories->take(4) as $popular)
-                                    <a href="{{ route('shopCategory', $popular->slug) }}" 
-                                       class="badge bg-light text-primary text-decoration-none p-2 rounded-pill">
-                                        {{ $popular->name }}
+
+                        <!-- Category Section -->
+                        <div class="sidebar-section pb-3 mb-3 border-bottom">
+                            <div class="sidebar-section-header">
+                                <i class="fas fa-th-large"></i>
+                                <span>Kategori</span>
+                            </div>
+                            <div class="category-list-modern px-2">
+                                @php
+                                    $currentCategory = request()->route('slug') ?? '';
+                                    $categoryProductCounts = [];
+                                    foreach ($categories as $cat) {
+                                        $count = $products->filter(function($prod) use ($cat) {
+                                            return $prod->categories && $prod->categories->id == $cat->id;
+                                        })->count();
+                                        $categoryProductCounts[$cat->id] = $count;
+                                    }
+                                @endphp
+                                
+                                <a href="{{ route('shop') }}" 
+                                   class="category-item-modern {{ !$currentCategory ? 'active' : '' }}">
+                                    <div class="category-icon"><i class="fas fa-th"></i></div>
+                                    <div class="category-info">
+                                        <span class="category-name">Semua Kategori</span>
+                                        <span class="category-count">{{ $products->count() }} produk</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right category-arrow"></i>
+                                </a>
+                                
+                                @foreach ($categories->take(8) as $item)
+                                    <a href="{{ route('shopCategory', $item->slug) }}" 
+                                       class="category-item-modern {{ $currentCategory == $item->slug ? 'active' : '' }}">
+                                        <div class="category-icon"><i class="fas fa-tag"></i></div>
+                                        <div class="category-info">
+                                            <span class="category-name">{{ $item->name }}</span>
+                                            <span class="category-count">{{ $categoryProductCounts[$item->id] ?? 0 }} produk</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right category-arrow"></i>
+                                    </a>
+                                @endforeach
+                                
+                                @if($categories->count() > 8)
+                                    <button type="button" class="category-show-more" id="showMoreCategories">
+                                        <i class="fas fa-chevron-down me-2"></i>
+                                        <span>Lihat {{ $categories->count() - 8 }} kategori lainnya</span>
+                                    </button>
+                                    <div class="category-list-extra" style="display: none;">
+                                        @foreach ($categories->skip(8) as $item)
+                                            <a href="{{ route('shopCategory', $item->slug) }}" 
+                                               class="category-item-modern {{ $currentCategory == $item->slug ? 'active' : '' }}">
+                                                <div class="category-icon"><i class="fas fa-tag"></i></div>
+                                                <div class="category-info">
+                                                    <span class="category-name">{{ $item->name }}</span>
+                                                    <span class="category-count">{{ $categoryProductCounts[$item->id] ?? 0 }} produk</span>
+                                                </div>
+                                                <i class="fas fa-chevron-right category-arrow"></i>
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Price Range Filter Section -->
+                        <div class="sidebar-section pb-3 mb-3 border-bottom">
+                            <div class="sidebar-section-header">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Rentang Harga</span>
+                            </div>
+                            <div class="filter-section">
+                                @php
+                                    $priceRanges = [
+                                        ['label' => 'Di bawah Rp50.000', 'max' => 50000],
+                                        ['label' => 'Rp50.000 - Rp100.000', 'min' => 50000, 'max' => 100000],
+                                        ['label' => 'Rp100.000 - Rp250.000', 'min' => 100000, 'max' => 250000],
+                                        ['label' => 'Rp250.000 - Rp500.000', 'min' => 250000, 'max' => 500000],
+                                        ['label' => 'Di atas Rp500.000', 'min' => 500000],
+                                    ];
+                                @endphp
+                                @foreach($priceRanges as $range)
+                                    @php
+                                        $isActive = false;
+                                        if(isset($range['min']) && isset($range['max'])) {
+                                            $isActive = request('price_min') == $range['min'] && request('price_max') == $range['max'];
+                                        } elseif(isset($range['max'])) {
+                                            $isActive = !request('price_min') && request('price_max') == $range['max'];
+                                        } elseif(isset($range['min'])) {
+                                            $isActive = request('price_min') == $range['min'] && !request('price_max');
+                                        }
+                                    @endphp
+                                    <a href="{{ route('shop') }}?{{ http_build_query(array_merge(request()->except(['price_min', 'price_max', 'page']), array_filter(['price_min' => $range['min'] ?? null, 'price_max' => $range['max'] ?? null]))) }}" 
+                                       class="filter-option {{ $isActive ? 'active' : '' }}">
+                                        <div class="filter-checkbox">
+                                            <i class="fas {{ $isActive ? 'fa-check-square' : 'fa-square' }}"></i>
+                                        </div>
+                                        <span class="filter-label">{{ $range['label'] }}</span>
                                     </a>
                                 @endforeach
                             </div>
                         </div>
-                    </div>
+
+                        <!-- Rating Filter Section -->
+                        <div class="sidebar-section pb-3 mb-3 border-bottom">
+                            <div class="sidebar-section-header">
+                                <i class="fas fa-star"></i>
+                                <span>Rating Produk</span>
+                            </div>
+                            <div class="filter-section">
+                                @foreach([5, 4, 3, 2] as $ratingLevel)
+                                    <a href="{{ route('shop') }}?{{ http_build_query(array_merge(request()->except(['rating', 'page']), ['rating' => $ratingLevel])) }}" 
+                                       class="filter-option {{ request('rating') == $ratingLevel ? 'active' : '' }}">
+                                        <div class="filter-checkbox">
+                                            <i class="fas {{ request('rating') == $ratingLevel ? 'fa-check-square' : 'fa-square' }}"></i>
+                                        </div>
+                                        <div class="rating-stars">
+                                            @for($i = 1; $i <= 5; $i++)
+                                                <i class="fas fa-star {{ $i <= $ratingLevel ? 'text-warning' : 'text-muted' }}"></i>
+                                            @endfor
+                                            <span class="ms-1">& Lebih</span>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Stock Filter Section -->
+                        <div class="sidebar-section pb-3 mb-3 border-bottom">
+                            <div class="sidebar-section-header">
+                                <i class="fas fa-box"></i>
+                                <span>Ketersediaan</span>
+                            </div>
+                            <div class="filter-section">
+                                <a href="{{ route('shop') }}?{{ http_build_query(array_merge(request()->except(['stock_status', 'page']), ['stock_status' => 'available'])) }}" 
+                                   class="filter-option {{ request('stock_status') == 'available' ? 'active' : '' }}">
+                                    <div class="filter-checkbox">
+                                        <i class="fas {{ request('stock_status') == 'available' ? 'fa-check-square' : 'fa-square' }}"></i>
+                                    </div>
+                                    <span class="filter-label">
+                                        <i class="fas fa-check-circle text-success me-1"></i>Stok Tersedia
+                                    </span>
+                                </a>
+                                <a href="{{ route('shop') }}?{{ http_build_query(array_merge(request()->except(['stock_status', 'page']), ['stock_status' => 'low'])) }}" 
+                                   class="filter-option {{ request('stock_status') == 'low' ? 'active' : '' }}">
+                                    <div class="filter-checkbox">
+                                        <i class="fas {{ request('stock_status') == 'low' ? 'fa-check-square' : 'fa-square' }}"></i>
+                                    </div>
+                                    <span class="filter-label">
+                                        <i class="fas fa-exclamation-circle text-warning me-1"></i>Stok Terbatas
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Reset Filters -->
+                        @if(request()->hasAny(['search', 'price_min', 'price_max', 'rating', 'stock_status']) || Request::is('shopCategory*'))
+                            <div class="px-3 py-2">
+                                <a href="{{ route('shop') }}" class="btn btn-outline-danger w-100">
+                                    <i class="fas fa-undo me-2"></i>Reset Semua Filter
+                                </a>
+                            </div>
+                        @endif
+                            </div><!-- end category-sidebar-inner -->
+                        </div><!-- end category-sidebar -->
                 </div>
                 
                 <!-- Products Grid -->
                 <div class="col-lg-9">
                     <!-- Products Header with Count -->
                     <div class="products-header catalog-results-card">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h5 class="text-primary fw-bold mb-1">
+                        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center gap-3">
+                            <div class="flex-grow-1">
+                                <h5 class="text-primary fw-bold mb-2 d-flex align-items-center gap-2">
                                     @if(request('search'))
-                                        Hasil Pencarian: "{{ request('search') }}"
+                                        <i class="fas fa-search"></i>
+                                        Hasil Pencarian
                                     @elseif(request()->route('slug'))
-                                        Kategori: {{ $categories->where('slug', request()->route('slug'))->first()->name ?? 'Kategori' }}
+                                        <i class="fas fa-folder-open"></i>
+                                        {{ $categories->where('slug', request()->route('slug'))->first()->name ?? 'Kategori' }}
                                     @else
+                                        <i class="fas fa-store"></i>
                                         Semua Produk
                                     @endif
                                 </h5>
-                                <p class="text-muted mb-0">
-                                    <i class="fas fa-box me-1"></i>
-                                    {{ $products->count() }} produk ditemukan
+                                @php
+                                    $totalProducts = $products->count();
+                                    $currentPage = request()->get('page', 1);
+                                    $perPage = (int) request('perPage', 12);
+                                    if (!in_array($perPage, [6,12,24,48])) { $perPage = 12; }
+                                    $startItem = (($currentPage - 1) * $perPage) + 1;
+                                    $endItem = min($currentPage * $perPage, $totalProducts);
+                                @endphp
+                                <div class="d-flex flex-wrap align-items-center gap-2">
+                                    <p class="text-muted mb-0">
+                                        <i class="fas fa-box-open me-1"></i>
+                                        <strong class="text-dark">Menampilkan {{ $startItem }}-{{ $endItem }}</strong> dari <strong class="text-dark">{{ $totalProducts }}</strong> produk
+                                    </p>
                                     @if(request('search'))
-                                        <span class="ms-2 badge" style="background: rgba(15,81,50,0.1); color: #0f5132;">
-                                            <i class="fas fa-search me-1"></i>
-                                            Termasuk hasil pencarian serupa
+                                        <span class="badge" style="background: rgba(15,81,50,0.1); color: #0f5132;">
+                                            <i class="fas fa-info-circle me-1"></i>
+                                            Pencarian toleran typo aktif
                                         </span>
                                     @endif
-                                </p>
+                                    @if(request()->hasAny(['price_min', 'price_max', 'rating', 'stock_status']))
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-filter me-1"></i>
+                                            Filter aktif
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                             
-                            <div class="d-flex align-items-center gap-3">
-                                    <div class="d-flex align-items-center text-muted">
-                                        <i class="fas fa-th-large me-2"></i>
-                                        <span class="small">Grid View</span>
-                                    </div>
-                                    <div class="text-muted small">
-                                        <i class="fas fa-clock me-1"></i>
-                                        Diperbarui hari ini
-                                    </div>
-                                    <form method="GET" class="ms-3">
-                                        @foreach(request()->except('perPage') as $k => $v)
-                                            @if(is_array($v))
-                                                @foreach($v as $val)
-                                                    <input type="hidden" name="{{ $k }}[]" value="{{ $val }}">
-                                                @endforeach
-                                            @else
-                                                <input type="hidden" name="{{ $k }}" value="{{ $v }}">
-                                            @endif
-                                        @endforeach
-                                        <select name="perPage" class="form-select form-select-sm" onchange="this.form.submit()" aria-label="Hasil per halaman">
-                                            @php $pp = (int) request('perPage', 12); @endphp
-                                            <option value="6" {{ $pp==6 ? 'selected' : '' }}>6 / halaman</option>
-                                            <option value="12" {{ $pp==12 ? 'selected' : '' }}>12 / halaman</option>
-                                            <option value="24" {{ $pp==24 ? 'selected' : '' }}>24 / halaman</option>
-                                            <option value="48" {{ $pp==48 ? 'selected' : '' }}>48 / halaman</option>
-                                        </select>
-                                    </form>
+                            <div class="d-flex align-items-center gap-2 flex-wrap">
+                                <div class="text-muted small d-none d-lg-flex align-items-center">
+                                    <i class="fas fa-sync-alt me-2"></i>
+                                    <span>Diperbarui hari ini</span>
                                 </div>
+                                <div class="vr d-none d-lg-block" style="height: 24px;"></div>
+                                <form method="GET" class="d-flex align-items-center gap-2">
+                                    @foreach(request()->except('perPage') as $k => $v)
+                                        @if(is_array($v))
+                                            @foreach($v as $val)
+                                                <input type="hidden" name="{{ $k }}[]" value="{{ $val }}">
+                                            @endforeach
+                                        @else
+                                            <input type="hidden" name="{{ $k }}" value="{{ $v }}">
+                                        @endif
+                                    @endforeach
+                                    <label class="text-muted small mb-0 d-none d-md-inline">Tampilkan:</label>
+                                    <select name="perPage" class="form-select form-select-sm" onchange="this.form.submit()" aria-label="Hasil per halaman" style="width: auto;">
+                                        @php $pp = (int) request('perPage', 12); @endphp
+                                        <option value="6" {{ $pp==6 ? 'selected' : '' }}>6</option>
+                                        <option value="12" {{ $pp==12 ? 'selected' : '' }}>12</option>
+                                        <option value="24" {{ $pp==24 ? 'selected' : '' }}>24</option>
+                                        <option value="48" {{ $pp==48 ? 'selected' : '' }}>48</option>
+                                    </select>
+                                    <span class="text-muted small d-none d-md-inline">per halaman</span>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     
@@ -1243,87 +2643,43 @@
                         ]);
                     ?>
 
-                    <div class="row g-4 shop-products-grid">
+                    <div class="row product-grid">
                         @forelse ($paginator as $row)
                             @php
                                 $product = $row->products;
+                                $categoryName = $row->categories->name ?? 'Tanpa kategori';
                                 $image = !empty($product->productImages->first()) 
                                     ? asset('storage/'.$product->productImages->first()->path) 
                                     : asset('images/placeholder.jpg');
-                                $stock = $product->type == 'configurable' ? $product->total_stock : ($product->productInventory->qty ?? 0);
-                                $availabilityLabel = $stock > 10 ? 'Tersedia' : ($stock > 0 ? 'Stok terbatas' : 'Out of stock');
-                                $availabilityClass = $stock > 10 ? '' : ($stock > 0 ? 'product-stock-badge--warning' : 'product-stock-badge--muted');
-                                $availabilityIcon = $stock > 10 ? 'fas fa-check-circle' : ($stock > 0 ? 'fas fa-exclamation-circle' : 'fas fa-times-circle');
+                                $hasInventory = $product->productInventory != null;
+                                $stockQuantity = $hasInventory
+                                    ? ($product->type == 'configurable' ? $product->total_stock : ($product->productInventory->qty ?? 0))
+                                    : null;
+                                $availabilityLabel = is_null($stockQuantity)
+                                    ? ($product->type == 'configurable' ? 'Pilih varian' : 'Lihat detail')
+                                    : ($stockQuantity > 10 ? 'Tersedia' : ($stockQuantity > 0 ? 'Stok terbatas' : 'Stok habis'));
+                                $availabilityClass = is_null($stockQuantity)
+                                    ? 'product-stock-badge--neutral'
+                                    : ($stockQuantity > 10 ? 'product-stock-badge--success' : ($stockQuantity > 0 ? 'product-stock-badge--warning' : 'product-stock-badge--muted'));
+                                $availabilityIcon = is_null($stockQuantity)
+                                    ? 'fas fa-info-circle'
+                                    : ($stockQuantity > 10 ? 'fas fa-check-circle' : ($stockQuantity > 0 ? 'fas fa-exclamation-circle' : 'fas fa-times-circle'));
                                 $productKicker = $product->type == 'configurable' ? 'Pilihan varian' : 'Siap dipesan';
                                 $productHighlight = $product->type == 'configurable' ? 'Lebih fleksibel' : 'Checkout cepat';
                             @endphp
-                            <div class="col-md-6 col-lg-4">
-                                <div class="product-card h-100">
-                                    <div class="product-image-shell">
-                                        <div class="product-image">
-                                            <div class="product-topbar">
-                                                <div class="product-category-badge">
-                                                    <i class="fas fa-tag"></i>
-                                                    {{ $row->categories->name }}
-                                                </div>
-                                                <div class="product-stock-badge {{ $availabilityClass }}">
-                                                    <i class="{{ $availabilityIcon }}"></i>
-                                                    {{ $availabilityLabel }}
-                                                </div>
-                                            </div>
-                                            <img src="{{ $image }}" alt="{{ $product->name }}">
-                                            <a href="{{ route('shop-detail', $product->id) }}" class="product-quick-link">
-                                                Lihat Detail <i class="fas fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-content d-flex flex-column">
-                                        <span class="product-kicker">{{ $productKicker }}</span>
-                                        <a href="{{ route('shop-detail', $product->id) }}" class="product-title-link">
-                                            <h5 class="product-title">{{ $product->name }}</h5>
-                                        </a>
-                                        
-                                        <p class="product-description flex-grow-1">
-                                            {{ Str::limit($product->short_description, 88) }}
-                                        </p>
-
-                                        <div class="product-meta-row">
-                                            <span class="product-stock-pill">
-                                                <i class="fas fa-box"></i>
-                                                Stok {{ $stock }}
-                                            </span>
-                                            <span class="product-stock-pill product-stock-pill--soft">
-                                                <i class="fas fa-bolt"></i>
-                                                {{ $productHighlight }}
-                                            </span>
-                                        </div>
-
-                                        <div class="product-footer">
-                                            <div class="product-price-stack">
-                                                <span class="product-price-label">Harga</span>
-                                                <div class="product-price">
-                                                    Rp {{ number_format($product->price, 0, ',', '.') }}
-                                                </div>
-                                            </div>
-
-                                            <div class="product-action-row">
-                                                <a href="{{ route('shop-detail', $product->id) }}" class="product-detail-btn">Detail</a>
-                                                <button class="btn btn-add-cart add-to-card" 
-                                                        product-id="{{ $product->id }}" 
-                                                        product-type="{{ $product->type }}" 
-                                                        product-slug="{{ $product->slug }}"
-                                                        data-bs-toggle="tooltip"
-                                                        data-bs-placement="top"
-                                                        title="Klik untuk menambahkan {{ $product->name }} ke keranjang"
-                                                        aria-label="Tambah {{ $product->name }} ke keranjang">
-                                                    <i class="fas fa-cart-plus"></i>
-                                                    <span>Tambah</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <x-product-card
+                                    :product="$product"
+                                    :image="$image"
+                                    :categoryName="$categoryName"
+                                    :productKicker="$productKicker"
+                                    :productHighlight="$productHighlight"
+                                    :availabilityLabel="$availabilityLabel"
+                                    :availabilityClass="$availabilityClass"
+                                    :availabilityIcon="$availabilityIcon"
+                                    :stockQuantity="$stockQuantity"
+                                    :hasInventory="$hasInventory"
+                                />
                             </div>
                         @empty
                             <div class="col-12">
@@ -1355,6 +2711,219 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Mobile Filter Bar (Fixed Bottom) — Premium Tab Bar -->
+    <div class="mobile-filter-bar d-lg-none">
+        <div class="mobile-filter-tab-row">
+            @php
+                $activeFiltersCount = collect([
+                    request('search'),
+                    request('price_min'),
+                    request('price_max'),
+                    request('rating'),
+                    request('stock_status'),
+                    Request::is('shopCategory*') ? 'category' : null
+                ])->filter()->count();
+                $currentSort = request('sort', '');
+                $sortLabels = ['newest'=>'Terbaru','popular'=>'Terpopuler','price_asc'=>'Termurah','price_desc'=>'Termahal','name_asc'=>'A-Z','name_desc'=>'Z-A','rating'=>'Rating'];
+                $sortLabel = $currentSort ? ($sortLabels[$currentSort] ?? 'Sortir') : null;
+            @endphp
+
+            <button type="button" class="mobile-filter-btn {{ $activeFiltersCount > 0 ? 'btn-filter-primary' : '' }}" id="openMobileFilter">
+                <i class="fas fa-sliders-h"></i>
+                <span>Filter{{ $activeFiltersCount > 0 ? '' : '' }}</span>
+                @if($activeFiltersCount > 0)
+                    <span class="mobile-filter-badge">{{ $activeFiltersCount }}</span>
+                @endif
+            </button>
+
+            <button type="button" class="mobile-filter-btn {{ $sortLabel ? 'btn-sort-primary' : '' }}" id="openMobileSort">
+                <i class="fas fa-sort-amount-down"></i>
+                <span>{{ $sortLabel ?? 'Urutkan' }}</span>
+            </button>
+
+            {{-- Quick search icon --}}
+            <a href="#mobileSearchInput" class="mobile-filter-btn" id="openMobileSearch" onclick="event.preventDefault(); document.getElementById('mobileFilterDrawer').classList.add('active'); document.body.style.overflow='hidden'; setTimeout(()=>document.getElementById('mobileSearchInput').focus(),400);">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         PREMIUM MOBILE FILTER DRAWER
+    =========================================== -->
+    <div class="mobile-filter-drawer" id="mobileFilterDrawer">
+        <div class="mobile-filter-backdrop" id="mobileFilterBackdrop"></div>
+        <div class="mobile-filter-content" id="mobileFilterSheet">
+
+            <!-- Drag Handle -->
+            <div class="mf-drag-handle" id="mfDragHandle"><span></span></div>
+
+            <!-- Header -->
+            <div class="mf-header">
+                <div class="mf-header-left">
+                    <div class="mf-header-title"><i class="fas fa-sliders-h me-2" style="color:#0f5132;"></i>Filter Produk</div>
+                    @php $totalActive = collect([request('search'), request('price_min'), request('price_max'), request('rating'), request('stock_status'), Request::is('shopCategory*') ? 'cat' : null])->filter()->count(); @endphp
+                    @if($totalActive > 0)
+                    <div class="mf-header-subtitle">{{ $totalActive }} filter aktif</div>
+                    @else
+                    <div class="mf-header-subtitle">Tidak ada filter aktif</div>
+                    @endif
+                </div>
+                <button type="button" class="mf-close-btn" id="closeMobileFilter">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Scrollable body -->
+            <div class="mf-body">
+
+                <!-- SEARCH -->
+                <div class="mf-section">
+                    <div class="mf-section-label"><i class="fas fa-search"></i> Cari Produk</div>
+                    <form action="{{ route('shop') }}" method="GET">
+                        @foreach(request()->except(['search', 'page']) as $k => $v)
+                            @if(is_array($v)) @foreach($v as $val)<input type="hidden" name="{{ $k }}[]" value="{{ $val }}">@endforeach
+                            @else <input type="hidden" name="{{ $k }}" value="{{ $v }}">@endif
+                        @endforeach
+                        <div class="mf-search-wrap">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="mobileSearchInput" name="search" placeholder="Cari produk..." value="{{ request('search') }}" autocomplete="off">
+                            <button type="submit" class="mf-search-btn">Cari</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- CATEGORY -->
+                <div class="mf-section">
+                    <div class="mf-section-label"><i class="fas fa-th-large"></i> Kategori</div>
+                    @php $currentCatSlug = request()->route('slug') ?? ''; @endphp
+                    <div class="mf-cat-grid">
+                        <a href="{{ route('shop') }}" class="mf-cat-chip {{ !$currentCatSlug ? 'active' : '' }}">
+                            <i class="fas fa-th"></i> Semua
+                        </a>
+                        @foreach($categories as $cat)
+                        <a href="{{ route('shopCategory', $cat->slug) }}" class="mf-cat-chip {{ $currentCatSlug == $cat->slug ? 'active' : '' }}">
+                            <i class="fas fa-tag"></i> {{ $cat->name }}
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- PRICE RANGE -->
+                <div class="mf-section">
+                    <div class="mf-section-label"><i class="fas fa-wallet"></i> Rentang Harga</div>
+                    <div class="mf-chips">
+                        @foreach($priceRanges as $range)
+                            @php
+                                $isActive = false;
+                                if(isset($range['min']) && isset($range['max'])) $isActive = request('price_min') == $range['min'] && request('price_max') == $range['max'];
+                                elseif(isset($range['max'])) $isActive = !request('price_min') && request('price_max') == $range['max'];
+                                elseif(isset($range['min'])) $isActive = request('price_min') == $range['min'] && !request('price_max');
+                            @endphp
+                            <a href="{{ route('shop') }}?{{ http_build_query(array_merge(request()->except(['price_min','price_max','page']), array_filter(['price_min' => $range['min'] ?? null,'price_max' => $range['max'] ?? null]))) }}"
+                               class="mf-chip {{ $isActive ? 'active' : '' }}">
+                                {{ $range['label'] }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- RATING -->
+                <div class="mf-section">
+                    <div class="mf-section-label"><i class="fas fa-star"></i> Rating Minimum</div>
+                    <div class="mf-rating-row">
+                        @foreach([5, 4, 3, 2] as $rl)
+                        <a href="{{ route('shop') }}?{{ http_build_query(array_merge(request()->except(['rating','page']), ['rating' => $rl])) }}"
+                           class="mf-rating-chip {{ request('rating') == $rl ? 'active' : '' }}">
+                            <span class="stars">{{ str_repeat('★', $rl) }}{{ str_repeat('☆', 5-$rl) }}</span>
+                            <span>{{ $rl }}+</span>
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- STOCK -->
+                <div class="mf-section">
+                    <div class="mf-section-label"><i class="fas fa-box"></i> Ketersediaan</div>
+                    <div class="mf-chips">
+                        <a href="{{ route('shop') }}?{{ http_build_query(array_merge(request()->except(['stock_status','page']), ['stock_status' => 'available'])) }}"
+                           class="mf-chip {{ request('stock_status') == 'available' ? 'active' : '' }}">
+                            ✓ Stok Tersedia
+                        </a>
+                        <a href="{{ route('shop') }}?{{ http_build_query(array_merge(request()->except(['stock_status','page']), ['stock_status' => 'low'])) }}"
+                           class="mf-chip {{ request('stock_status') == 'low' ? 'active' : '' }}">
+                            ⚠ Stok Terbatas
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- /mf-body -->
+
+            <!-- Footer -->
+            <div class="mf-footer">
+                <a href="{{ route('shop') }}" class="mf-btn-reset">
+                    <i class="fas fa-rotate-left"></i> Reset
+                </a>
+                <button type="button" class="mf-btn-apply" id="applyMobileFilter">
+                    <i class="fas fa-check"></i> Lihat Hasil
+                </button>
+            </div>
+
+        </div><!-- /mobile-filter-content -->
+    </div><!-- /mobileFilterDrawer -->
+
+    <!-- ==========================================
+         PREMIUM MOBILE SORT DRAWER
+    =========================================== -->
+    <div class="mobile-filter-drawer" id="mobileSortDrawer">
+        <div class="mobile-filter-backdrop" id="mobileSortBackdrop"></div>
+        <div class="mobile-filter-content">
+
+            <!-- Drag Handle -->
+            <div class="mf-drag-handle"><span></span></div>
+
+            <!-- Header -->
+            <div class="mf-header">
+                <div class="mf-header-left">
+                    <div class="mf-header-title"><i class="fas fa-arrow-up-wide-short me-2" style="color:#0f5132;"></i>Urutkan</div>
+                    <div class="mf-header-subtitle">Pilih urutan tampilan produk</div>
+                </div>
+                <button type="button" class="mf-close-btn" id="closeMobileSort">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="mf-body" style="padding-bottom: 24px;">
+                @php
+                    $sortOptions = [
+                        '' => ['label' => 'Paling Relevan', 'icon' => 'wand-magic-sparkles', 'desc' => 'Default terbaik'],
+                        'newest' => ['label' => 'Terbaru', 'icon' => 'clock-rotate-left', 'desc' => 'Produk baru dulu'],
+                        'popular' => ['label' => 'Terpopuler', 'icon' => 'fire', 'desc' => 'Paling banyak dilihat'],
+                        'price_asc' => ['label' => 'Harga Terendah', 'icon' => 'arrow-down-1-9', 'desc' => 'Termurah di atas'],
+                        'price_desc' => ['label' => 'Harga Tertinggi', 'icon' => 'arrow-up-9-1', 'desc' => 'Termahal di atas'],
+                        'rating' => ['label' => 'Rating Tertinggi', 'icon' => 'star', 'desc' => 'Nilai terbaik'],
+                        'name_asc' => ['label' => 'Nama A–Z', 'icon' => 'arrow-down-a-z', 'desc' => 'Alfabetis naik'],
+                        'name_desc' => ['label' => 'Nama Z–A', 'icon' => 'arrow-up-z-a', 'desc' => 'Alfabetis turun'],
+                    ];
+                @endphp
+                <div class="mf-sort-list">
+                    @foreach($sortOptions as $sortValue => $sortData)
+                    <a href="{{ route('shop') }}?{{ http_build_query(array_merge(request()->except(['sort','page']), $sortValue ? ['sort' => $sortValue] : [])) }}"
+                       class="mf-sort-item {{ request('sort', '') == $sortValue ? 'active' : '' }}">
+                        <div class="mf-sort-icon"><i class="fas fa-{{ $sortData['icon'] }}"></i></div>
+                        <div style="flex:1; min-width:0;">
+                            <div style="font-weight:600; font-size:0.875rem;">{{ $sortData['label'] }}</div>
+                            <div style="font-size:0.72rem; color:#9ca3af; margin-top:1px;">{{ $sortData['desc'] }}</div>
+                        </div>
+                        <i class="fas fa-check mf-check"></i>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
@@ -1454,6 +3023,107 @@ $(document).on('click', '.add-to-card', function(e) {
                 .prop('disabled', false);
         }, 2000);
     }, 1000);
+});
+
+// =============================================
+// Mobile Filter & Sort Drawer Functionality
+// =============================================
+$(document).ready(function() {
+
+    function openDrawer($drawer) {
+        // Close any other open drawer first
+        $('.mobile-filter-drawer.active').not($drawer).removeClass('active');
+        $drawer.addClass('active');
+        $('body').css('overflow', 'hidden');
+    }
+
+    function closeDrawer($drawer) {
+        $drawer.removeClass('active');
+        // Only restore scroll if no other drawer is open
+        if ($('.mobile-filter-drawer.active').length === 0) {
+            $('body').css('overflow', '');
+        }
+    }
+
+    // --- Filter Drawer ---
+    $('#openMobileFilter').on('click', function(e) {
+        e.preventDefault();
+        openDrawer($('#mobileFilterDrawer'));
+    });
+
+    $('#closeMobileFilter, #mobileFilterBackdrop').on('click', function() {
+        closeDrawer($('#mobileFilterDrawer'));
+    });
+
+    $('#applyMobileFilter').on('click', function() {
+        closeDrawer($('#mobileFilterDrawer'));
+    });
+
+    // --- Sort Drawer ---
+    $('#openMobileSort').on('click', function(e) {
+        e.preventDefault();
+        openDrawer($('#mobileSortDrawer'));
+    });
+
+    $('#closeMobileSort, #mobileSortBackdrop').on('click', function() {
+        closeDrawer($('#mobileSortDrawer'));
+    });
+
+    // --- Close on ESC key ---
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeDrawer($('.mobile-filter-drawer.active'));
+        }
+    });
+
+    // --- Swipe down to close ---
+    var touchStartY = 0;
+    $(document).on('touchstart', '.mobile-filter-content', function(e) {
+        touchStartY = e.originalEvent.touches[0].clientY;
+    });
+    $(document).on('touchend', '.mobile-filter-content', function(e) {
+        var touchEndY = e.originalEvent.changedTouches[0].clientY;
+        var diff = touchEndY - touchStartY;
+        // Swipe down by > 80px when at top of content → close
+        if (diff > 80 && $(this).scrollTop() === 0) {
+            closeDrawer($(this).closest('.mobile-filter-drawer'));
+        }
+    });
+
+    // --- Auto-hide mobile filter bar on scroll down, show on scroll up ---
+    var lastScrollTop = 0;
+    var scrollTimer;
+    $(window).on('scroll.mobilefilterbar', function() {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function() {
+            var scrollTop = $(window).scrollTop();
+            var $filterBar = $('.mobile-filter-bar');
+            if ($filterBar.length) {
+                if (scrollTop > lastScrollTop && scrollTop > 120) {
+                    $filterBar.css('transform', 'translateY(100%)');
+                } else {
+                    $filterBar.css('transform', 'translateY(0)');
+                }
+                lastScrollTop = scrollTop;
+            }
+        }, 80);
+    });
+
+    // --- Show More Categories (desktop sidebar) ---
+    $('#showMoreCategories').on('click', function() {
+        var $btn = $(this);
+        var $extraList = $('.category-list-extra');
+        var $icon = $btn.find('i');
+        if ($extraList.is(':visible')) {
+            $extraList.slideUp(300);
+            $icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+            $btn.find('span').text('Lihat ' + $extraList.find('.category-item-modern').length + ' kategori lainnya');
+        } else {
+            $extraList.slideDown(300);
+            $icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+            $btn.find('span').text('Sembunyikan kategori');
+        }
+    });
 });
 </script>
 

@@ -447,7 +447,63 @@ class HomepageController extends Controller
             $producted = $producteds;
         }
 
-        // Handle sorting
+        // Apply price range filter
+        if ($request->has('price_min') || $request->has('price_max')) {
+            $producted = $producted->filter(function($item) use ($request) {
+                if (!$item->products) return false;
+                $price = $item->products->price ?? 0;
+                
+                if ($request->has('price_min') && $price < $request->get('price_min')) {
+                    return false;
+                }
+                
+                if ($request->has('price_max') && $price > $request->get('price_max')) {
+                    return false;
+                }
+                
+                return true;
+            });
+        }
+
+        // Apply rating filter
+        if ($request->has('rating')) {
+            $minRating = (float) $request->get('rating');
+            $producted = $producted->filter(function($item) use ($minRating) {
+                if (!$item->products) return false;
+                $rating = $item->products->rating ?? 0;
+                return $rating >= $minRating;
+            });
+        }
+
+        // Apply stock status filter
+        if ($request->has('stock_status')) {
+            $stockStatus = $request->get('stock_status');
+            $producted = $producted->filter(function($item) use ($stockStatus) {
+                if (!$item->products) return false;
+                $product = $item->products;
+                
+                // Calculate stock quantity
+                if ($product->type == 'configurable') {
+                    $stock = $product->total_stock ?? 0;
+                } else {
+                    $stock = $product->productInventory->qty ?? 0;
+                }
+                
+                // Filter based on status
+                switch ($stockStatus) {
+                    case 'available':
+                        return $stock > 0;
+                    case 'low':
+                        return $stock > 0 && $stock <= 10;
+                    case 'out':
+                        return $stock == 0;
+                    default:
+                        return true;
+                }
+            });
+        }
+
+        // Handle sorting with enhanced options
         if ($request->has('sort')) {
             $sortBy = $request->get('sort');
             
@@ -475,6 +531,18 @@ class HomepageController extends Controller
                 case 'newest':
                     $producted = $producted->sortByDesc(function($item) {
                         return $item->products->created_at ?? '';
+                    });
+                    break;
+                case 'popular':
+                    // Sort by sold_count (most popular first)
+                    $producted = $producted->sortByDesc(function($item) {
+                        return $item->products->sold_count ?? 0;
+                    });
+                    break;
+                case 'rating':
+                    // Sort by rating (highest first)
+                    $producted = $producted->sortByDesc(function($item) {
+                        return $item->products->rating ?? 0;
                     });
                     break;
             }
