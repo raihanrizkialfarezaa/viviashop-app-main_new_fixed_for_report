@@ -340,16 +340,16 @@
                             
                             <div class="instagram-stats-elegant">
                                 <div class="instagram-stat-elegant">
-                                    <div class="instagram-stat-number">500+</div>
-                                    <div class="instagram-stat-label">Posts</div>
+                                    <div class="instagram-stat-number"><i class="fas fa-images"></i></div>
+                                    <div class="instagram-stat-label">Konten Kreatif</div>
                                 </div>
                                 <div class="instagram-stat-elegant">
-                                    <div class="instagram-stat-number">2K+</div>
-                                    <div class="instagram-stat-label">Followers</div>
+                                    <div class="instagram-stat-number"><i class="fas fa-lightbulb"></i></div>
+                                    <div class="instagram-stat-label">Inspirasi Desain</div>
                                 </div>
                                 <div class="instagram-stat-elegant">
-                                    <div class="instagram-stat-number">1.5K+</div>
-                                    <div class="instagram-stat-label">Following</div>
+                                    <div class="instagram-stat-number"><i class="fas fa-tags"></i></div>
+                                    <div class="instagram-stat-label">Promo Eksklusif</div>
                                 </div>
                             </div>
 

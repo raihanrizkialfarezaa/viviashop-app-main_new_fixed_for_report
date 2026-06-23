@@ -2149,15 +2149,15 @@
 }
 
 .instagram-stat-number {
-    font-family: var(--v-font-heading);
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     line-height: 1;
-    margin-bottom: 6px;
-    background: linear-gradient(135deg, var(--v-primary) 0%, #059669 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    margin-bottom: 8px;
+    color: var(--v-primary);
+}
+
+.instagram-stat-number i {
+    display: block;
 }
 
 .instagram-stat-label {
