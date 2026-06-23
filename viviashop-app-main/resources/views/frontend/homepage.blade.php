@@ -391,57 +391,77 @@
     </div>
 </div>
 
-<!-- Digital Catalog & Stats -->
-<div class="v-section--lg">
+<!-- Enhanced Digital Catalog Section -->
+<div class="v-section--lg catalog-section">
     <div class="container">
         <x-section-header
-            kicker='<i class="fas fa-book-open"></i> Katalog & Statistik'
-            title="Katalog Digital"
-            subtitle="Eksplor produk lengkap dengan katalog digital interaktif."
+            kicker='<i class="fas fa-book-open"></i> Katalog Digital'
+            title="Jelajahi Produk Kami"
+            subtitle="Lihat koleksi lengkap produk ATK dan layanan cetak dalam katalog digital interaktif kami."
             align="center"
         />
-        <div class="row g-4">
-            <div class="col-lg-7">
-                <div class="catalog-wrapper">
-                    <div class="catalog-header">
-                        <div>
-                            <h3 class="catalog-title">Katalog Produk</h3>
-                            <p class="catalog-subtitle">Lihat semua produk dalam satu dokumen</p>
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-8">
+                <div class="catalog-card-enhanced">
+                    <div class="catalog-card-header">
+                        <div class="catalog-header-left">
+                            <div class="catalog-icon-wrapper">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div>
+                                <h3 class="catalog-card-title">Katalog Produk Lengkap</h3>
+                                <p class="catalog-card-subtitle">Semua produk dalam satu dokumen PDF</p>
+                            </div>
                         </div>
-                        <a href="https://drive.google.com/uc?export=download&id=1G3sq9BUgN4RaRBgVOs6iTSASHrYHB6Ij" target="_blank" class="catalog-download-btn">
-                            <i class="fas fa-download"></i> Unduh PDF
+                        <a href="https://drive.google.com/uc?export=download&id=1G3sq9BUgN4RaRBgVOs6iTSASHrYHB6Ij" target="_blank" class="catalog-download-btn-enhanced">
+                            <i class="fas fa-download"></i>
+                            <span>Unduh PDF</span>
                         </a>
                     </div>
-                    <div class="catalog-iframe-wrap">
-                        <iframe class="w-100 h-100"
+                    <div class="catalog-viewer">
+                        <iframe class="catalog-iframe"
                                 src="https://drive.google.com/file/d/1G3sq9BUgN4RaRBgVOs6iTSASHrYHB6Ij/preview?usp=sharing"
-                                style="border: none;">
+                                allowfullscreen>
                         </iframe>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                        <x-stat-card icon="boxes" number="500+" label="Produk Berkualitas" color="green" />
+            <div class="col-lg-4">
+                <div class="catalog-stats-wrapper">
+                    <div class="catalog-stat-card">
+                        <div class="catalog-stat-icon catalog-stat-icon--green">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="catalog-stat-content">
+                            <div class="catalog-stat-number">500+</div>
+                            <div class="catalog-stat-label">Produk Berkualitas</div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <x-stat-card icon="layer-group" number="50+" label="Kategori Tersedia" color="teal" />
+                    <div class="catalog-stat-card">
+                        <div class="catalog-stat-icon catalog-stat-icon--teal">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="catalog-stat-content">
+                            <div class="catalog-stat-number">50+</div>
+                            <div class="catalog-stat-label">Kategori Tersedia</div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <x-stat-card icon="face-smile" number="1K+" label="Pelanggan Puas" color="amber" />
+                    <div class="catalog-stat-card">
+                        <div class="catalog-stat-icon catalog-stat-icon--amber">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <div class="catalog-stat-content">
+                            <div class="catalog-stat-number">1K+</div>
+                            <div class="catalog-stat-label">Pelanggan Puas</div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <x-stat-card icon="clock" number="24/7" label="Layanan Support" color="blue" />
-                    </div>
-                </div>
-
-                <div class="mt-3 p-3 text-white rounded-3 shadow-sm" style="background: linear-gradient(135deg, var(--v-primary), var(--v-secondary));">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-motorcycle fa-2x me-3" style="color: rgba(255,255,255,0.9);"></i>
-                        <div>
-                            <h6 class="fw-bold mb-1">Akses Mudah!</h6>
-                            <p class="mb-0 small" style="color: rgba(255,255,255,0.8);">Lokasi nyaman untuk semua kendaraan.</p>
+                    <div class="catalog-info-card">
+                        <div class="catalog-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="catalog-info-content">
+                            <h4 class="catalog-info-title">Layanan 24/7</h4>
+                            <p class="catalog-info-text">Customer support siap membantu kapan saja</p>
                         </div>
                     </div>
                 </div>
@@ -450,42 +470,87 @@
     </div>
 </div>
 
-<!-- Location Info -->
-<div class="v-section--lg">
+<!-- Enhanced Location Section -->
+<div class="v-section--lg location-section">
     <div class="container">
-        <div class="location-wrapper">
-            <div class="row g-4">
+        <div class="location-card-enhanced">
+            <div class="row g-4 align-items-center">
                 <div class="col-lg-5">
-                    <span class="v-kicker mb-2"><i class="fas fa-map-marker-alt"></i> Lokasi Kami</span>
-                    <h2 class="title-gradient mt-2 mb-2" style="font-size: clamp(1.35rem, 2.5vw, 1.65rem); font-weight: 800;">Temukan VIVIA PrintShop</h2>
-                    <p class="text-muted mb-3" style="font-size: 0.9rem; line-height: 1.6;">Rasakan langsung kualitas produk kami dengan pelayanan prima dari staf ahli.</p>
+                    <div class="location-info">
+                        <div class="location-badge">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lokasi Kami</span>
+                        </div>
+                        <h2 class="location-title">Kunjungi Toko Kami</h2>
+                        <p class="location-description">Rasakan pengalaman berbelanja langsung dengan pelayanan terbaik dari tim kami</p>
 
-                    <x-contact-card icon="map-marker-alt" title="Alamat Store" detail="Tebu Ireng IV No. 38, Cukir, Diwek, Kab. Jombang, Jawa Timur 61471" />
-                    <x-contact-card icon="phone" title="Telepon & WhatsApp" :detail="optional($setting)->telepon ?? '+62 812 3456 7890'" />
-                    <x-contact-card icon="envelope" title="Alamat Surat" :detail="optional($setting)->email ?? 'info@vivia.com'" />
-                    <x-contact-card icon="clock" title="Jam Buka" detail="Senin - Sabtu: 08:00 - 17:00 WIB" />
+                        <div class="location-details">
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="location-detail-content">
+                                    <div class="location-detail-label">Alamat Toko</div>
+                                    <div class="location-detail-text">Tebu Ireng IV No. 38, Cukir, Diwek, Kab. Jombang, Jawa Timur 61471</div>
+                                </div>
+                            </div>
 
-                    <div class="contact-cta-group">
-                        @php
-                            $rawPhone = optional($setting)->telepon ?? '081234567890';
-                            $waPhone = preg_replace('/^0/', '62', $rawPhone);
-                        @endphp
-                        <a href="https://wa.me/{{ $waPhone }}" target="_blank" class="contact-cta contact-cta--primary">
-                            <i class="fab fa-whatsapp"></i> Chat Kami
-                        </a>
-                        <a href="{{ optional($setting)->maps_url ?? 'https://maps.app.goo.gl/FQkhHuk1vnFZzcHg8?g_st=aw' }}" target="_blank" class="contact-cta contact-cta--outline">
-                            <i class="fas fa-directions"></i> Rute Lokasi
-                        </a>
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="location-detail-content">
+                                    <div class="location-detail-label">Telepon & WhatsApp</div>
+                                    <div class="location-detail-text">{{ optional($setting)->telepon ?? '+62 812 3456 7890' }}</div>
+                                </div>
+                            </div>
+
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="location-detail-content">
+                                    <div class="location-detail-label">Email</div>
+                                    <div class="location-detail-text">{{ optional($setting)->email ?? 'info@vivia.com' }}</div>
+                                </div>
+                            </div>
+
+                            <div class="location-detail-item">
+                                <div class="location-detail-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="location-detail-content">
+                                    <div class="location-detail-label">Jam Operasional</div>
+                                    <div class="location-detail-text">Senin - Sabtu: 08:00 - 17:00 WIB</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-actions">
+                            @php
+                                $rawPhone = optional($setting)->telepon ?? '081234567890';
+                                $waPhone = preg_replace('/^0/', '62', $rawPhone);
+                            @endphp
+                            <a href="https://wa.me/{{ $waPhone }}" target="_blank" class="location-btn location-btn--primary">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Chat WhatsApp</span>
+                            </a>
+                            <a href="{{ optional($setting)->maps_url ?? 'https://maps.app.goo.gl/FQkhHuk1vnFZzcHg8?g_st=aw' }}" target="_blank" class="location-btn location-btn--outline">
+                                <i class="fas fa-directions"></i>
+                                <span>Buka Maps</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-7 position-relative">
-                    <div class="map-container">
-                        <div class="map-overlay-badge">
-                            <i class="fas fa-map-pin"></i> VIVIA PrintShop
+                <div class="col-lg-7">
+                    <div class="map-card-enhanced">
+                        <div class="map-badge">
+                            <i class="fas fa-store"></i>
+                            <span>VIVIA PrintShop</span>
                         </div>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.6902460456313!2d112.2357296745512!3d-7.608646375209187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7841556bd5c5bb%3A0x4517452691764b02!2sVIVIA%20PrintShop!5e0!3m2!1sid!2sid!4v1751760890529!5m2!1sid!2sid"
-                            class="map-fill"
+                            class="map-iframe"
                             allowfullscreen=""
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
