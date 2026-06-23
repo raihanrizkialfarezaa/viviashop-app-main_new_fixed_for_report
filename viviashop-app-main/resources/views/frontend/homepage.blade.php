@@ -284,26 +284,110 @@
     </div>
 </div>
 
-<!-- Interactive Social Banner -->
-<div class="v-section">
+<!-- Enhanced Instagram Section -->
+<div class="v-section instagram-showcase">
     <div class="container">
-        <x-cta-section
-            kicker="Komunitas Kami"
-            kickerIcon="fab fa-instagram"
-            title="Ikuti Perjalanan <br>Visual Kami"
-            description="Dapatkan inspirasi desain terbaru, tips cetak, dan promo eksklusif di Instagram @vivia_printshop."
-            actionText="Follow @vivia_printshop"
-            actionUrl="https://www.instagram.com/vivia_printshop/"
-            actionIcon="fab fa-instagram"
-        >
-            <div class="insta-card">
-                <blockquote class="instagram-media"
-                    data-instgrm-permalink="https://www.instagram.com/vivia_printshop/" data-instgrm-version="12"
-                    style="background:#FFF; border:0; margin: 0; max-width:360px; width:100%;">
-                </blockquote>
-                <script async src="https://www.instagram.com/embed.js"></script>
+        <!-- Section Header -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+                <div class="instagram-header-badge mb-3">
+                    <i class="fab fa-instagram"></i>
+                    <span>Komunitas Kami</span>
+                </div>
+                <h2 class="instagram-showcase-title mb-3">
+                    Ikuti Perjalanan<br>
+                    <span class="title-gradient">Visual Kami</span>
+                </h2>
+                <p class="instagram-showcase-desc mb-4">
+                    Dapatkan inspirasi desain terbaru, behind-the-scenes proses cetak, tips kreatif, dan promo eksklusif langsung dari Instagram kami
+                </p>
             </div>
-        </x-cta-section>
+        </div>
+
+        <!-- Instagram Preview Card -->
+        <div class="instagram-grid-wrapper">
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-6">
+                    <div class="instagram-embed-card">
+                        <div class="instagram-embed-wrapper">
+                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/vivia_printshop/" 
+                                data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1); margin: 0 auto; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                            </blockquote>
+                            <script async src="//www.instagram.com/embed.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced CTA Card -->
+            <div class="instagram-cta-enhanced">
+                <div class="instagram-cta-glow"></div>
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-7">
+                        <div class="instagram-cta-left">
+                            <div class="instagram-profile-section">
+                                <div class="instagram-profile-avatar">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="instagram-profile-info">
+                                    <h3 class="instagram-profile-handle">@vivia_printshop</h3>
+                                    <div class="instagram-verified-badge">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Official Account</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="instagram-stats-elegant">
+                                <div class="instagram-stat-elegant">
+                                    <div class="instagram-stat-number">500+</div>
+                                    <div class="instagram-stat-label">Posts</div>
+                                </div>
+                                <div class="instagram-stat-elegant">
+                                    <div class="instagram-stat-number">2K+</div>
+                                    <div class="instagram-stat-label">Followers</div>
+                                </div>
+                                <div class="instagram-stat-elegant">
+                                    <div class="instagram-stat-number">1.5K+</div>
+                                    <div class="instagram-stat-label">Following</div>
+                                </div>
+                            </div>
+
+                            <p class="instagram-bio">
+                                <i class="fas fa-quote-left"></i>
+                                Inspirasi desain terbaru, tips cetak profesional, dan promo eksklusif hanya untuk followers kami
+                                <i class="fas fa-quote-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="instagram-cta-right">
+                            <a href="https://www.instagram.com/vivia_printshop/" target="_blank" class="instagram-follow-btn-elegant">
+                                <span class="btn-gradient-overlay"></span>
+                                <i class="fab fa-instagram"></i>
+                                <span class="btn-text">Follow di Instagram</span>
+                                <i class="fas fa-arrow-right btn-arrow"></i>
+                            </a>
+                            
+                            <div class="instagram-perks">
+                                <div class="instagram-perk-item">
+                                    <i class="fas fa-gift"></i>
+                                    <span>Promo eksklusif</span>
+                                </div>
+                                <div class="instagram-perk-item">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Tips desain gratis</span>
+                                </div>
+                                <div class="instagram-perk-item">
+                                    <i class="fas fa-bell"></i>
+                                    <span>Update terbaru</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
