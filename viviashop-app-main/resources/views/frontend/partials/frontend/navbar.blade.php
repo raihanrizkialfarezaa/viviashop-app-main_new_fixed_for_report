@@ -10,6 +10,23 @@
         overscroll-behavior: none;
     }
 
+    .site-menu-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 30, 20, 0.45);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 1020;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body.site-menu-open .site-menu-backdrop {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
     .site-header {
         position: sticky;
         top: 0;
@@ -73,6 +90,7 @@
         background: rgba(255, 255, 255, 0.94);
         border-color: rgba(15, 81, 50, 0.12);
         box-shadow: 0 28px 60px rgba(15, 81, 50, 0.18);
+        overflow: visible;
     }
 
     .site-header--overlay.is-scrolled .site-nav-shell {
@@ -357,6 +375,19 @@
         color: #ffffff !important;
     }
 
+    .site-toggler span {
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        display: inline-block;
+    }
+
+    .site-header.is-menu-open .site-toggler span {
+        transform: rotate(90deg);
+    }
+
+    .site-header.is-menu-open .site-toggler .fa-bars::before {
+        content: "\f00d" !important;
+    }
+
     .site-mobile-panel {
         display: none;
     }
@@ -399,15 +430,15 @@
         }
 
         .site-collapse {
-            margin-top: 14px;
-            padding: 16px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.88);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            max-height: calc(100vh - 104px);
+            margin-top: 16px;
+            padding: 20px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(15, 81, 50, 0.08);
+            box-shadow: 0 30px 60px rgba(15, 81, 50, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            max-height: calc(100vh - var(--site-header-offset, 100px) - 24px);
             overflow-y: auto;
             overscroll-behavior: contain;
         }
@@ -415,10 +446,10 @@
         .site-collapse-content {
             flex-direction: column;
             align-items: stretch;
-            gap: 14px;
+            gap: 16px;
             opacity: 0;
-            transform: translateY(-8px);
-            transition: opacity var(--site-menu-transition), transform var(--site-menu-transition);
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .site-collapse.show .site-collapse-content,
@@ -428,59 +459,102 @@
         }
 
         .site-collapse.show {
-            animation: siteMenuPanelIn var(--site-menu-transition) both;
+            animation: siteMenuPanelIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .site-menu-mobile-header {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #8c9b94;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 6px;
+            padding-left: 4px;
         }
 
         .site-nav-links {
             width: 100%;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             padding: 0;
             background: transparent;
             border: 0;
             box-shadow: none;
         }
 
+        .site-nav-links a {
+            opacity: 0; /* Animated entry */
+        }
+
         .site-nav-links .nav-link,
         .site-header--overlay .site-nav-links .nav-link,
         .site-header--overlay.is-scrolled .site-nav-links .nav-link {
             width: 100%;
+            display: flex;
+            align-items: center;
             justify-content: flex-start;
-            color: #1f2937;
-            opacity: 0;
-            transform: translateY(-6px);
-        }
-
-        .site-collapse.show .site-nav-links .nav-link,
-        .site-collapse.show .site-mobile-action-card {
-            animation: siteMenuItemIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .site-collapse.show .site-nav-links .nav-link:nth-child(2) {
-            animation-delay: 0.03s;
-        }
-
-        .site-collapse.show .site-nav-links .nav-link:nth-child(3) {
-            animation-delay: 0.06s;
-        }
-
-        .site-collapse.show .site-nav-links .nav-link:nth-child(4) {
-            animation-delay: 0.09s;
-        }
-
-        .site-collapse.show .site-nav-links .nav-link:nth-child(5) {
-            animation-delay: 0.12s;
-        }
-
-        .site-collapse.show .site-nav-links .nav-link:nth-child(6) {
-            animation-delay: 0.15s;
+            color: #2d3748;
+            min-height: 52px;
+            font-size: 0.96rem;
+            font-weight: 700;
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            background: rgba(15, 81, 50, 0.03);
+            border: 1px solid rgba(15, 81, 50, 0.05);
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .site-nav-links .nav-link:hover,
         .site-header--overlay .site-nav-links .nav-link:hover,
         .site-header--overlay.is-scrolled .site-nav-links .nav-link:hover {
-            background: rgba(209, 231, 221, 0.7);
+            background: rgba(209, 231, 221, 0.45);
             color: #0f5132;
-            border-color: rgba(15, 81, 50, 0.08);
+            border-color: rgba(15, 81, 50, 0.12);
+            transform: translateX(4px);
+        }
+
+        .site-nav-links .nav-link.active,
+        .site-header--overlay .site-nav-links .nav-link.active,
+        .site-header--overlay.is-scrolled .site-nav-links .nav-link.active {
+            color: #ffffff !important;
+            background: linear-gradient(135deg, #0f5132, #198754);
+            border-color: transparent;
+            box-shadow: 0 12px 24px rgba(15, 81, 50, 0.2);
+            transform: none;
+        }
+
+        .nav-link-icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: rgba(15, 81, 50, 0.08);
+            color: #0f5132;
+            margin-right: 12px;
+            transition: all 0.22s ease;
+        }
+
+        .nav-link.active .nav-link-icon-wrapper {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        .nav-link-chevron {
+            font-size: 0.8rem;
+            opacity: 0.45;
+            transition: all 0.22s ease;
+        }
+
+        .nav-link:hover .nav-link-chevron {
+            opacity: 0.8;
+            transform: translateX(2px);
+        }
+
+        .nav-link.active .nav-link-chevron {
+            color: #ffffff;
+            opacity: 0.9;
         }
 
         .site-actions {
@@ -495,19 +569,16 @@
             margin-top: 4px;
             padding-top: 14px;
             border-top: 1px solid rgba(15, 81, 50, 0.08);
+            opacity: 0;
         }
 
-        .site-collapse.show .site-mobile-action-card:nth-child(1) {
-            animation-delay: 0.08s;
-        }
-
-        .site-collapse.show .site-mobile-action-card:nth-child(2) {
-            animation-delay: 0.12s;
-        }
-
-        .site-collapse.show .site-mobile-action-card:nth-child(3) {
-            animation-delay: 0.16s;
-        }
+        .site-collapse.show .site-nav-links a:nth-child(1) { animation: siteMenuItemIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both; }
+        .site-collapse.show .site-nav-links a:nth-child(2) { animation: siteMenuItemIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both; }
+        .site-collapse.show .site-nav-links a:nth-child(3) { animation: siteMenuItemIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both; }
+        .site-collapse.show .site-nav-links a:nth-child(4) { animation: siteMenuItemIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both; }
+        .site-collapse.show .site-nav-links a:nth-child(5) { animation: siteMenuItemIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both; }
+        .site-collapse.show .site-nav-links a:nth-child(6) { animation: siteMenuItemIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both; }
+        .site-collapse.show .site-mobile-panel { animation: siteMenuItemIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both; }
 
         .site-mobile-action-grid {
             display: grid;
@@ -590,7 +661,7 @@
         }
 
         .site-header--overlay .site-collapse {
-            background: rgba(255, 255, 255, 0.86);
+            background: rgba(255, 255, 255, 0.94);
         }
 
         .site-header:not(.site-header--overlay) ~ .page-header,
@@ -716,20 +787,45 @@
                         <span class="badge bg-success text-white site-cart-badge">{{ $cartItemCount }}</span>
                     </a>
                 </div>
-                <button class="navbar-toggler site-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Buka menu navigasi">
+                <button class="navbar-toggler site-toggler" type="button" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Buka menu navigasi">
                     <span class="fa fa-bars"></span>
                 </button>
             </div>
             <div class="collapse navbar-collapse site-collapse" id="navbarCollapse">
                 <div class="site-collapse-content">
+                    <div class="site-menu-mobile-header d-xl-none">Menu Utama</div>
                     <div class="navbar-nav mx-auto site-nav-links">
-                        <a href="{{ url('/') }}" class="nav-item {{ $isHomePage ? 'active' : '' }} nav-link" {{ $isHomePage ? 'aria-current="page"' : '' }}>Home</a>
-                        <a href="{{ route('shop') }}" class="nav-item {{ Request::is('shop*') && !Request::is('shopCetak*') ? 'active' : '' }} nav-link" {{ Request::is('shop*') && !Request::is('shopCetak*') ? 'aria-current="page"' : '' }}>Products</a>
-                        <a href="{{ route('shopCetak') }}" class="nav-item {{ Request::is('shopCetak*') ? 'active' : '' }} nav-link" {{ Request::is('shopCetak*') ? 'aria-current="page"' : '' }}>Layanan Cetak</a>
+                        <a href="{{ url('/') }}" class="nav-item {{ $isHomePage ? 'active' : '' }} nav-link" {{ $isHomePage ? 'aria-current="page"' : '' }}>
+                            <span class="nav-link-icon-wrapper d-xl-none"><i class="fas fa-home"></i></span>
+                            <span>Home</span>
+                            <i class="fas fa-chevron-right ms-auto d-xl-none nav-link-chevron"></i>
+                        </a>
+                        <a href="{{ route('shop') }}" class="nav-item {{ Request::is('shop*') && !Request::is('shopCetak*') ? 'active' : '' }} nav-link" {{ Request::is('shop*') && !Request::is('shopCetak*') ? 'aria-current="page"' : '' }}>
+                            <span class="nav-link-icon-wrapper d-xl-none"><i class="fas fa-th-large"></i></span>
+                            <span>Products</span>
+                            <i class="fas fa-chevron-right ms-auto d-xl-none nav-link-chevron"></i>
+                        </a>
+                        <a href="{{ route('shopCetak') }}" class="nav-item {{ Request::is('shopCetak*') ? 'active' : '' }} nav-link" {{ Request::is('shopCetak*') ? 'aria-current="page"' : '' }}>
+                            <span class="nav-link-icon-wrapper d-xl-none"><i class="fas fa-print"></i></span>
+                            <span>Layanan Cetak</span>
+                            <i class="fas fa-chevron-right ms-auto d-xl-none nav-link-chevron"></i>
+                        </a>
                         @auth
-                            <a href="{{ url('carts') }}" class="nav-item {{ Request::is('carts*') ? 'active' : '' }} nav-link" {{ Request::is('carts*') ? 'aria-current="page"' : '' }}>Carts</a>
-                            <a href="{{ url('orders') }}" class="nav-item {{ Request::is('orders*') ? 'active' : '' }} nav-link" {{ Request::is('orders*') ? 'aria-current="page"' : '' }}>Orders</a>
-                            <a href="{{ route('frontend.print-service') }}" class="nav-item {{ Request::is('smart-print*') ? 'active' : '' }} nav-link" {{ Request::is('smart-print*') ? 'aria-current="page"' : '' }}>Smart Print</a>
+                            <a href="{{ url('carts') }}" class="nav-item {{ Request::is('carts*') ? 'active' : '' }} nav-link" {{ Request::is('carts*') ? 'aria-current="page"' : '' }}>
+                                <span class="nav-link-icon-wrapper d-xl-none"><i class="fas fa-shopping-cart"></i></span>
+                                <span>Carts</span>
+                                <i class="fas fa-chevron-right ms-auto d-xl-none nav-link-chevron"></i>
+                            </a>
+                            <a href="{{ url('orders') }}" class="nav-item {{ Request::is('orders*') ? 'active' : '' }} nav-link" {{ Request::is('orders*') ? 'aria-current="page"' : '' }}>
+                                <span class="nav-link-icon-wrapper d-xl-none"><i class="fas fa-file-invoice-dollar"></i></span>
+                                <span>Orders</span>
+                                <i class="fas fa-chevron-right ms-auto d-xl-none nav-link-chevron"></i>
+                            </a>
+                            <a href="{{ route('frontend.print-service') }}" class="nav-item {{ Request::is('smart-print*') ? 'active' : '' }} nav-link" {{ Request::is('smart-print*') ? 'aria-current="page"' : '' }}>
+                                <span class="nav-link-icon-wrapper d-xl-none"><i class="fas fa-magic"></i></span>
+                                <span>Smart Print</span>
+                                <i class="fas fa-chevron-right ms-auto d-xl-none nav-link-chevron"></i>
+                            </a>
                         @endauth
                     </div>
                     <div class="site-mobile-panel d-xl-none">
@@ -800,6 +896,7 @@
             </div>
         </div>
         <!-- Modal Search End -->
+<div class="site-menu-backdrop"></div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var siteHeader = document.querySelector('[data-site-header]');
@@ -834,6 +931,7 @@
         if (collapseElement) {
             syncMenuState(collapseElement.classList.contains('show'));
 
+            // Handlers for BS collapse event triggers if triggered programmatically
             collapseElement.addEventListener('show.bs.collapse', function () {
                 syncMenuState(true);
             });
@@ -842,16 +940,54 @@
                 syncMenuState(false);
             });
 
+            // Robust manual click toggler
+            var toggler = document.querySelector('.site-toggler');
+            if (toggler) {
+                toggler.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var isOpen = collapseElement.classList.contains('show');
+                    if (isOpen) {
+                        collapseElement.classList.remove('show');
+                        toggler.setAttribute('aria-expanded', 'false');
+                        toggler.classList.add('collapsed');
+                        syncMenuState(false);
+                    } else {
+                        collapseElement.classList.add('show');
+                        toggler.setAttribute('aria-expanded', 'true');
+                        toggler.classList.remove('collapsed');
+                        syncMenuState(true);
+                    }
+                });
+            }
+
+            // Close menu when clicking on links inside
             collapseElement.querySelectorAll('.nav-link, .site-mobile-action-card').forEach(function (element) {
                 element.addEventListener('click', function () {
-                    if (window.innerWidth >= 1200 || !collapseElement.classList.contains('show') || !window.bootstrap) {
+                    if (window.innerWidth >= 1200 || !collapseElement.classList.contains('show')) {
                         return;
                     }
-
-                    window.bootstrap.Collapse.getOrCreateInstance(collapseElement, {
-                        toggle: false
-                    }).hide();
+                    collapseElement.classList.remove('show');
+                    if (toggler) {
+                        toggler.setAttribute('aria-expanded', 'false');
+                        toggler.classList.add('collapsed');
+                    }
+                    syncMenuState(false);
                 });
+            });
+
+            // Close menu when clicking outside of the header area
+            document.addEventListener('click', function (e) {
+                if (window.innerWidth < 1200 && collapseElement.classList.contains('show')) {
+                    if (!siteHeader.contains(e.target)) {
+                        collapseElement.classList.remove('show');
+                        if (toggler) {
+                            toggler.setAttribute('aria-expanded', 'false');
+                            toggler.classList.add('collapsed');
+                        }
+                        syncMenuState(false);
+                    }
+                }
             });
         }
 
