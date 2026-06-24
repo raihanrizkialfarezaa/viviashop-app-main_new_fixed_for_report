@@ -96,13 +96,13 @@ body, input, button, select, textarea {
 .dp-gallery-frame {
     position: relative;
     background: linear-gradient(160deg, #f0f8f4 0%, #ffffff 60%, #f7fbf8 100%);
-    min-height: 340px;
+    min-height: 480px;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
 }
 .dp-gallery-frame img {
     width: 100%; height: auto;
-    max-height: 340px; object-fit: contain;
+    max-height: 480px; object-fit: contain;
     display: block;
     transition: transform .6s var(--ease);
 }
@@ -306,7 +306,7 @@ body, input, button, select, textarea {
 .dp-spec-v { font-weight: 700; color: var(--c-text); text-align: right; word-break: break-all; }
 
 /* Courier / payment tags */
-.dp-tag-group { margin-bottom: 12px; }
+.dp-tag-group { margin-bottom: 14px; }
 .dp-tag-group:last-child { margin-bottom: 0; }
 .dp-tag-group-label {
     font-size: .68rem; font-weight: 700; text-transform: uppercase;
@@ -314,23 +314,33 @@ body, input, button, select, textarea {
     margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
 }
 .dp-tag-group-label i { color: var(--c-mid); }
-.dp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.dp-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .dp-tag {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 5px 10px; border-radius: var(--r-sm);
-    background: var(--c-bg); border: 1px solid var(--c-border);
-    color: var(--c-text); font-size: .71rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px; border-radius: 20px;
+    background: rgba(13, 79, 48, 0.03); border: 1px solid rgba(13, 79, 48, 0.08);
+    color: var(--c-text); font-size: .73rem; font-weight: 600;
     transition: all var(--t);
+    box-shadow: 0 1px 3px rgba(13, 79, 48, 0.02);
 }
-.dp-tag:hover { background: var(--c-soft); border-color: rgba(26,122,74,.25); transform: translateY(-1px); }
-.dp-tag i { font-size: .75rem; }
-.ti-jne { color: #f97316 !important; }
-.ti-jnt { color: #dc2626 !important; }
-.ti-scp { color: #b91c1c !important; }
-.ti-go  { color: #16a34a !important; }
-.ti-bk  { color: #2563eb !important; }
-.ti-qr  { color: #ec4899 !important; }
-.ti-cod { color: #92400e !important; }
+.dp-tag:hover {
+    background: var(--c-soft);
+    border-color: rgba(26, 122, 74, 0.35);
+    color: var(--c-primary);
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 10px rgba(13, 79, 48, 0.06);
+}
+.dp-tag-icon {
+    width: 14px; height: 14px;
+    flex-shrink: 0;
+    display: inline-block;
+    color: var(--c-mid);
+    transition: color var(--t), transform 0.2s var(--ease);
+}
+.dp-tag:hover .dp-tag-icon {
+    color: var(--c-primary);
+    transform: scale(1.1);
+}
 
 /* ── VARIANT PANEL ──────────────────────────────────────── */
 .dp-variant-panel {
@@ -591,7 +601,7 @@ body, input, button, select, textarea {
 }
 #price-display { color: var(--c-primary); font-size: 1.55rem; font-weight: 900; letter-spacing: -.025em; }
 
-.dp-sidebar-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+.dp-sidebar-meta { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 6px; margin-bottom: 12px; }
 .dp-sidebar-meta-item {
     padding: 8px 10px; border-radius: var(--r-sm);
     background: var(--c-soft); border: 1px solid var(--c-border);
@@ -728,8 +738,8 @@ body, input, button, select, textarea {
         box-shadow: none !important;
         margin: 0 -12px; /* cancel container padding */
     }
-    .dp-gallery-frame { min-height: 260px; border-radius: 0; }
-    .dp-gallery-frame img { max-height: 260px; }
+    .dp-gallery-frame { min-height: 380px; border-radius: 0; }
+    .dp-gallery-frame img { max-height: 380px; }
     .dp-thumbs { padding: 10px 12px 12px; }
 
     /* Product info card */
@@ -768,8 +778,8 @@ body, input, button, select, textarea {
 }
 
 @media (max-width: 575.98px) {
-    .dp-gallery-frame { min-height: 220px; }
-    .dp-gallery-frame img { max-height: 220px; }
+    .dp-gallery-frame { min-height: 320px; }
+    .dp-gallery-frame img { max-height: 320px; }
     .variant-option { min-width: calc(50% - 4px); flex-grow: 1; }
 }
 
@@ -1002,18 +1012,66 @@ body, input, button, select, textarea {
                                 <div class="dp-tag-group">
                                     <div class="dp-tag-group-label"><i class="fas fa-truck-fast"></i> Kurir Tersedia</div>
                                     <div class="dp-tags">
-                                        <span class="dp-tag"><i class="fas fa-shipping-fast ti-jne"></i>JNE Express</span>
-                                        <span class="dp-tag"><i class="fas fa-shipping-fast ti-jnt"></i>J&amp;T Express</span>
-                                        <span class="dp-tag"><i class="fas fa-shipping-fast ti-scp"></i>SiCepat</span>
-                                        <span class="dp-tag"><i class="fas fa-motorcycle ti-go"></i>GoSend / Grab</span>
+                                        <span class="dp-tag">
+                                            <svg class="dp-tag-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M2 17h4l3-10H5z" opacity="0.6"/>
+                                                <path d="M7 17h4l3-10H9z" opacity="0.8"/>
+                                                <path d="M12 17h4l3-10H14z"/>
+                                            </svg>
+                                            JNE Express
+                                        </span>
+                                        <span class="dp-tag">
+                                            <svg class="dp-tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M4 5h5v9a3 3 0 0 1-5 0" />
+                                                <path d="M12 5h8M16 5v13" />
+                                                <circle cx="10.5" cy="12" r="2" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
+                                            </svg>
+                                            J&amp;T Express
+                                        </span>
+                                        <span class="dp-tag">
+                                            <svg class="dp-tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                            </svg>
+                                            SiCepat
+                                        </span>
+                                        <span class="dp-tag">
+                                            <svg class="dp-tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="6" cy="19" r="2"/>
+                                                <circle cx="18" cy="19" r="2"/>
+                                                <path d="M6 12h5l2 5h3"/>
+                                                <path d="M16 11l-2-6h-2"/>
+                                                <rect x="3" y="6" width="6" height="6" rx="1"/>
+                                            </svg>
+                                            GoSend / Grab
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="dp-tag-group">
                                     <div class="dp-tag-group-label"><i class="fas fa-wallet"></i> Metode Pembayaran</div>
                                     <div class="dp-tags">
-                                        <span class="dp-tag"><i class="fas fa-university ti-bk"></i>Transfer Bank</span>
-                                        <span class="dp-tag"><i class="fas fa-qrcode ti-qr"></i>QRIS / E-Wallet</span>
-                                        <span class="dp-tag"><i class="fas fa-hand-holding-usd ti-cod"></i>Bayar di Toko</span>
+                                        <span class="dp-tag">
+                                            <svg class="dp-tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3 21h18M3 10h18M6 10v7M10 10v7M14 10v7M18 10v7M12 3L3 10h18L12 3z"/>
+                                            </svg>
+                                            Transfer Bank
+                                        </span>
+                                        <span class="dp-tag">
+                                            <svg class="dp-tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                                <rect x="14" y="14" width="3" height="3" rx="0.5"/>
+                                                <rect x="18" y="18" width="3" height="3" rx="0.5"/>
+                                                <path d="M14 17h.01M17 14h.01M17 17v-3"/>
+                                            </svg>
+                                            QRIS / E-Wallet
+                                        </span>
+                                        <span class="dp-tag">
+                                            <svg class="dp-tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3 9h18M3 9l1-5h16l1 5M5 9v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9M9 14h6"/>
+                                            </svg>
+                                            Bayar di Toko
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -1251,7 +1309,7 @@ body, input, button, select, textarea {
                     </div>
                     <div class="dp-sidebar-meta-item">
                         <small><i class="fas fa-cube me-1"></i>Status</small>
-                        <div id="stock-info" style="font-weight:700;color:var(--c-text);font-size:.74rem;">
+                        <div id="stock-info" class="dp-meta-val" style="font-weight:700;color:var(--c-text);font-size:.74rem;">
                             @if($stockQty) Stok: {{ $stockQty }} @else Habis @endif
                         </div>
                     </div>
