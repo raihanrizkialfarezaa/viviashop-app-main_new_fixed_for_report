@@ -670,7 +670,12 @@ $(document).ready(function() {
     $('#addToCartForm').on('submit', function(e) {
         if ($('#selectedVariantId').val() === '' && productVariants.length > 0) {
             e.preventDefault();
-            alert('Silakan pilih varian produk terlebih dahulu.');
+            Swal.fire({
+                title: 'Perhatian',
+                text: 'Silakan pilih varian produk terlebih dahulu.',
+                icon: 'warning',
+                confirmButtonColor: '#0d4f30'
+            });
             return false;
         }
     });

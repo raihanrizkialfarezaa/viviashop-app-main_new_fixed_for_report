@@ -496,6 +496,9 @@ body, input, button, select, textarea {
     cursor: not-allowed; transform: none !important;
 }
 .add-to-cart-btn { min-height: auto; }
+.qty-down-btn.btn-danger-custom {
+    background: #e11d48 !important;
+}
 
 /* ── TABS ────────────────────────────────────────────────── */
 .dp-tabs-shell { padding: 0; }
@@ -641,6 +644,128 @@ body, input, button, select, textarea {
     font-size: .78rem !important;
     box-shadow: 0 2px 8px rgba(239, 68, 68, 0.04);
 }
+
+/* Premium SweetAlert2 Custom Styling Overrides */
+.swal2-popup {
+    font-family: var(--font) !important;
+    border-radius: var(--r-xl) !important;
+    border: 1px solid var(--c-border) !important;
+    box-shadow: var(--shadow-lg) !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+}
+.swal2-title {
+    color: var(--c-text) !important;
+    font-weight: 800 !important;
+    font-size: 1.25rem !important;
+    letter-spacing: -.02em !important;
+}
+.swal2-html-container {
+    color: var(--c-muted) !important;
+    font-size: .88rem !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+}
+.swal2-confirm {
+    background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-mid) 100%) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 10px 24px !important;
+    font-size: .85rem !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(13, 79, 48, 0.2) !important;
+}
+.swal2-cancel {
+    background: #f1f5f9 !important;
+    color: #64748b !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    padding: 10px 24px !important;
+    font-size: .85rem !important;
+    font-weight: 700 !important;
+}
+.swal2-loader {
+    border-color: var(--c-primary) transparent var(--c-primary) transparent !important;
+}
+
+/* Smooth transition keyframes */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.96) translateY(2px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-fade-in {
+    animation: fadeInScale 0.22s var(--ease) forwards;
+}
+
+/* Swap container for super smooth transitions */
+.swap-container {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr !important;
+    align-items: center !important;
+    position: relative !important;
+}
+
+.swap-item {
+    grid-area: 1 / 1 / 2 / 2 !important;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1), transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.28s !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    visibility: visible !important;
+}
+
+.swap-item.hidden-state {
+    opacity: 0 !important;
+    transform: scale(0.92) !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Premium SweetAlert2 Custom Styling & Animations */
+@keyframes swalScaleIn {
+    0% { transform: scale(0.9) translateY(12px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes swalScaleOut {
+    0% { transform: scale(1) translateY(0); opacity: 1; }
+    100% { transform: scale(0.9) translateY(12px); opacity: 0; }
+}
+
+.swal-custom-show {
+    animation: swalScaleIn 0.26s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+.swal-custom-hide {
+    animation: swalScaleOut 0.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards !important;
+}
+
+/* Badge scaling animation on change */
+@keyframes badgePop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+.badge-pop {
+    animation: badgePop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Loading spinner utility */
+.btn-spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: text-bottom;
+    border: 0.2em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+    margin-right: 8px;
+}
+@keyframes spinner-border {
+    to { transform: rotate(360deg); }
+}
+
 
 .dp-ship-row {
     display: flex; justify-content: space-between; align-items: center;
@@ -1175,35 +1300,66 @@ body, input, button, select, textarea {
 
                         {{-- MOBILE CHECKOUT CARD (hidden lg+) --}}
                         <div class="dp-checkout-mobile d-lg-none mt-3">
-                            <div class="dp-checkout-row">
-                                <span class="dp-qty-label"><i class="fas fa-layer-group me-1 opacity-60"></i>Kuantitas</span>
-                                <div class="dp-qty-wrap">
-                                    <div class="qty-counter">
-                                        <button type="button" class="qty-btn"
-                                                onclick="var q=document.getElementById('quantity-mobile-page'),v=parseInt(q.value)||1,m=parseInt(q.min)||1;if(v>m){q.value=v-1;q.dispatchEvent(new Event('input'));}"
-                                                aria-label="Kurangi">
-                                            <i class="fas fa-minus" style="font-size:.75rem;"></i>
-                                        </button>
-                                        <input type="number" class="form-control" id="quantity-mobile-page" value="1" min="1" readonly>
-                                        <button type="button" class="qty-btn"
-                                                onclick="var q=document.getElementById('quantity-mobile-page'),v=parseInt(q.value)||1,mx=parseInt(q.max)||9999;if(v<mx){q.value=v+1;q.dispatchEvent(new Event('input'));}"
-                                                aria-label="Tambah">
-                                            <i class="fas fa-plus" style="font-size:.75rem;"></i>
-                                        </button>
+                            {{-- Row 1: Quantity and Subtotal Side-by-Side --}}
+                            <div class="d-flex align-items-center justify-content-between mb-3 gap-2">
+                                <div>
+                                    <div class="dp-sidebar-qty-label mb-1" style="font-size: .68rem; text-transform: uppercase; color: var(--c-muted); font-weight: 700; letter-spacing: 0.05em;"><i class="fas fa-layer-group me-1 opacity-60"></i>Kuantitas</div>
+                                    
+                                    <div class="swap-container" style="min-width: 110px; min-height: 38px;">
+                                        {{-- Standard Quantity Selector (If NOT in Cart) --}}
+                                        <div class="qty-counter-wrapper swap-item" id="mobile-page-qty-counter-normal">
+                                            <div class="qty-counter" style="border: 1px solid var(--c-border); border-radius: 10px; background: var(--c-bg); padding: 2px;">
+                                                <button type="button" class="qty-btn" style="width: 32px; height: 32px; border-radius: 8px; border: none; background: #fff;"
+                                                        onclick="var q=document.getElementById('quantity-mobile-page'),v=parseInt(q.value)||1,m=parseInt(q.min)||1;if(v>m){q.value=v-1;q.dispatchEvent(new Event('input'));}"
+                                                        aria-label="Kurangi">
+                                                    <i class="fas fa-minus" style="font-size:.65rem;"></i>
+                                                </button>
+                                                <input type="number" class="form-control" id="quantity-mobile-page" value="1" min="1" readonly style="width: 36px; font-weight: 800; font-size: .85rem; text-align: center;">
+                                                <button type="button" class="qty-btn" style="width: 32px; height: 32px; border-radius: 8px; border: none; background: #fff;"
+                                                        onclick="var q=document.getElementById('quantity-mobile-page'),v=parseInt(q.value)||1,mx=parseInt(q.max)||9999;if(v<mx){q.value=v+1;q.dispatchEvent(new Event('input'));}"
+                                                        aria-label="Tambah">
+                                                    <i class="fas fa-plus" style="font-size:.65rem;"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {{-- Cart Quantity Modifier (If IS in Cart) --}}
+                                        <div class="cart-modifier-widget mobile-page-cart-modifier swap-item hidden-state" style="display: flex; align-items: center; justify-content: space-between; background: var(--c-soft); padding: 2px; border-radius: 10px; border: 1.5px solid var(--c-mid); height: 38px; width: 110px;">
+                                            <button type="button" class="btn-dp-primary qty-down-btn" style="width: 32px; height: 32px; padding: 0; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #e11d48 !important; box-shadow: none; flex-shrink: 0; border: none;">
+                                                <i class="fa fa-trash" style="font-size: .7rem;"></i>
+                                            </button>
+                                            <span class="cart-qty-display" style="font-weight: 800; font-size: .95rem; color: var(--c-primary); width: 36px; text-align: center;">1</span>
+                                            <button type="button" class="btn-dp-primary qty-up-btn" style="width: 32px; height: 32px; padding: 0; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: none; flex-shrink: 0; border: none;">
+                                                <i class="fa fa-plus" style="font-size: .7rem;"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
+
+                                {{-- Right Side: Subtotal Display --}}
+                                <div class="text-end">
+                                    <div class="dp-sidebar-qty-label mb-1" style="font-size: .68rem; text-transform: uppercase; color: var(--c-muted); font-weight: 700; letter-spacing: 0.05em;"><i class="fas fa-coins me-1 opacity-60"></i>Subtotal</div>
+                                    <div class="mobile-subtotal-display" style="font-weight: 900; font-size: 1.2rem; color: var(--c-primary); letter-spacing: -.02em;">Rp 0</div>
+                                </div>
                             </div>
-                            <button type="button" class="btn-dp-primary add-to-cart-btn-mobile-page"
-                                    @if($parentProduct->type == 'configurable' && $variants->count() > 0) disabled @endif>
-                                <i class="fa fa-shopping-bag"></i>
-                                <span class="cta-text">
-                                    @if($parentProduct->type == 'configurable' && $variants->count() > 0)
-                                        Pilih Varian Dulu
-                                    @else
-                                        Tambah ke Keranjang
-                                    @endif
-                                </span>
-                            </button>
+
+                            {{-- Row 2: Action Button --}}
+                            <div class="mobile-page-cta-wrapper swap-container w-100" style="min-height: 48px;">
+                                <button type="button" class="btn-dp-primary add-to-cart-btn-mobile-page w-100 swap-item"
+                                        @if($parentProduct->type == 'configurable' && $variants->count() > 0) disabled @endif>
+                                    <i class="fa fa-shopping-bag"></i>
+                                    <span class="cta-text">
+                                        @if($parentProduct->type == 'configurable' && $variants->count() > 0)
+                                            Pilih Varian Dulu
+                                        @else
+                                            Tambah ke Keranjang
+                                        @endif
+                                    </span>
+                                </button>
+                                <a href="{{ route('carts.index') }}" class="btn-dp-secondary go-to-cart-btn mobile-page-go-to-cart-btn w-100 swap-item hidden-state" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: .9rem; padding: 14px 20px; border-radius: 13px; text-decoration: none; border: 1.5px solid var(--c-primary); color: var(--c-primary); background: #fff; box-shadow: var(--shadow-sm); transition: all var(--t); margin-bottom: 0;">
+                                    <i class="fas fa-shopping-cart"></i> Lihat Keranjang / Checkout
+                                </a>
+                            </div>
                         </div>
 
                         {{-- LONG DESCRIPTION (mobile only, lg hidden) --}}
@@ -1358,41 +1514,77 @@ body, input, button, select, textarea {
                     <div class="dp-ship-courier">JNE / J&T / SiCepat</div>
                 </div>
 
-                {{-- Quantity --}}
-                <div class="dp-sidebar-qty-label"><i class="fas fa-layer-group me-1 opacity-60"></i>Kuantitas</div>
-                <div class="dp-sidebar-qty-wrap">
-                    <div class="qty-counter">
-                        <button type="button" class="qty-btn"
-                                onclick="var q=document.getElementById('quantity'),v=parseInt(q.value)||1,m=parseInt(q.min)||1;if(v>m){q.value=v-1;q.dispatchEvent(new Event('input'));}"
-                                aria-label="Kurangi">
-                            <i class="fas fa-minus" style="font-size:.75rem;"></i>
-                        </button>
-                        <input type="number" class="form-control" id="quantity" value="1" min="1" readonly>
-                        <button type="button" class="qty-btn"
-                                onclick="var q=document.getElementById('quantity'),v=parseInt(q.value)||1,mx=parseInt(q.max)||9999;if(v<mx){q.value=v+1;q.dispatchEvent(new Event('input'));}"
-                                aria-label="Tambah">
-                            <i class="fas fa-plus" style="font-size:.75rem;"></i>
-                        </button>
-                    </div>
-                </div>
-
                 <input type="hidden" id="selected-variant-id" value="">
 
-                {{-- CTA --}}
-                <button class="btn-dp-primary add-to-cart-btn mb-2"
-                        data-product-id="{{ $parentProduct->id }}"
-                        data-product-type="{{ $parentProduct->type }}"
-                        data-product-slug="{{ $parentProduct->slug }}"
-                        @if($parentProduct->type == 'configurable' && $variants->count() > 0) disabled @endif>
-                    <i class="fa fa-shopping-bag"></i>
-                    <span class="cta-text">
-                        @if($parentProduct->type == 'configurable' && $variants->count() > 0)
-                            Pilih Varian Dulu
-                        @else
-                            Tambah ke Keranjang
-                        @endif
-                    </span>
-                </button>
+                {{-- Dynamic Checkout Section --}}
+                <div class="sidebar-checkout-section mt-3">
+                    {{-- Row 1: Quantity and Subtotal Side-by-Side --}}
+                    <div class="d-flex align-items-center justify-content-between mb-3 gap-2">
+                        <div>
+                            <div class="dp-sidebar-qty-label mb-1" style="font-size: .68rem; text-transform: uppercase; color: var(--c-muted); font-weight: 700; letter-spacing: 0.05em;"><i class="fas fa-layer-group me-1 opacity-60"></i>Kuantitas</div>
+                            
+                            <div class="swap-container" style="min-width: 110px; min-height: 38px;">
+                                {{-- Standard Quantity Selector (If NOT in Cart) --}}
+                                <div class="qty-counter-wrapper swap-item" id="sidebar-qty-counter-normal">
+                                    <div class="qty-counter" style="border: 1px solid var(--c-border); border-radius: 10px; background: var(--c-bg); padding: 2px;">
+                                        <button type="button" class="qty-btn" style="width: 32px; height: 32px; border-radius: 8px; border: none; background: #fff;"
+                                                onclick="var q=document.getElementById('quantity'),v=parseInt(q.value)||1,m=parseInt(q.min)||1;if(v>m){q.value=v-1;q.dispatchEvent(new Event('input'));}"
+                                                aria-label="Kurangi">
+                                            <i class="fas fa-minus" style="font-size:.65rem;"></i>
+                                        </button>
+                                        <input type="number" class="form-control" id="quantity" value="1" min="1" readonly style="width: 36px; font-weight: 800; font-size: .85rem; text-align: center;">
+                                        <button type="button" class="qty-btn" style="width: 32px; height: 32px; border-radius: 8px; border: none; background: #fff;"
+                                                onclick="var q=document.getElementById('quantity'),v=parseInt(q.value)||1,mx=parseInt(q.max)||9999;if(v<mx){q.value=v+1;q.dispatchEvent(new Event('input'));}"
+                                                aria-label="Tambah">
+                                            <i class="fas fa-plus" style="font-size:.65rem;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {{-- Cart Quantity Modifier (If IS in Cart) --}}
+                                <div class="cart-modifier-widget desktop-cart-modifier swap-item hidden-state" style="display: flex; align-items: center; justify-content: space-between; background: var(--c-soft); padding: 2px; border-radius: 10px; border: 1.5px solid var(--c-mid); height: 38px; width: 110px;">
+                                    <button type="button" class="btn-dp-primary qty-down-btn" style="width: 32px; height: 32px; padding: 0; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #e11d48 !important; box-shadow: none; flex-shrink: 0; border: none;">
+                                        <i class="fa fa-trash" style="font-size: .7rem;"></i>
+                                    </button>
+                                    <span class="cart-qty-display" style="font-weight: 800; font-size: .95rem; color: var(--c-primary); width: 36px; text-align: center;">1</span>
+                                    <button type="button" class="btn-dp-primary qty-up-btn" style="width: 32px; height: 32px; padding: 0; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: none; flex-shrink: 0; border: none;">
+                                        <i class="fa fa-plus" style="font-size: .7rem;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Right Side: Subtotal Display --}}
+                        <div class="text-end">
+                            <div class="dp-sidebar-qty-label mb-1" style="font-size: .68rem; text-transform: uppercase; color: var(--c-muted); font-weight: 700; letter-spacing: 0.05em;"><i class="fas fa-coins me-1 opacity-60"></i>Subtotal</div>
+                            <div id="subtotal-display" style="font-weight: 900; font-size: 1.2rem; color: var(--c-primary); letter-spacing: -.02em;">Rp 0</div>
+                        </div>
+                    </div>
+
+                    {{-- Row 2: Action Button --}}
+                    <div class="cta-btn-wrapper swap-container w-100" style="min-height: 48px;">
+                        {{-- Add to Cart Button (If NOT in Cart) --}}
+                        <button class="btn-dp-primary add-to-cart-btn w-100 swap-item"
+                                data-product-id="{{ $parentProduct->id }}"
+                                data-product-type="{{ $parentProduct->type }}"
+                                data-product-slug="{{ $parentProduct->slug }}"
+                                @if($parentProduct->type == 'configurable' && $variants->count() > 0) disabled @endif>
+                            <i class="fa fa-shopping-bag"></i>
+                            <span class="cta-text">
+                                @if($parentProduct->type == 'configurable' && $variants->count() > 0)
+                                    Pilih Varian Dulu
+                                @else
+                                    Tambah ke Keranjang
+                                @endif
+                            </span>
+                        </button>
+
+                        {{-- Go to Cart / Checkout Button (If IS in Cart) --}}
+                        <a href="{{ route('carts.index') }}" class="btn-dp-secondary go-to-cart-btn w-100 swap-item hidden-state" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: .9rem; padding: 14px 20px; border-radius: 13px; text-decoration: none; border: 1.5px solid var(--c-primary); color: var(--c-primary); background: #fff; box-shadow: var(--shadow-sm); transition: all var(--t); margin-bottom: 0;">
+                            <i class="fas fa-shopping-cart"></i> Lihat Keranjang / Checkout
+                        </a>
+                    </div>
+                </div>
 
                 {{-- Share --}}
                 <div class="dp-share">
@@ -1438,14 +1630,41 @@ body, input, button, select, textarea {
             </div>
             <div class="dp-mobile-variant" id="mobile-variant-preview">Pilih Varian Produk</div>
         </div>
-        <button type="button" class="btn-dp-primary dp-mobile-cta" id="add-to-cart-mobile">
-            <i class="fa fa-shopping-bag"></i>+ Keranjang
-        </button>
+        <div class="mobile-sticky-cta-wrapper swap-container" style="flex-grow: 1; min-width: 120px; min-height: 46px;">
+            <button type="button" class="btn-dp-primary dp-mobile-cta swap-item" id="add-to-cart-mobile" style="width: 100%;">
+                <i class="fa fa-shopping-bag"></i>+ Keranjang
+            </button>
+            <div class="cart-modifier-widget mobile-sticky-cart-modifier swap-item hidden-state" style="display: flex; align-items: center; justify-content: space-between; background: var(--c-soft); padding: 2px; border-radius: 13px; border: 1.5px solid var(--c-mid); height: 46px; width: 100%;">
+                <button type="button" class="btn-dp-primary qty-down-btn" style="width: 40px; height: 40px; padding: 0; border-radius: 10.5px; display: flex; align-items: center; justify-content: center; background: #e11d48 !important; box-shadow: none; flex-shrink: 0; border: none;">
+                    <i class="fa fa-trash" style="font-size: .8rem;"></i>
+                </button>
+                <span class="cart-qty-display" style="font-weight: 800; font-size: 1.05rem; color: var(--c-primary); flex-grow: 1; text-align: center;">1</span>
+                <button type="button" class="btn-dp-primary qty-up-btn" style="width: 40px; height: 40px; padding: 0; border-radius: 10.5px; display: flex; align-items: center; justify-content: center; box-shadow: none; flex-shrink: 0; border: none;">
+                    <i class="fa fa-plus" style="font-size: .8rem;"></i>
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 
+@php
+    $cartItemsData = collect(Cart::content())->map(function($item) {
+        return [
+            'rowId' => $item->rowId,
+            'id' => $item->id,
+            'qty' => $item->qty,
+            'product_id' => $item->options->product_id,
+            'variant_id' => $item->options->variant_id,
+            'type' => $item->options->type,
+        ];
+    })->values();
+@endphp
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    let cartItems = @json($cartItemsData);
+    const parentProductId = @json($parentProduct->id);
+    const productType = @json($parentProduct->type);
 
     /* ── ELEMENT REFS ────────────────────────────────────────── */
     const addToCartBtn          = document.querySelector('.add-to-cart-btn');
@@ -1469,6 +1688,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileChatBtn         = document.getElementById('mobile-chat-btn');
     const mobilePriceDisplay    = document.getElementById('mobile-price-display');
     const mobileVariantPreview  = document.getElementById('mobile-variant-preview');
+    const mobilePageAddBtn      = document.querySelector('.add-to-cart-btn-mobile-page');
 
     let selectedAttributes  = {};
     let allVariants         = @json($variants && $variants->count() > 0 ? $variants->values() : []);
@@ -1580,6 +1800,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectionMessage) selectionMessage.style.display = 'none';
         updateStockDisplay(v.stock);
         if (mobileVariantPreview) { mobileVariantPreview.textContent = 'Varian: ' + v.name; mobileVariantPreview.style.color = 'var(--c-primary)'; }
+        syncCartWidgets();
     }
 
     function resetVariant() {
@@ -1589,6 +1810,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const dq = @json($parentProduct->productInventory ? $parentProduct->productInventory->qty : 0);
         updateStockDisplay(dq);
         if (mobileVariantPreview) { mobileVariantPreview.textContent = 'Pilih Varian Produk'; mobileVariantPreview.style.color = ''; }
+        syncCartWidgets();
     }
 
     function updateCartButton() {
@@ -1623,66 +1845,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function findExact() {
-        if (!Object.keys(selectedAttributes).length) return null;
-        return allVariants.find(v =>
-            Object.entries(selectedAttributes).every(([k, val]) =>
-                v.variant_attributes.some(a => a.attribute_name === k && a.attribute_value === val)
-            )
-        ) || null;
+       function showWidget(el) {
+        if (!el) return;
+        el.classList.remove('hidden-state');
     }
 
-    /* ── VARIANT BUTTON CLICKS ──────────────────────────────── */
-    document.querySelectorAll('.variant-option').forEach(btn => {
-        btn.addEventListener('click', function() {
-            if (this.disabled) return;
-            const attr = this.dataset.attribute, val = this.dataset.value;
-            selectedAttributes[attr] === val ? delete selectedAttributes[attr] : (selectedAttributes[attr] = val);
-            updateOptions();
-        });
-    });
-
-    /* ── DESKTOP ADD TO CART ────────────────────────────────── */
-    if (addToCartBtn) {
-        addToCartBtn.addEventListener('click', function(e) {
-            if (this.disabled) { e.preventDefault(); return; }
-            if (@json($parentProduct->type) === 'configurable' && @json($variants->count()) > 0) {
-                const exact = findExact();
-                if (!exact) { alert('Varian tidak ditemukan'); return; }
-                if (exact.stock < 1) { alert('Stok habis'); return; }
-            }
-            doAddToCart(quantityInput ? quantityInput.value : 1);
-        });
-    }
-
-    /* ── MOBILE PAGE ADD TO CART ────────────────────────────── */
-    const mobilePageAddBtn = document.querySelector('.add-to-cart-btn-mobile-page');
-    if (mobilePageAddBtn) {
-        mobilePageAddBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            if (addToCartBtn) addToCartBtn.click();
-        });
-    }
-
-    /* ── MOBILE STICKY CTA ──────────────────────────────────── */
-    if (mobileAddBtn) {
-        mobileAddBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            if (!addToCartBtn) return;
-            if (addToCartBtn.disabled) {
-                const panel = document.querySelector('.dp-variant-panel') || document.querySelector('.variant-panel');
-                if (panel) {
-                    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    const sm = document.getElementById('selection-message');
-                    if (sm) { sm.classList.add('pulse-highlight'); setTimeout(() => sm.classList.remove('pulse-highlight'), 1800); }
-                }
-            } else {
-                addToCartBtn.click();
-            }
-        });
+    function hideWidget(el) {
+        if (!el) return;
+        el.classList.add('hidden-state');
     }
 
     function doAddToCart(qty) {
+        console.log('[Cart] doAddToCart called with qty:', qty);
+        const originalHtmls = [];
+        const btns = [addToCartBtn, mobilePageAddBtn, mobileAddBtn].filter(Boolean);
+        btns.forEach(btn => {
+            originalHtmls.push({ btn: btn, html: btn.innerHTML });
+            btn.disabled = true;
+            btn.innerHTML = `<span class="btn-spinner"></span> Menambahkan...`;
+        });
+
         fetch('{{ route("carts.store") }}', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
@@ -1694,8 +1876,146 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         })
         .then(r => r.json())
-        .then(d => { if (d.status === 'success') { alert('Produk berhasil ditambahkan ke keranjang'); location.reload(); } else { alert(d.message || 'Gagal menambahkan ke keranjang'); } })
-        .catch(() => alert('Terjadi kesalahan'));
+        .then(d => {
+            console.log('[Cart] doAddToCart response:', d);
+            // Restore buttons
+            btns.forEach(btn => {
+                const found = originalHtmls.find(o => o.btn === btn);
+                if (found) { btn.innerHTML = found.html; btn.disabled = false; }
+            });
+
+            if (d.status === 'success') {
+                // Update local state and trigger transition
+                cartItems = d.cart_items || cartItems;
+                syncCartWidgets();
+
+                // Update badge counts in header with pop animation
+                document.querySelectorAll('.site-cart-badge, .site-mobile-action-badge').forEach(badge => {
+                    const prevCount = parseInt(badge.textContent) || 0;
+                    const newCount = d.cart_count;
+                    badge.textContent = newCount;
+                    if (prevCount !== newCount) {
+                        badge.classList.add('badge-pop');
+                        setTimeout(() => badge.classList.remove('badge-pop'), 400);
+                    }
+                });
+
+                // Show success Swal
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: 'Produk berhasil ditambahkan ke keranjang belanja.',
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    showClass: { popup: 'swal-custom-show' },
+                    hideClass: { popup: 'swal-custom-hide' }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Gagal',
+                    text: d.message || 'Gagal menambahkan produk ke keranjang',
+                    icon: 'error',
+                    confirmButtonColor: '#0d4f30',
+                    showClass: { popup: 'swal-custom-show' },
+                    hideClass: { popup: 'swal-custom-hide' }
+                });
+            }
+        })
+        .catch(err => {
+            console.error('[Cart] doAddToCart error:', err);
+            // Restore buttons
+            btns.forEach(btn => {
+                const found = originalHtmls.find(o => o.btn === btn);
+                if (found) { btn.innerHTML = found.html; btn.disabled = false; }
+            });
+
+            Swal.fire({
+                title: 'Error',
+                text: 'Terjadi kesalahan sistem. Silakan coba kembali.',
+                icon: 'error',
+                confirmButtonColor: '#0d4f30',
+                showClass: { popup: 'swal-custom-show' },
+                hideClass: { popup: 'swal-custom-hide' }
+            });
+        });
+    }
+
+    /* ── ADD TO CART CLICK HANDLERS ─────────────────────────── */
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (this.disabled) return;
+            
+            if (productType === 'configurable' && !selectedVariantId.value) {
+                Swal.fire({
+                    title: 'Pilih Varian',
+                    text: 'Silakan pilih varian produk terlebih dahulu.',
+                    icon: 'warning',
+                    confirmButtonColor: '#0d4f30',
+                    showClass: { popup: 'swal-custom-show' },
+                    hideClass: { popup: 'swal-custom-hide' }
+                });
+                return;
+            }
+            
+            const qty = parseInt(quantityInput.value) || 1;
+            doAddToCart(qty);
+        });
+    }
+
+    if (mobilePageAddBtn) {
+        mobilePageAddBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (this.disabled) return;
+            
+            if (productType === 'configurable' && !selectedVariantId.value) {
+                Swal.fire({
+                    title: 'Pilih Varian',
+                    text: 'Silakan pilih varian produk terlebih dahulu.',
+                    icon: 'warning',
+                    confirmButtonColor: '#0d4f30',
+                    showClass: { popup: 'swal-custom-show' },
+                    hideClass: { popup: 'swal-custom-hide' }
+                });
+                return;
+            }
+            
+            const qty = parseInt(mobilePageQtyInput.value) || 1;
+            doAddToCart(qty);
+        });
+    }
+
+    if (mobileAddBtn) {
+        mobileAddBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (this.disabled) return;
+            
+            if (productType === 'configurable' && !selectedVariantId.value) {
+                Swal.fire({
+                    title: 'Pilih Varian',
+                    text: 'Silakan pilih varian produk terlebih dahulu.',
+                    icon: 'warning',
+                    confirmButtonColor: '#0d4f30',
+                    showClass: { popup: 'swal-custom-show' },
+                    hideClass: { popup: 'swal-custom-hide' }
+                }).then(() => {
+                    const selector = document.querySelector('.dp-variants-card') || document.querySelector('#variant-info') || document.querySelector('.dp-price-range');
+                    if (selector) {
+                        selector.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const varCard = document.querySelector('.dp-variants-card');
+                        if (varCard) {
+                            varCard.classList.add('pulse-highlight');
+                            setTimeout(() => varCard.classList.remove('pulse-highlight'), 3000);
+                        }
+                    }
+                });
+                return;
+            }
+            
+            const qty = parseInt(mobilePageQtyInput?.value || quantityInput?.value || 1);
+            doAddToCart(qty);
+        });
     }
 
     /* ── MOBILE CHAT ────────────────────────────────────────── */
@@ -1721,7 +2041,19 @@ document.addEventListener('DOMContentLoaded', function() {
     qtyInputs.forEach(inp => {
         inp.addEventListener('input', function() {
             const v = this.value;
+            console.log('[Cart] Qty input changed to:', v);
             qtyInputs.forEach(o => { if (o !== inp) o.value = v; });
+            const itemInCart = cartItems.find(item => {
+                const activeVariantId = (productType === 'configurable') ? (selectedVariantId ? selectedVariantId.value : null) : null;
+                if (productType === 'configurable') {
+                    return item.product_id == parentProductId && item.variant_id == activeVariantId;
+                } else {
+                    return item.product_id == parentProductId && !item.variant_id;
+                }
+            });
+            if (!itemInCart) {
+                updateSubtotals(parseInt(v) || 1);
+            }
         });
     });
 
@@ -1763,8 +2095,267 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    function getCurrentPrice() {
+        if (productType === 'configurable') {
+            const exact = findExact();
+            return exact ? exact.price : null;
+        } else {
+            return @json($parentProduct->price);
+        }
+    }
+
+    function updateSubtotals(qty) {
+        const price = getCurrentPrice();
+        const subtotal = price ? price * qty : 0;
+        const formatted = subtotal ? fmtPrice(subtotal) : 'Rp 0';
+        
+        const subDisplays = document.querySelectorAll('#subtotal-display, .mobile-subtotal-display');
+        subDisplays.forEach(el => {
+            el.textContent = formatted;
+        });
+
+        const mobilePriceEl = document.getElementById('mobile-price-display');
+        if (mobilePriceEl) {
+            const activeVariantId = (productType === 'configurable') ? (selectedVariantId ? selectedVariantId.value : null) : null;
+            const matchingItem = cartItems.find(item => {
+                if (productType === 'configurable') {
+                    return item.product_id == parentProductId && item.variant_id == activeVariantId;
+                } else {
+                    return item.product_id == parentProductId && !item.variant_id;
+                }
+            });
+            
+            if (matchingItem && subtotal) {
+                mobilePriceEl.innerHTML = `<span style="font-size: .62rem; display: block; text-transform: uppercase; color: var(--c-muted); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 2px; line-height: 1;">Subtotal</span>${formatted}`;
+            } else {
+                if (productType === 'configurable' && activeVariantId) {
+                    const exact = findExact();
+                    if (exact) mobilePriceEl.textContent = fmtPrice(exact.price);
+                } else {
+                    mobilePriceEl.textContent = fmtPrice(@json($parentProduct->price));
+                }
+            }
+        }
+    }
+
+    function syncCartWidgets() {
+        let activeVariantId = null;
+        if (productType === 'configurable') {
+            activeVariantId = selectedVariantId ? selectedVariantId.value : null;
+        }
+        console.log('[Cart] syncCartWidgets activeVariantId:', activeVariantId);
+
+        const isConfigurableAndUnselected = (productType === 'configurable' && !activeVariantId);
+
+        if (isConfigurableAndUnselected) {
+            document.querySelectorAll('#sidebar-qty-counter-normal, #mobile-page-qty-counter-normal').forEach(el => showWidget(el));
+            document.querySelectorAll('.cart-modifier-widget').forEach(w => hideWidget(w));
+            document.querySelectorAll('.go-to-cart-btn').forEach(btn => hideWidget(btn));
+            
+            if (addToCartBtn) { showWidget(addToCartBtn); addToCartBtn.disabled = true; }
+            if (mobilePageAddBtn) { showWidget(mobilePageAddBtn); mobilePageAddBtn.disabled = true; }
+            if (mobileAddBtn) { showWidget(mobileAddBtn); mobileAddBtn.disabled = true; }
+            
+            updateSubtotals(0);
+            return;
+        }
+
+        const matchingItem = cartItems.find(item => {
+            if (productType === 'configurable') {
+                return item.product_id == parentProductId && item.variant_id == activeVariantId;
+            } else {
+                return item.product_id == parentProductId && !item.variant_id;
+            }
+        });
+        console.log('[Cart] syncCartWidgets matchingItem:', matchingItem);
+
+        if (matchingItem) {
+            document.querySelectorAll('#sidebar-qty-counter-normal, #mobile-page-qty-counter-normal').forEach(el => hideWidget(el));
+            document.querySelectorAll('.cart-modifier-widget').forEach(widget => {
+                showWidget(widget);
+                widget.setAttribute('data-row-id', matchingItem.rowId);
+                widget.setAttribute('data-qty', matchingItem.qty);
+
+                const qtyDisplay = widget.querySelector('.cart-qty-display');
+                if (qtyDisplay) qtyDisplay.textContent = matchingItem.qty;
+
+                const downBtn = widget.querySelector('.qty-down-btn');
+                if (downBtn) {
+                    if (matchingItem.qty === 1) {
+                        downBtn.innerHTML = '<i class="fa fa-trash"></i>';
+                        downBtn.classList.add('btn-danger-custom');
+                    } else {
+                        downBtn.innerHTML = '<i class="fa fa-minus"></i>';
+                        downBtn.classList.remove('btn-danger-custom');
+                    }
+                }
+            });
+
+            if (addToCartBtn) hideWidget(addToCartBtn);
+            if (mobilePageAddBtn) hideWidget(mobilePageAddBtn);
+            if (mobileAddBtn) hideWidget(mobileAddBtn);
+            document.querySelectorAll('.go-to-cart-btn').forEach(btn => showWidget(btn));
+
+            updateSubtotals(matchingItem.qty);
+        } else {
+            document.querySelectorAll('#sidebar-qty-counter-normal, #mobile-page-qty-counter-normal').forEach(el => showWidget(el));
+            document.querySelectorAll('.cart-modifier-widget').forEach(w => hideWidget(w));
+            
+            if (addToCartBtn) { showWidget(addToCartBtn); addToCartBtn.disabled = false; }
+            if (mobilePageAddBtn) { showWidget(mobilePageAddBtn); mobilePageAddBtn.disabled = false; }
+            if (mobileAddBtn) { showWidget(mobileAddBtn); mobileAddBtn.disabled = false; }
+            document.querySelectorAll('.go-to-cart-btn').forEach(btn => hideWidget(btn));
+
+            const qtyInput = document.getElementById('quantity');
+            const normalQty = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
+            updateSubtotals(normalQty);
+        }
+    }
+
+    document.querySelectorAll('.cart-modifier-widget .qty-up-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('[Cart] Qty UP clicked');
+            const widget = this.closest('.cart-modifier-widget');
+            const rowId = widget.getAttribute('data-row-id');
+            const currentQty = parseInt(widget.getAttribute('data-qty')) || 1;
+            console.log('[Cart] Qty UP state:', { rowId, currentQty });
+            
+            let maxStock = 9999;
+            if (productType === 'configurable') {
+                const exact = findExact();
+                if (exact) maxStock = exact.stock;
+            } else {
+                maxStock = @json($parentProduct->productInventory ? $parentProduct->productInventory->qty : 0);
+            }
+
+            const newQty = currentQty + 1;
+            if (newQty > maxStock) {
+                Swal.fire({
+                    title: 'Stok Terbatas',
+                    text: `Batas stok tersedia: ${maxStock} unit.`,
+                    icon: 'warning',
+                    confirmButtonColor: '#0d4f30',
+                    showClass: { popup: 'swal-custom-show' },
+                    hideClass: { popup: 'swal-custom-hide' }
+                });
+                return;
+            }
+
+            updateCartQuantity(rowId, newQty);
+        });
+    });
+
+    document.querySelectorAll('.cart-modifier-widget .qty-down-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('[Cart] Qty DOWN clicked');
+            const widget = this.closest('.cart-modifier-widget');
+            const rowId = widget.getAttribute('data-row-id');
+            const currentQty = parseInt(widget.getAttribute('data-qty')) || 1;
+            console.log('[Cart] Qty DOWN state:', { rowId, currentQty });
+
+            if (currentQty === 1) {
+                Swal.fire({
+                    title: 'Hapus Barang?',
+                    text: 'Apakah Anda yakin ingin menghapus produk ini dari keranjang belanja?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#e11d48',
+                    cancelButtonColor: '#64748b',
+                    confirmButtonText: 'Ya, Hapus',
+                    cancelButtonText: 'Batal',
+                    showClass: { popup: 'swal-custom-show' },
+                    hideClass: { popup: 'swal-custom-hide' }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        updateCartQuantity(rowId, 0);
+                    }
+                });
+            } else {
+                updateCartQuantity(rowId, currentQty - 1);
+            }
+        });
+    });
+
+    function updateCartQuantity(rowId, qty) {
+        console.log('[Cart] updateCartQuantity rowId:', rowId, 'new qty:', qty);
+        // Optimistic UI updates
+        const previousCartItems = JSON.parse(JSON.stringify(cartItems));
+
+        const itemIndex = cartItems.findIndex(item => item.rowId === rowId);
+        if (itemIndex > -1) {
+            if (qty === 0) {
+                cartItems.splice(itemIndex, 1);
+            } else {
+                cartItems[itemIndex].qty = qty;
+            }
+        }
+        
+        // Sync DOM instantly
+        syncCartWidgets();
+
+        // Perform AJAX in background
+        fetch('/carts/update', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            body: JSON.stringify({
+                cart_item_id: rowId,
+                quantity: qty,
+                _token: '{{ csrf_token() }}'
+            })
+        })
+        .then(r => r.json())
+        .then(d => {
+            console.log('[Cart] updateCartQuantity response:', d);
+            if (d.status === 'success') {
+                // Confirm true state from server
+                cartItems = d.cart_items || cartItems;
+                syncCartWidgets();
+                
+                // Update badge counts in header
+                document.querySelectorAll('.site-cart-badge, .site-mobile-action-badge').forEach(badge => {
+                    const prevCount = parseInt(badge.textContent) || 0;
+                    const newCount = d.cart_count;
+                    badge.textContent = newCount;
+                    if (prevCount !== newCount) {
+                        badge.classList.add('badge-pop');
+                        setTimeout(() => badge.classList.remove('badge-pop'), 400);
+                    }
+                });
+            } else {
+                // Revert state
+                cartItems = previousCartItems;
+                syncCartWidgets();
+                Swal.fire({
+                    title: 'Gagal',
+                    text: d.message || 'Gagal memperbarui kuantitas',
+                    icon: 'error',
+                    confirmButtonColor: '#0d4f30',
+                    showClass: { popup: 'swal-custom-show' },
+                    hideClass: { popup: 'swal-custom-hide' }
+                });
+            }
+        })
+        .catch(err => {
+            console.error('[Cart] updateCartQuantity error:', err);
+            // Revert state
+            cartItems = previousCartItems;
+            syncCartWidgets();
+            Swal.fire({
+                title: 'Error',
+                text: 'Terjadi kesalahan sistem',
+                icon: 'error',
+                confirmButtonColor: '#0d4f30',
+                showClass: { popup: 'swal-custom-show' },
+                hideClass: { popup: 'swal-custom-hide' }
+            });
+        });
+    }
+
     /* ── INIT ────────────────────────────────────────────────── */
     initVariants();
+    syncCartWidgets();
 });
 </script>
 @endsection

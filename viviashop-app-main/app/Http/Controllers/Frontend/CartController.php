@@ -125,7 +125,8 @@ class CartController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Product added to cart successfully',
-            'cart_count' => Cart::content()->count()
+            'cart_count' => Cart::content()->count(),
+            'cart_items' => $this->getCartItemsData()
         ]);
     }
 
@@ -163,7 +164,8 @@ class CartController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Product added to cart successfully',
-            'cart_count' => Cart::content()->count()
+            'cart_count' => Cart::content()->count(),
+            'cart_items' => $this->getCartItemsData()
         ]);
     }
 
@@ -180,16 +182,32 @@ class CartController extends Controller
         return $item ? $item->qty : 0;
     }
 
+    private function getCartItemsData()
+    {
+        return collect(Cart::content())->map(function($item) {
+            return [
+                'rowId' => $item->rowId,
+                'id' => $item->id,
+                'qty' => $item->qty,
+                'product_id' => $item->options->product_id,
+                'variant_id' => $item->options->variant_id,
+                'type' => $item->options->type,
+            ];
+        })->values()->toArray();
+    }
+
     public function update(Request $request)
     {
-        $cartItemId = $request->input('cart_item_id');
-        $quantity = $request->input('quantity');
+        $cartItemId = $request->input('cart_item_id') ?? $request->input('productId');
+        $quantity = $request->input('quantity') ?? $request->input('qty');
 
         Cart::update($cartItemId, $quantity);
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Cart updated successfully'
+            'message' => 'Cart updated successfully',
+            'cart_count' => Cart::content()->count(),
+            'cart_items' => $this->getCartItemsData()
         ]);
     }
 

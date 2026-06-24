@@ -415,7 +415,12 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         
         if (!selectedVariantId.value) {
-            alert('Please select a product variant');
+            Swal.fire({
+                title: 'Perhatian',
+                text: 'Silakan pilih varian produk terlebih dahulu.',
+                icon: 'warning',
+                confirmButtonColor: '#0d4f30'
+            });
             return;
         }
 
@@ -431,15 +436,33 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Product added to cart successfully!');
-                location.reload();
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: 'Produk berhasil ditambahkan ke keranjang',
+                    icon: 'success',
+                    timer: 1800,
+                    showConfirmButton: false,
+                    timerProgressBar: true
+                }).then(() => {
+                    location.reload();
+                });
             } else {
-                alert('Error adding product to cart: ' + data.message);
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'Gagal menambahkan produk ke keranjang: ' + data.message,
+                    icon: 'error',
+                    confirmButtonColor: '#0d4f30'
+                });
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Error adding product to cart');
+            Swal.fire({
+                title: 'Error',
+                text: 'Terjadi kesalahan saat menambahkan produk ke keranjang',
+                icon: 'error',
+                confirmButtonColor: '#0d4f30'
+            });
         });
     });
 });
