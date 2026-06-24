@@ -206,14 +206,27 @@ class CartController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Cart updated successfully',
-            'cart_count' => Cart::content()->count(),
-            'cart_items' => $this->getCartItemsData()
+            'cart_count' => Cart::count(),
+            'cart_line_count' => Cart::content()->count(),
+            'cart_items' => $this->getCartItemsData(),
+            'subtotal' => Cart::subtotal(0, ',', '.')
         ]);
     }
 
     public function destroy($id)
     {
         Cart::remove($id);
+
+        if (request()->ajax() || request()->wantsJson()) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Item removed from cart successfully',
+                'cart_count' => Cart::count(),
+                'cart_line_count' => Cart::content()->count(),
+                'cart_items' => $this->getCartItemsData(),
+                'subtotal' => Cart::subtotal(0, ',', '.')
+            ]);
+        }
 
         return redirect()->route('carts.index')->with([
             'message' => 'Item removed from cart successfully',
