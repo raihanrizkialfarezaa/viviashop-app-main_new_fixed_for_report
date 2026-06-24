@@ -1021,18 +1021,35 @@
         /* =============================================
            PREMIUM MOBILE FILTER TAB BAR
         ============================================= */
+        @keyframes mobileFilterBarSlideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        body {
+            padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
+        }
+
+        #ai-chat-widget {
+            bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+            transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
         .mobile-filter-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 10px 16px 16px;
-            background: rgba(255,255,255,0.97);
+            padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 12px));
+            background: rgba(255,255,255,0.96);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-top: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+            border-top: 1px solid rgba(15, 81, 50, 0.08);
+            box-shadow: 0 -8px 30px rgba(15, 81, 50, 0.12);
+            transform: translateY(0);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: mobileFilterBarSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         .mobile-filter-tab-row {
@@ -3090,24 +3107,7 @@ $(document).ready(function() {
         }
     });
 
-    // --- Auto-hide mobile filter bar on scroll down, show on scroll up ---
-    var lastScrollTop = 0;
-    var scrollTimer;
-    $(window).on('scroll.mobilefilterbar', function() {
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(function() {
-            var scrollTop = $(window).scrollTop();
-            var $filterBar = $('.mobile-filter-bar');
-            if ($filterBar.length) {
-                if (scrollTop > lastScrollTop && scrollTop > 120) {
-                    $filterBar.css('transform', 'translateY(100%)');
-                } else {
-                    $filterBar.css('transform', 'translateY(0)');
-                }
-                lastScrollTop = scrollTop;
-            }
-        }, 80);
-    });
+
 
     // --- Show More Categories (desktop sidebar) ---
     $('#showMoreCategories').on('click', function() {
