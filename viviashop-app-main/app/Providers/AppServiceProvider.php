@@ -34,6 +34,17 @@ class AppServiceProvider extends ServiceProvider
         
         // URL::forceScheme('https');
         Paginator::useBootstrap();
-        // view()->share('countCart', $cart);
+        
+        view()->composer('*', function ($view) {
+            try {
+                if (session() && session()->isStarted()) {
+                    $view->with('countCart', \Gloudemans\Shoppingcart\Facades\Cart::count());
+                } else {
+                    $view->with('countCart', 0);
+                }
+            } catch (\Exception $e) {
+                $view->with('countCart', 0);
+            }
+        });
     }
 }

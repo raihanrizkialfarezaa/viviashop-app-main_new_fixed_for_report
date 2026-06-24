@@ -25,7 +25,7 @@ class CartController extends Controller
     public function index()
     {
         $items = Cart::content();
-        $cart = Cart::content()->count();
+        $cart = Cart::count();
         $setting = Setting::first();
         view()->share('setting', $setting);
         view()->share('countCart', $cart);
@@ -125,7 +125,7 @@ class CartController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Product added to cart successfully',
-            'cart_count' => Cart::content()->count(),
+            'cart_count' => Cart::count(),
             'cart_items' => $this->getCartItemsData()
         ]);
     }
@@ -164,7 +164,7 @@ class CartController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Product added to cart successfully',
-            'cart_count' => Cart::content()->count(),
+            'cart_count' => Cart::count(),
             'cart_items' => $this->getCartItemsData()
         ]);
     }
