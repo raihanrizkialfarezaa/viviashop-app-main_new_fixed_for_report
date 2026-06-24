@@ -452,9 +452,9 @@ class OrderController extends Controller
 			
 			$validationRules = [
 				'name' => 'required|string|max:255',
-				'address1' => 'required|string|max:255',
+				'address1' => $request->delivery_method === 'courier' ? 'required|string|max:255' : 'nullable|string|max:255',
 				'address2' => 'nullable|string|max:255',
-				'postcode' => 'required|string|max:20',
+				'postcode' => $request->delivery_method === 'courier' ? 'required|string|max:20' : 'nullable|string|max:20',
 				'phone' => 'required|string|max:15',
 				'email' => 'required|email|max:255',
 				'payment_method' => 'required|string|in:manual,automatic,cod,toko',
@@ -514,9 +514,15 @@ class OrderController extends Controller
 					$order = $resumeOrder;
 					$order->customer_first_name = $params['name'] ?? $order->customer_first_name;
 					$order->customer_last_name = $params['name'] ?? $order->customer_last_name;
-					$order->customer_address1 = $params['address1'] ?? $order->customer_address1;
-					$order->customer_address2 = $params['address2'] ?? $order->customer_address2;
-					$order->customer_postcode = $params['postcode'] ?? $order->customer_postcode;
+					if ($params['delivery_method'] === 'courier') {
+						$order->customer_address1 = $params['address1'] ?? $order->customer_address1;
+						$order->customer_address2 = $params['address2'] ?? $order->customer_address2;
+						$order->customer_postcode = $params['postcode'] ?? $order->customer_postcode;
+					} else {
+						$order->customer_address1 = 'Self Pickup';
+						$order->customer_address2 = null;
+						$order->customer_postcode = null;
+					}
 					$order->customer_phone = $params['phone'] ?? $order->customer_phone;
 					$order->customer_email = $params['email'] ?? $order->customer_email;
 					$order->note = $params['note'] ?? $order->note;
@@ -711,13 +717,16 @@ class OrderController extends Controller
 
 		$user_profile = [
 			'name' => $params['name'],
-			'address1' => $params['address1'],
-			'address2' => $params['address2'],
-			'province_id' => $params['delivery_method'] == 'courier' ? ($params['province_id'] ?? auth()->user()->province_id) : auth()->user()->province_id,
-			'city_id' => $params['delivery_method'] == 'courier' ? ($params['shipping_city_id'] ?? auth()->user()->city_id) : auth()->user()->city_id,
-			'postcode' => $params['postcode'],
 			'phone' => $params['phone'],
 		];
+
+		if ($params['delivery_method'] == 'courier') {
+			$user_profile['address1'] = $params['address1'] ?? null;
+			$user_profile['address2'] = $params['address2'] ?? null;
+			$user_profile['province_id'] = $params['province_id'] ?? auth()->user()->province_id;
+			$user_profile['city_id'] = $params['shipping_city_id'] ?? auth()->user()->city_id;
+			$user_profile['postcode'] = !empty($params['postcode']) ? $params['postcode'] : null;
+		}
 
 		if ($params['email'] !== auth()->user()->email) {
 			$existingUser = DB::table('users')->where('email', $params['email'])->where('id', '!=', auth()->id())->first();
@@ -729,6 +738,13 @@ class OrderController extends Controller
 		DB::table('users')
 			->where('id', auth()->id())
 			->update($user_profile);
+
+		$orderAddress1 = $params['delivery_method'] == 'courier' ? ($params['address1'] ?? null) : 'Self Pickup';
+		$orderAddress2 = $params['delivery_method'] == 'courier' ? ($params['address2'] ?? null) : null;
+		$orderPostcode = $params['delivery_method'] == 'courier' ? (!empty($params['postcode']) ? $params['postcode'] : null) : null;
+		$orderCityId = $params['delivery_method'] == 'courier' ? ($params['shipping_city_id'] ?? auth()->user()->city_id ?? 1) : (auth()->user()->city_id ?? 1);
+		$orderProvinceId = $params['delivery_method'] == 'courier' ? ($params['province_id'] ?? auth()->user()->province_id ?? 1) : (auth()->user()->province_id ?? 1);
+		$orderNote = $params['note'] ?? null;
 
 		if (isset($params['attachments']) && $params['attachments'] != null || isset($params['payment_slip']) && $params['payment_slip'] != null) {
 			$orderParams = [
@@ -747,17 +763,17 @@ class OrderController extends Controller
 				'discount_percent' => $discountPercent,
 				'shipping_cost' => $shippingCost,
 				'grand_total' => $grandTotal,
-				'note' => $params['note'],
+				'note' => $orderNote,
 				'customer_first_name' => $params['name'],
 				'customer_last_name' => $params['name'],
-				'customer_address1' => $params['address1'],
+				'customer_address1' => $orderAddress1,
 				'payment_method' => $paymentMethod,
-				'customer_address2' => $params['address2'],
+				'customer_address2' => $orderAddress2,
 				'customer_phone' => $params['phone'],
 				'customer_email' => $params['email'],
-				'customer_city_id' => $params['delivery_method'] == 'courier' ? $params['shipping_city_id'] : (auth()->user()->city_id ?? 1),
-				'customer_province_id' => $params['delivery_method'] == 'courier' ? $params['province_id'] : (auth()->user()->province_id ?? 1),
-				'customer_postcode' => $params['postcode'],
+				'customer_city_id' => $orderCityId,
+				'customer_province_id' => $orderProvinceId,
+				'customer_postcode' => $orderPostcode,
 				'shipping_courier' => $selectedShipping['courier'],
 				'shipping_service_name' => $selectedShipping['service'],
 			];
@@ -777,17 +793,17 @@ class OrderController extends Controller
 				'discount_percent' => $discountPercent,
 				'shipping_cost' => $shippingCost,
 				'grand_total' => $grandTotal,
-				'note' => $params['note'],
+				'note' => $orderNote,
 				'customer_first_name' => $params['name'],
 				'customer_last_name' => $params['name'],
-				'customer_address1' => $params['address1'],
+				'customer_address1' => $orderAddress1,
 				'payment_method' => $paymentMethod,
-				'customer_address2' => $params['address2'],
+				'customer_address2' => $orderAddress2,
 				'customer_phone' => $params['phone'],
 				'customer_email' => $params['email'],
-				'customer_city_id' => $params['delivery_method'] == 'courier' ? $params['shipping_city_id'] : (auth()->user()->city_id ?? 1),
-				'customer_province_id' => $params['delivery_method'] == 'courier' ? $params['province_id'] : (auth()->user()->province_id ?? 1),
-				'customer_postcode' => $params['postcode'],
+				'customer_city_id' => $orderCityId,
+				'customer_province_id' => $orderProvinceId,
+				'customer_postcode' => $orderPostcode,
 				'shipping_courier' => $selectedShipping['courier'],
 				'shipping_service_name' => $selectedShipping['service'],
 			];
@@ -1421,11 +1437,15 @@ view()->share('setting', $setting);
 		}
 		
 		$shippingPostcode = isset($params['ship_to']) ? $params['shipping_postcode'] : $params['postcode'];
+		if (empty($shippingPostcode)) {
+			$shippingPostcode = null;
+		}
 		
 		if ($params['delivery_method'] == 'self') {
 			$shippingName = 'Ambil di Toko';
 			$shippingAddress1 = 'Toko ViVia Shop';
 			$shippingAddress2 = '';
+			$shippingPostcode = null;
 		}
 		
 		$totalQty = 0;

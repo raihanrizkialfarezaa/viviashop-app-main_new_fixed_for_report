@@ -1,5 +1,6 @@
 @extends('frontend.layouts')
 @section('content')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         :root {
             --checkout-green-900: #082d1c;
@@ -687,6 +688,126 @@
                 border-radius: 10px !important;
             }
         }
+
+        /* Select2 Premium Theme Overrides */
+        .select2-container {
+            width: 100% !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            height: 48px !important;
+            border: 1.5px solid var(--checkout-border) !important;
+            border-radius: 12px !important;
+            display: flex !important;
+            align-items: center !important;
+            padding-left: 8px !important;
+            transition: all var(--t) !important;
+            background-color: #fff !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--checkout-ink) !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            padding-left: 8px !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__placeholder {
+            color: var(--checkout-muted) !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 48px !important;
+            right: 12px !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border-color: var(--checkout-muted) transparent transparent transparent !important;
+            border-width: 6px 5px 0 5px !important;
+        }
+
+        .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+            border-color: transparent transparent var(--checkout-muted) transparent !important;
+            border-width: 0 5px 6px 5px !important;
+        }
+
+        .select2-container--default.select2-container--focus .select2-selection--single,
+        .select2-container--default.select2-container--open .select2-selection--single {
+            border-color: var(--checkout-green-600) !important;
+            box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.12) !important;
+            outline: none !important;
+        }
+
+        /* Dropdown styling */
+        .select2-dropdown {
+            border: 1.5px solid var(--checkout-border) !important;
+            border-radius: 12px !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+            overflow: hidden !important;
+            z-index: 9999 !important;
+            background-color: #fff !important;
+        }
+
+        .select2-container--default .select2-search--dropdown .select2-search__field {
+            border: 1.5px solid var(--checkout-border) !important;
+            border-radius: 8px !important;
+            height: 38px !important;
+            padding: 6px 12px !important;
+            outline: none !important;
+            font-size: 0.9rem !important;
+            transition: all var(--t) !important;
+        }
+
+        .select2-container--default .select2-search--dropdown .select2-search__field:focus {
+            border-color: var(--checkout-green-600) !important;
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1) !important;
+        }
+
+        .select2-results__options {
+            max-height: 220px !important; /* Limits list height and triggers scroll paginate */
+        }
+
+        .select2-container--default .select2-results__option {
+            padding: 10px 16px !important;
+            font-size: 0.92rem !important;
+            color: var(--checkout-ink) !important;
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: var(--checkout-green-800) !important;
+            color: #fff !important;
+        }
+
+        .select2-container--default .select2-results__option[aria-selected="true"] {
+            background-color: var(--checkout-green-50) !important;
+            color: var(--checkout-green-800) !important;
+            font-weight: 700 !important;
+        }
+
+        /* Responsive Mobile Overrides */
+        @media (max-width: 767px) {
+            .select2-container--default .select2-selection--single {
+                height: 42px !important;
+                border-radius: 10px !important;
+            }
+            
+            .select2-container--default .select2-selection--single .select2-selection__rendered {
+                font-size: 0.88rem !important;
+            }
+            
+            .select2-container--default .select2-selection--single .select2-selection__arrow {
+                height: 42px !important;
+            }
+            
+            .select2-dropdown {
+                border-radius: 10px !important;
+            }
+            
+            .select2-container--default .select2-results__option {
+                padding: 8px 12px !important;
+                font-size: 0.85rem !important;
+            }
+        }
     </style>
 
     @php
@@ -734,76 +855,33 @@
                             @endif
 
                             <div class="checkout-subcard">
-                                <div class="checkout-card-title"><i class="fa fa-user"></i><span>Informasi Utama</span></div>
-                                <p class="checkout-card-copy">Data ini dipakai untuk konfirmasi pesanan dan komunikasi saat proses pengiriman atau pengambilan di toko.</p>
+                                <div class="checkout-card-title"><i class="fa fa-user"></i><span>Informasi Kontak</span></div>
+                                <p class="checkout-card-copy">Data kontak Anda untuk konfirmasi pesanan dan koordinasi pengambilan/pengiriman.</p>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-item w-100">
-                                            <label>Nama <span class="required">*</span></label>
+                                            <label>Nama Lengkap <span class="required">*</span></label>
                                             <input type="text" class="form-control" name="name" value="{{ old('name', isset($resumeOrder) && $resumeOrder ? $resumeOrder->customer_first_name : auth()->user()->name) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-item">
-                                            <label>Phone <span class="required">*</span></label>
+                                            <label>No. Telepon / WhatsApp <span class="required">*</span></label>
                                             <input type="text" class="form-control" name="phone" value="{{ old('phone', isset($resumeOrder) && $resumeOrder ? $resumeOrder->customer_phone : auth()->user()->phone) }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-12">
                                         <div class="form-item">
-                                            <label>Email Address</label>
+                                            <label>Email Address <span class="required">*</span></label>
                                             <input type="text" class="form-control" name="email" value="{{ old('email', isset($resumeOrder) && $resumeOrder ? $resumeOrder->customer_email : auth()->user()->email) }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-item">
-                                            <label>Postcode / Zip <span class="required">*</span></label>
-                                            <input type="text" class="form-control" name="postcode" value="{{ old('postcode', isset($resumeOrder) && $resumeOrder ? $resumeOrder->customer_postcode : auth()->user()->postcode) }}">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
                             <div class="checkout-subcard">
-                                <div class="checkout-card-title"><i class="fas fa-map-marker-alt"></i><span>Alamat & Catatan</span></div>
-                                <p class="checkout-card-copy">Alamat utama tetap dipertahankan seperti sebelumnya, hanya tampilannya dibuat lebih bersih agar mudah dibaca.</p>
-                                <div class="row g-3">
-                                    <div class="col-12">
-                                        <div class="form-item">
-                                            <label class="form-label">Address <span class="required">*</span></label>
-                                            <input type="text" class="form-control" name="address1" value="{{ old('address1', isset($resumeOrder) && $resumeOrder ? $resumeOrder->customer_address1 : auth()->user()->address1) }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-item">
-                                            <label class="form-label">Address Line 2</label>
-                                            <input type="text" class="form-control" name="address2" value="{{ old('address2', isset($resumeOrder) && $resumeOrder ? $resumeOrder->customer_address2 : auth()->user()->address2) }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-item">
-                                            <label>Order Notes</label>
-                                            <textarea class="form-control" name="note" rows="4">{{ old('note') }}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-item">
-                                            <label>Order Attachments (if exists)</label>
-                                            <input type="file" onchange="" id="image" class="form-control" name="attachments">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-item d-none image-item checkout-preview-card">
-                                            <label for="">Preview Image</label>
-                                            <img src="" class="img-preview img-fluid" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="checkout-subcard">
-                                <div class="checkout-card-title"><i class="fa fa-truck"></i><span>Pengiriman</span></div>
-                                <p class="checkout-card-copy">Pilih ambil di toko atau kirim lewat kurir. Field alamat akan muncul otomatis dengan transisi yang smooth.</p>
+                                <div class="checkout-card-title"><i class="fa fa-truck"></i><span>Metode Pengiriman</span></div>
+                                <p class="checkout-card-copy">Pilih ambil langsung di toko atau kirim ke alamat Anda menggunakan layanan kurir.</p>
 
                                 <div class="checkout-option-grid">
                                     <label class="checkout-option-card" for="delivery-self">
@@ -828,10 +906,32 @@
                                         </span>
                                     </label>
                                 </div>
+                            </div>
 
-                                <div id="courier-address-panel" style="display: none; margin-top: 16px;">
+                            <div id="shipping-address-section" style="display: none; margin-top: 20px;">
+                                <div class="checkout-subcard">
+                                    <div class="checkout-card-title"><i class="fas fa-map-marker-alt"></i><span>Alamat & Layanan Pengiriman</span></div>
+                                    <p class="checkout-card-copy">Lengkapi alamat tujuan pengiriman Anda dan tentukan layanan kurir yang ingin digunakan.</p>
                                     <div class="row g-3">
-                                        <div class="col-md-4 address-fields">
+                                        <div class="col-12">
+                                            <div class="form-item">
+                                                <label class="form-label">Alamat Lengkap <span class="required">*</span></label>
+                                                <input type="text" class="form-control" name="address1" value="{{ old('address1', isset($resumeOrder) && $resumeOrder ? $resumeOrder->customer_address1 : auth()->user()->address1) }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-item">
+                                                <label class="form-label">Detail Alamat / Catatan Patokan (Optional)</label>
+                                                <input type="text" class="form-control" name="address2" value="{{ old('address2', isset($resumeOrder) && $resumeOrder ? $resumeOrder->customer_address2 : auth()->user()->address2) }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-item">
+                                                <label>Kode Pos <span class="required">*</span></label>
+                                                <input type="text" class="form-control" name="postcode" value="{{ old('postcode', isset($resumeOrder) && $resumeOrder ? $resumeOrder->customer_postcode : auth()->user()->postcode) }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-item">
                                                 <label>Provinsi <span class="required">*</span></label>
                                                 <select name="province_id" class="form-control form-select" id="shipping-province">
@@ -839,15 +939,15 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 address-fields">
+                                        <div class="col-md-6">
                                             <div class="form-item">
-                                                <label>Kota <span class="required">*</span></label>
+                                                <label>Kota / Kabupaten <span class="required">*</span></label>
                                                 <select name="shipping_city_id" class="form-control form-select" id="shipping-city">
                                                     <option value="">-- Pilih Kota --</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 address-fields">
+                                        <div class="col-md-6">
                                             <div class="form-item">
                                                 <label>Kecamatan <span class="required">*</span></label>
                                                 <select name="shipping_district_id" class="form-control form-select" id="shipping-district">
@@ -855,13 +955,38 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-12 address-fields" id="shipping-row">
+                                        <div class="col-12" id="shipping-row">
                                             <div class="form-item">
                                                 <label class="form-label">Layanan Pengiriman <span class="required">*</span></label>
                                                 <select class="form-control form-select" id="shipping-cost-option" name="shipping_service">
                                                     <option value="">-- Select Delivery Method First --</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkout-subcard">
+                                <div class="checkout-card-title"><i class="fas fa-paperclip"></i><span>Catatan & Lampiran</span></div>
+                                <p class="checkout-card-copy">Tambahkan instruksi khusus untuk pesanan Anda, atau unggah lampiran berkas jika diperlukan.</p>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <div class="form-item">
+                                            <label>Order Notes (Optional)</label>
+                                            <textarea class="form-control" name="note" rows="4">{{ old('note') }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-item">
+                                            <label>Order Attachments (Optional)</label>
+                                            <input type="file" id="image" class="form-control" name="attachments">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-item d-none image-item checkout-preview-card">
+                                            <label for="">Preview Image</label>
+                                            <img src="" class="img-preview img-fluid" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -1027,6 +1152,7 @@
     </div>
 @endsection
 @push('script-alt')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         function loadProvinces() {
             console.log('Loading provinces...');
@@ -1042,7 +1168,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     console.log('Making request to:', apiUrl);
-                    $('#shipping-province').html('<option value="">Loading provinces...</option>');
+                    $('#shipping-province').html('<option value="">Loading provinces...</option>').trigger('change');
                 },
                 success: function(response) {
                     console.log('Provinces response:', response);
@@ -1067,7 +1193,7 @@
                         console.error('Unexpected provinces response format');
                     }
 
-                    $('#shipping-province').html(options);
+                    $('#shipping-province').html(options).trigger('change');
                     console.log('Province options updated, total options:', $('#shipping-province option').length);
 
                     var selectedProvinceId = $('#shipping-province').val();
@@ -1083,7 +1209,7 @@
                     console.error('Response Text:', xhr.responseText);
                     console.error('Status Code:', xhr.status);
                     console.error('Ready State:', xhr.readyState);
-                    $('#shipping-province').html('<option value="">Error loading provinces</option>');
+                    $('#shipping-province').html('<option value="">Error loading provinces</option>').trigger('change');
                 },
                 complete: function(xhr, status) {
                     console.log('AJAX request completed with status:', status);
@@ -1100,7 +1226,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     console.log('Making request to:', cityUrl);
-                    $('#shipping-city').html('<option value="">Loading cities...</option>');
+                    $('#shipping-city').html('<option value="">Loading cities...</option>').trigger('change');
                 },
                 success: function(response) {
                     console.log('Cities response received:', response);
@@ -1112,7 +1238,7 @@
                             options += '<option value="' + city.id + '" ' + selected + '>' + city.name + '</option>';
                         });
                     }
-                    $('#shipping-city').html(options);
+                    $('#shipping-city').html(options).trigger('change');
                     console.log('City options updated, total options:', $('#shipping-city option').length);
                     
                     var selectedCityId = $('#shipping-city').val();
@@ -1126,7 +1252,7 @@
                     console.error('Status:', status);
                     console.error('Error:', error);
                     console.error('Response Text:', xhr.responseText);
-                    $('#shipping-city').html('<option value="">Error loading cities</option>');
+                    $('#shipping-city').html('<option value="">Error loading cities</option>').trigger('change');
                 }
             });
         }
@@ -1140,7 +1266,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     console.log('Making request to:', districtUrl);
-                    $('#shipping-district').html('<option value="">Loading districts...</option>');
+                    $('#shipping-district').html('<option value="">Loading districts...</option>').trigger('change');
                 },
                 success: function(response) {
                     console.log('Districts response received:', response);
@@ -1152,7 +1278,7 @@
                             options += '<option value="' + district.id + '" ' + selected + '>' + district.name + '</option>';
                         });
                     }
-                    $('#shipping-district').html(options);
+                    $('#shipping-district').html(options).trigger('change');
                     console.log('District options updated, total options:', $('#shipping-district option').length);
                     
                     var selectedDistrictId = $('#shipping-district').val();
@@ -1169,7 +1295,7 @@
                     console.error('Status:', status);
                     console.error('Error:', error);
                     console.error('Response Text:', xhr.responseText);
-                    $('#shipping-district').html('<option value="">Error loading districts</option>');
+                    $('#shipping-district').html('<option value="">Error loading districts</option>').trigger('change');
                 }
             });
         }
@@ -1291,15 +1417,35 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            // Initialize Select2 dropdowns
+            $('#shipping-province').select2({
+                placeholder: "-- Pilih Provinsi --",
+                allowClear: false,
+                width: '100%'
+            });
+            $('#shipping-city').select2({
+                placeholder: "-- Pilih Kota / Kabupaten --",
+                allowClear: false,
+                width: '100%'
+            });
+            $('#shipping-district').select2({
+                placeholder: "-- Pilih Kecamatan --",
+                allowClear: false,
+                width: '100%'
+            });
             
             // Initialize form state
-            $('#courier-address-panel').hide();
+            var initialMethod = $('input[name="delivery_method"]:checked').val() || 'self';
+            if (initialMethod === 'self') {
+                $('#shipping-address-section').hide();
+                $('#shipping-address-section').find('input, select').prop('disabled', true).removeAttr('required').trigger('change');
+            } else {
+                $('#shipping-address-section').show();
+                $('#shipping-address-section').find('input, select').prop('disabled', false).attr('required', 'required').trigger('change');
+                $('input[name="address2"]').removeAttr('required'); // Address line 2 is always optional
+            }
             $('#shipping-cost-option').html('<option value="">-- Select Delivery Method First --</option>');
-            
-            // Disable address dropdowns for self pickup (default)
-            $('#shipping-province').prop('disabled', true);
-            $('#shipping-city').prop('disabled', true);
-            $('#shipping-district').prop('disabled', true);
             
             // Always load provinces on page load
             if ($('#shipping-province option').length <= 1) {
@@ -1349,18 +1495,13 @@
             $('input[name="delivery_method"]').on('change', function() {
                 var method = $(this).val();
                 if (method === 'self') {
-                    $('#courier-address-panel').slideUp(300);
-                    $('#shipping-cost-option').removeAttr('required');
-                    $('#shipping-province').prop('disabled', true).removeAttr('required');
-                    $('#shipping-city').prop('disabled', true).removeAttr('required');
-                    $('#shipping-district').prop('disabled', true).removeAttr('required');
+                    $('#shipping-address-section').slideUp(300);
+                    $('#shipping-address-section').find('input, select').prop('disabled', true).removeAttr('required').trigger('change');
                     updateTotalAmount();
                 } else if (method === 'courier') {
-                    $('#courier-address-panel').slideDown(300);
-                    $('#shipping-cost-option').attr('required', 'required');
-                    $('#shipping-province').prop('disabled', false).attr('required', 'required');
-                    $('#shipping-city').prop('disabled', false).attr('required', 'required');
-                    $('#shipping-district').prop('disabled', false).attr('required', 'required');
+                    $('#shipping-address-section').slideDown(300);
+                    $('#shipping-address-section').find('input, select').prop('disabled', false).attr('required', 'required').trigger('change');
+                    $('input[name="address2"]').removeAttr('required'); // Address line 2 is always optional
 
                     if ($('#shipping-province option').length <= 1) {
                         loadProvinces();
@@ -1545,9 +1686,11 @@
                 return false;
             }
             
-            if (!address1 || address1.trim() === '') {
-                showWarning('Alamat Wajib Diisi', 'Silakan masukkan alamat pengiriman Anda.', 'input[name="address1"]');
-                return false;
+            if (deliveryMethod === 'courier') {
+                if (!address1 || address1.trim() === '') {
+                    showWarning('Alamat Wajib Diisi', 'Silakan masukkan alamat pengiriman Anda.', 'input[name="address1"]');
+                    return false;
+                }
             }
             
             if (!phone || phone.trim() === '') {
@@ -1566,9 +1709,11 @@
                 return false;
             }
             
-            if (!postcode || postcode.trim() === '') {
-                showWarning('Kode Pos Wajib Diisi', 'Silakan masukkan kode pos alamat Anda.', 'input[name="postcode"]');
-                return false;
+            if (deliveryMethod === 'courier') {
+                if (!postcode || postcode.trim() === '') {
+                    showWarning('Kode Pos Wajib Diisi', 'Silakan masukkan kode pos alamat Anda.', 'input[name="postcode"]');
+                    return false;
+                }
             }
             
             if (!deliveryMethod) {
