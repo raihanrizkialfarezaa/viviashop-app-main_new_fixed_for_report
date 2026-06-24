@@ -615,6 +615,32 @@ body, input, button, select, textarea {
     font-weight: 700; color: var(--c-text); font-size: .74rem;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
+.stock-highlight-avail {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(26, 122, 74, 0.08) !important;
+    color: var(--c-mid) !important;
+    border: 1px solid rgba(26, 122, 74, 0.2) !important;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: .78rem !important;
+    box-shadow: 0 2px 8px rgba(13, 79, 48, 0.04);
+}
+.stock-highlight-empty {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(239, 68, 68, 0.08) !important;
+    color: #ef4444 !important;
+    border: 1px solid rgba(239, 68, 68, 0.2) !important;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: .78rem !important;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.04);
+}
 
 .dp-ship-row {
     display: flex; justify-content: space-between; align-items: center;
@@ -987,8 +1013,12 @@ body, input, button, select, textarea {
                                 </div>
                                 <div class="dp-spec-row">
                                     <span class="dp-spec-k">Status</span>
-                                    <span class="dp-spec-v" id="main-stock-info">
-                                        @if($stockQty) Stok {{ $stockQty }} unit @else Out of Stock @endif
+                                    <span id="main-stock-info" class="{{ $stockQty > 0 ? 'stock-highlight-avail' : 'stock-highlight-empty' }}">
+                                        @if($stockQty)
+                                            <i class="fas fa-check-circle"></i> Stok {{ $stockQty }} unit tersedia
+                                        @else
+                                            <i class="fas fa-exclamation-circle"></i> Out of Stock
+                                        @endif
                                     </span>
                                 </div>
                                 <div class="dp-spec-row">
@@ -1309,8 +1339,12 @@ body, input, button, select, textarea {
                     </div>
                     <div class="dp-sidebar-meta-item">
                         <small><i class="fas fa-cube me-1"></i>Status</small>
-                        <div id="stock-info" class="dp-meta-val" style="font-weight:700;color:var(--c-text);font-size:.74rem;">
-                            @if($stockQty) Stok: {{ $stockQty }} @else Habis @endif
+                        <div id="stock-info" class="dp-meta-val {{ $stockQty > 0 ? 'stock-highlight-avail' : 'stock-highlight-empty' }}">
+                            @if($stockQty)
+                                <i class="fas fa-check-circle"></i> Stok: {{ $stockQty }}
+                            @else
+                                <i class="fas fa-exclamation-circle"></i> Habis
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -1512,6 +1546,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function updateStockDisplay(qty) {
+        if (mainStockElement) {
+            if (qty > 0) {
+                mainStockElement.className = 'stock-highlight-avail';
+                mainStockElement.innerHTML = `<i class="fas fa-check-circle"></i> Stok ${qty} unit tersedia`;
+            } else {
+                mainStockElement.className = 'stock-highlight-empty';
+                mainStockElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> Out of Stock`;
+            }
+        }
+        if (stockElement) {
+            if (qty > 0) {
+                stockElement.className = 'dp-meta-val stock-highlight-avail';
+                stockElement.innerHTML = `<i class="fas fa-check-circle"></i> Stok: ${qty}`;
+            } else {
+                stockElement.className = 'dp-meta-val stock-highlight-empty';
+                stockElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> Habis`;
+            }
+        }
+    }
+
     function showVariant(v) {
         if (variantName) variantName.textContent = v.name;
         if (variantSku) variantSku.textContent = v.sku;
@@ -1523,8 +1578,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (mobilePageQtyInput) mobilePageQtyInput.max = v.stock;
         if (variantInfo) variantInfo.style.display = 'block';
         if (selectionMessage) selectionMessage.style.display = 'none';
-        if (stockElement) stockElement.textContent = 'Stok: ' + v.stock;
-        if (mainStockElement) mainStockElement.textContent = 'Stok ' + v.stock + ' unit tersedia';
+        updateStockDisplay(v.stock);
         if (mobileVariantPreview) { mobileVariantPreview.textContent = 'Varian: ' + v.name; mobileVariantPreview.style.color = 'var(--c-primary)'; }
     }
 
@@ -1533,8 +1587,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (variantInfo) variantInfo.style.display = 'none';
         if (selectionMessage) selectionMessage.style.display = 'flex';
         const dq = @json($parentProduct->productInventory ? $parentProduct->productInventory->qty : 0);
-        if (stockElement) stockElement.textContent = 'Stok: ' + dq;
-        if (mainStockElement) mainStockElement.textContent = 'Stok ' + dq + ' unit tersedia';
+        updateStockDisplay(dq);
         if (mobileVariantPreview) { mobileVariantPreview.textContent = 'Pilih Varian Produk'; mobileVariantPreview.style.color = ''; }
     }
 
