@@ -1,0 +1,58 @@
+{
+  "form": {
+    "namaLengkap": "Raihan Rizki Alfareza",
+    "nim": "23051204067",
+    "prodi": "S1 Teknik Informatika",
+    "fakultas": "Teknik",
+    "noTelepon": "085155228237",
+    "email": "raihan.23067@mhs.unesa.ac.id",
+    "alamat": "Jl. Ketintang Wiyata Gedung A10, Ketintang, Gayungan, Surabaya, East Java 60231",
+    "namaInstansi": "CV SINAR AGUNG JAYA",
+    "alamatInstansi": "Tebu Ireng IV No.38, Cukir, Kec. Diwek, Kabupaten Jombang, Jawa Timur 61471",
+    "deskripsiInstansi": "**CV Sinar Agung Jaya** merupakan perusahaan manufaktur dan penyedia solusi terintegrasi yang berbasis di Jawa Timur. Perusahaan ini memfokuskan operasionalnya pada kemitraan pengadaan barang dan jasa untuk berbagai instansi pemerintahan serta sektor swasta. Lingkup bisnis yang dikelola mencakup penyediaan Alat Tulis Kantor (ATK), konveksi kustom, hingga pengembangan infrastruktur teknologi informasi.\n\nUntuk memenuhi kebutuhan mitra secara spesifik, aktivitas bisnis CV Sinar Agung Jaya ditopang oleh tiga pilar utama:\n\n- **Pengadaan ATK & On-Demand Printing:** Melayani cetak kustom (*on-demand*) dan pemenuhan kebutuhan alat tulis kantor, baik dalam volume besar untuk instansi maupun skala retail (B2C/B2B).\n- **Solusi Teknologi Informasi (TI):** Menyediakan pengadaan perangkat keras (*hardware*) komputer serta pengembangan perangkat lunak (*software*) berbasis web untuk mendukung digitalisasi sistem administrasi mitra.\n- **Konveksi Kebutuhan Event & Operasional:** Memproduksi perlengkapan tekstil massal seperti tas (*gear*), rompi, jaket, dan seragam lapangan untuk mendukung kegiatan seremonial maupun operasional lembaga.\n\nMelalui integrasi ketiga lini bisnis tersebut, CV Sinar Agung Jaya memposisikan diri sebagai mitra vendor di wilayah Jawa Timur yang berfokus pada ketepatan spesifikasi, efisiensi pengadaan, dan pemenuhan standar operasional bagi sektor publik maupun swasta.",
+    "periodeMagang": "26 Januari 2026 s/d 1 Juni 2026",
+    "tanggalMulai": "2026-01-26",
+    "tanggalSelesai": "2026-06-01",
+    "judulProyek": "Pengembangan Sistem Terintegrasi E-Commerce dan ERP Viviashop Berbasis Arsitektur Hybrid Cloud dan Pemrosesan Terdistribusi",
+    "namaDosenPembimbing": "I Made Suartana, S.Kom., M.Kom.",
+    "nipDosenPembimbing": "198411242015041003",
+    "namaPembimbingMitra": "Fanani Agung Widyanto",
+    "identitasPembimbingMitra": "",
+    "namaKoordinatorProdi": "Paramitha Nerisafitra, S.ST., M.Kom.",
+    "nipKoordinatorProdi": "198905292019032013",
+    "tahun": "2026",
+    "aiProvider": "deepseek"
+  },
+  "mataKuliahKonversi": [
+    {
+      "nama": "Magang Perencanaan Program",
+      "sks": 2
+    },
+    {
+      "nama": "Magang Evaluasi Program",
+      "sks": 2
+    },
+    {
+      "nama": "Web Semantik",
+      "sks": 3
+    },
+    {
+      "nama": "Verifikasi dan Validasi Perangkat Lunak",
+      "sks": 3
+    },
+    {
+      "nama": "Konstruksi Perangkat Lunak",
+      "sks": 3
+    },
+    {
+      "nama": "Analisis dan Desain Perangkat Lunak",
+      "sks": 4
+    },
+    {
+      "nama": "Virtualisasi dan Komputasi Awan",
+      "sks": 3,
+      "nilai": ""
+    }
+  ],
+  "timestamp": "2026-06-25T04:54:27.606Z"
+}
