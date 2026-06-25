@@ -11,7 +11,7 @@ Penyusun:
 NIM: 23051204067
 
 UNIVERSITAS NEGERI SURABAYA
-FAKULTAS TEKNIK  -  PROGRAM STUDI S1 TEKNIK INFORMATIKA
+FAKULTAS TEKNIK, PROGRAM STUDI S1 TEKNIK INFORMATIKA
 Tahun 2026
 
 ---
@@ -92,7 +92,7 @@ Menyetujui,
 | BAB IV. PELAKSANAAN KEGIATAN YANG RELEVAN DENGAN KONVERSI MATA KULIAH | 19 |
 | 4.1 Aktivitas Harian yang Dikerjakan Selama di Mitra | 19 |
 | 4.2 Hasil Proyek yang Telah Dikembangkan | 28 |
-| 4.3 Pembahasan  -  Relevansi dengan Keilmuan Program Studi | 36 |
+| 4.3 Pembahasan Mengenai Relevansi dengan Keilmuan Program Studi | 36 |
 | 4.4 Relevansi dengan Mata Kuliah Konversi | 38 |
 | BAB V. HAMBATAN DAN DUKUNGAN PELAKSANAAN MAGANG | 49 |
 | 5.1 Hambatan | 49 |
@@ -113,13 +113,13 @@ Menyetujui,
 
 ## DAFTAR TABEL
 
-[DAFTAR TABEL  -  diisi setelah laporan selesai]
+[DAFTAR TABEL, diisi setelah laporan selesai]
 
 Tabel 1. Jadwal Aktivitas Harian Minggu ke-4 dan ke-5 Januari 2026
 Tabel 2. Jadwal Aktivitas Harian Februari 2026
 Tabel 3. Jadwal Aktivitas Harian Maret 2026
 Tabel 4. Jadwal Aktivitas Harian April 2026
-Tabel 5. Jadwal Aktivitas Harian Mei - Juni 2026
+Tabel 5. Jadwal Aktivitas Harian Mei-Juni 2026
 Tabel 6. Teknik Pelaksanaan Magang
 Tabel 7. Ringkasan Mata Kuliah Konversi
 
@@ -127,7 +127,7 @@ Tabel 7. Ringkasan Mata Kuliah Konversi
 
 ## DAFTAR GAMBAR
 
-[DAFTAR GAMBAR  -  diisi setelah laporan selesai]
+[DAFTAR GAMBAR, diisi setelah laporan selesai]
 
 Gambar 1. Struktur Organisasi CV Sinar Agung Jaya
 Gambar 2. Arsitektur Sistem Viviashop

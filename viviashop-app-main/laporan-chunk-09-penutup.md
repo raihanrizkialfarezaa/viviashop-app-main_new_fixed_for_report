@@ -1,7 +1,7 @@
 
 ## DAFTAR PUSTAKA
 
-Brown, T.B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G., Henighan, T., Child, R., Ramesh, A., Ziegler, D.M., Wu, J., Winter, C., Hesse, C., Chen, M., Sigler, E., Litwin, M., Gray, S., Chess, B., Clark, J., Berner, C., McCandlish, S., Radford, A., Sutskever, I. and Amodei, D. (2020) 'Language Models are Few-Shot Learners', *Advances in Neural Information Processing Systems*, 33, pp. 1877 - 1901.
+Brown, T.B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G., Henighan, T., Child, R., Ramesh, A., Ziegler, D.M., Wu, J., Winter, C., Hesse, C., Chen, M., Sigler, E., Litwin, M., Gray, S., Chess, B., Clark, J., Berner, C., McCandlish, S., Radford, A., Sutskever, I. and Amodei, D. (2020) 'Language Models are Few-Shot Learners', *Advances in Neural Information Processing Systems*, 33, pp. 1877-1901.
 
 Date, C.J. (2004) *An Introduction to Database Systems*. 8th edn. Boston: Pearson Education.
 
@@ -25,7 +25,7 @@ Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Zettlemoyer, L
 
 Sommerville, I. (2019) *Software Engineering*. 10th edn. Hoboken: Pearson.
 
-Statista (2024) *E-commerce in Indonesia  -  Statistics & Facts*. Available at: https://www.statista.com/topics/7789/e-commerce-in-indonesia/ (Accessed: 15 June 2026).
+Statista (2024) *E-commerce in Indonesia, Statistics & Facts*. Available at: https://www.statista.com/topics/7789/e-commerce-in-indonesia/ (Accessed: 15 June 2026).
 
 Universitas Negeri Surabaya (2024) *Panduan Mobilitas Akademik Magang Berdampak UNESA*. Surabaya: Sub Direktorat Mobilitas Akademik UNESA.
 
@@ -51,7 +51,7 @@ Universitas Negeri Surabaya (2024) *Panduan Mobilitas Akademik Magang Berdampak 
 
 **Alamat:** Jl. Ketintang Wiyata Gedung A10, Ketintang, Gayungan, Surabaya, East Java 60231
 
-[FOTO/GAMBAR: Foto resmi mahasiswa  -  PERLU DILAMPIRKAN]
+[FOTO/GAMBAR: Foto resmi mahasiswa, PERLU DILAMPIRKAN]
 
 ---
 
@@ -79,7 +79,7 @@ Contoh entri logbook yang disubmit ke sistem kampus:
 
 ### Lampiran 3. Surat Keterangan Magang dari Mitra
 
-[PERLU INPUT MANUAL  -  Surat keterangan resmi dari CV Sinar Agung Jaya yang ditandatangani oleh perwakilan perusahaan (Fanani Agung Widyanto) dan distempel perusahaan, menyatakan bahwa Raihan Rizki Alfareza (NIM: 23051204067) telah menyelesaikan magang di CV Sinar Agung Jaya dari 26 Januari 2026 hingga 1 Juni 2026]
+[PERLU INPUT MANUAL, Surat keterangan resmi dari CV Sinar Agung Jaya yang ditandatangani oleh perwakilan perusahaan (Fanani Agung Widyanto) dan distempel perusahaan, menyatakan bahwa Raihan Rizki Alfareza (NIM: 23051204067) telah menyelesaikan magang di CV Sinar Agung Jaya dari 26 Januari 2026 hingga 1 Juni 2026]
 
 ---
 
@@ -87,11 +87,11 @@ Contoh entri logbook yang disubmit ke sistem kampus:
 
 [FOTO/GAMBAR: Screenshot dashboard admin Viviashop]
 
-[FOTO/GAMBAR: Screenshot antarmuka AI Agent chatbot Viviashop  -  menampilkan respons tool ScanCriticalStockTool]
+[FOTO/GAMBAR: Screenshot antarmuka AI Agent chatbot Viviashop, menampilkan respons tool ScanCriticalStockTool]
 
 [FOTO/GAMBAR: Screenshot halaman laporan revenue dengan grafik Chart.js]
 
-[FOTO/GAMBAR: Screenshot sistem print service  -  alur pilih jenis cetak dan kalkulasi biaya]
+[FOTO/GAMBAR: Screenshot sistem print service, alur pilih jenis cetak dan kalkulasi biaya]
 
 [FOTO/GAMBAR: Screenshot perbandingan waktu muat halaman produk sebelum dan sesudah optimasi query]
 
@@ -101,7 +101,7 @@ Contoh entri logbook yang disubmit ke sistem kampus:
 
 ### Lampiran 5. Lembar Penilaian dari Pembimbing Mitra
 
-[PERLU INPUT MANUAL  -  Lembar penilaian yang diisi dan ditandatangani oleh Fanani Agung Widyanto selaku Pembimbing Mitra dari CV Sinar Agung Jaya, mencakup penilaian aspek: teknis (kualitas kode, kemampuan debugging, pemahaman arsitektur), kedisiplinan, komunikasi, dan dampak nyata dari tugas yang diselesaikan]
+[PERLU INPUT MANUAL, Lembar penilaian yang diisi dan ditandatangani oleh Fanani Agung Widyanto selaku Pembimbing Mitra dari CV Sinar Agung Jaya, mencakup penilaian aspek: teknis (kualitas kode, kemampuan debugging, pemahaman arsitektur), kedisiplinan, komunikasi, dan dampak nyata dari tugas yang diselesaikan]
 
 ---
 

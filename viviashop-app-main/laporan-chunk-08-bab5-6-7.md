@@ -8,7 +8,7 @@ Berikut beberapa hambatan nyata yang saya hadapi selama di lapangan, diurutkan d
 
 **1. Kompleksitas Codebase yang Tinggi di Awal Magang**
 
-Ini adalah hambatan yang paling terasa di minggu-minggu pertama. Viviashop bukan proyek yang bisa dipelajari dalam satu atau dua hari. Codebase memiliki 35 model Eloquent dengan relasi yang bertingkat, lebih dari 40 controller yang tersebar di empat namespace berbeda, dan file `routes/web.php` yang berisi lebih dari 1.150 baris termasuk sekitar dua lusin route debug/test yang tidak terdokumentasikan dengan jelas. Saya butuh hampir satu minggu penuh hanya untuk memahami alur data dasar dari request masuk ke response keluar  -  sebelum bisa mulai berkontribusi dengan percaya diri.
+Ini adalah hambatan yang paling terasa di minggu-minggu pertama. Viviashop bukan proyek yang bisa dipelajari dalam satu atau dua hari. Codebase memiliki 35 model Eloquent dengan relasi yang bertingkat, lebih dari 40 controller yang tersebar di empat namespace berbeda, dan file `routes/web.php` yang berisi lebih dari 1.150 baris termasuk sekitar dua lusin route debug/test yang tidak terdokumentasikan dengan jelas. Saya butuh hampir satu minggu penuh hanya untuk memahami alur data dasar dari request masuk ke response keluar, sebelum bisa mulai berkontribusi dengan percaya diri.
 
 Yang memperumit situasi: tidak ada diagram arsitektur formal dan tidak ada `.env.example` (seperti yang tercatat di dokumentasi teknis). Saya harus membangun pemahaman dari kode itu sendiri, dan itu memakan waktu.
 
@@ -20,15 +20,15 @@ Hambatan ini pada akhirnya menjadi pelajaran tentang technical debt di sistem ny
 
 **3. Keterbatasan Akses ke Informasi Sistem yang Sensitif**
 
-Beberapa konfigurasi sistem  -  terutama credential Midtrans production, kunci API Instagram, dan beberapa konfigurasi server  -  hanya bisa diakses oleh anggota tim inti. Ini wajar dari perspektif keamanan, tetapi sempat menjadi hambatan ketika saya perlu memverifikasi perilaku sistem di environment tertentu. Untuk kasus-kasus ini, saya bergantung pada pembimbing mitra untuk mendapatkan informasi yang diperlukan, yang kadang perlu menunggu jadwal yang tepat.
+Beberapa konfigurasi sistem, terutama credential Midtrans production, kunci API Instagram, dan beberapa konfigurasi server, hanya bisa diakses oleh anggota tim inti. Ini wajar dari perspektif keamanan, tetapi sempat menjadi hambatan ketika saya perlu memverifikasi perilaku sistem di environment tertentu. Untuk kasus-kasus ini, saya bergantung pada pembimbing mitra untuk mendapatkan informasi yang diperlukan, yang kadang perlu menunggu jadwal yang tepat.
 
 **4. Tantangan Debugging di Environment Produksi**
 
-Beberapa bug yang dilaporkan hanya muncul di lingkungan production  -  tidak bisa direproduksi di lokal. Bug error 500 pada Jumat Agung (April 2026), misalnya, disebabkan oleh file storage yang hilang di server production  -  sesuatu yang tidak terjadi di development lokal karena setup storage berbeda. Debugging masalah semacam ini memerlukan akses remote ke server, yang menambah kompleksitas tersendiri.
+Beberapa bug yang dilaporkan hanya muncul di lingkungan production, sehingga tidak bisa direproduksi di lokal. Bug error 500 pada Jumat Agung (April 2026), misalnya, disebabkan oleh file storage yang hilang di server production, sebuah kendala yang tidak terjadi di development lokal karena adanya perbedaan setup storage. Debugging masalah semacam ini memerlukan akses remote ke server, yang menambah kompleksitas tersendiri.
 
 **5. Keterbatasan Coverage Test yang Ada**
 
-Seperti yang dicatat dalam dokumentasi teknis, Viviashop tidak memiliki database SQLite untuk pengujian  -  semua test berjalan terhadap database MySQL nyata. Ini membuat penulisan test menjadi lebih hati-hati (tidak bisa sembarangan melakukan `RefreshDatabase`) dan coverage test yang ada tidak setinggi yang idealnya. Akibatnya, ketika saya membuat perubahan di satu bagian sistem, tidak selalu ada jaring pengaman test yang bisa segera memperingatkan jika ada regresi.
+Seperti yang dicatat dalam dokumentasi teknis, Viviashop tidak memiliki database SQLite untuk pengujian, sehingga semua test berjalan terhadap database MySQL nyata. Ini membuat penulisan test menjadi lebih hati-hati (tidak bisa sembarangan melakukan `RefreshDatabase`) dan coverage test yang ada tidak setinggi yang idealnya. Akibatnya, ketika saya membuat perubahan di satu bagian sistem, tidak selalu ada jaring pengaman test yang bisa segera memperingatkan jika ada regresi.
 
 ---
 
@@ -38,11 +38,11 @@ Di sisi lain, beberapa faktor pendukung secara signifikan membantu kelancaran ak
 
 **1. Bimbingan Teknis dari Pembimbing Mitra yang Intensif**
 
-Fanani Agung Widyanto memberikan bimbingan yang jauh lebih intensif dari yang saya bayangkan sebelumnya. Hampir setiap hari ada diskusi teknis  -  baik tentang tugas yang sedang dikerjakan, pendekatan yang dipilih, atau konteks bisnis yang saya perlu pahami agar bisa berkontribusi lebih tepat. Ketika saya menghadapi masalah yang tidak bisa saya selesaikan sendiri dalam waktu wajar, beliau selalu tersedia untuk menunjukkan arah yang benar tanpa langsung memberikan jawaban  -  cara bimbingan yang menurut saya lebih efektif untuk pembelajaran jangka panjang.
+Fanani Agung Widyanto memberikan bimbingan yang jauh lebih intensif dari yang saya bayangkan sebelumnya. Hampir setiap hari ada diskusi teknis, baik tentang tugas yang sedang dikerjakan, pendekatan yang dipilih, atau konteks bisnis yang saya perlu pahami agar bisa berkontribusi lebih tepat. Ketika saya menghadapi masalah yang tidak bisa saya selesaikan sendiri dalam waktu wajar, beliau selalu tersedia untuk menunjukkan arah yang benar tanpa langsung memberikan jawaban. Pendekatan ini merupakan cara bimbingan yang menurut saya lebih efektif untuk pembelajaran jangka panjang.
 
 **2. Arsitektur Sistem yang Dirancang dengan Cukup Baik**
 
-Meski ada technical debt, arsitektur dasar Viviashop cukup terstruktur. Penggunaan pola MVC yang konsisten, service layer yang terdefinisi, form request yang terpisah, dan pola AI agent yang elegan  -  semuanya memudahkan saya untuk memahami "di mana seharusnya sesuatu berada" ketika perlu menambahkan fitur baru atau memperbaiki yang sudah ada. Sistem yang terstruktur dengan baik adalah lingkungan belajar yang lebih baik daripada sistem yang ditulis asal jadi.
+Meski ada technical debt, arsitektur dasar Viviashop cukup terstruktur. Penggunaan pola MVC yang konsisten, service layer yang terdefinisi, form request yang terpisah, dan pola AI agent yang elegan, semuanya memudahkan saya untuk memahami "di mana seharusnya sesuatu berada" ketika perlu menambahkan fitur baru atau memperbaiki yang sudah ada. Sistem yang terstruktur dengan baik adalah lingkungan belajar yang lebih baik daripada sistem yang ditulis asal jadi.
 
 **3. Akses Penuh ke Repository dan Lingkungan Development**
 
@@ -50,7 +50,7 @@ Dari hari pertama, saya mendapat akses penuh ke repository aktif. Ini berarti sa
 
 **4. Fleksibilitas Kerja (WFA untuk Hari Libur Nasional)**
 
-Tim CV Sinar Agung Jaya memberikan fleksibilitas untuk bekerja dari rumah (*Work From Anywhere*) pada hari-hari libur nasional yang jatuh di tengah periode magang. Ini memungkinkan saya untuk tetap produktif dan memenuhi target jam magang tanpa harus mengorbankan momen penting  -  sambil tetap menyelesaikan tugas yang memang bisa dikerjakan secara remote.
+Tim CV Sinar Agung Jaya memberikan fleksibilitas untuk bekerja dari rumah (*Work From Anywhere*) pada hari-hari libur nasional yang jatuh di tengah periode magang. Ini memungkinkan saya untuk tetap produktif dan memenuhi target jam magang tanpa harus mengorbankan momen penting, sambil tetap menyelesaikan tugas yang memang bisa dikerjakan secara remote.
 
 **5. Bimbingan Akademis dari Dosen Pembimbing Lapangan**
 
@@ -65,47 +65,47 @@ I Made Suartana, S.Kom., M.Kom. memberikan bimbingan dari sisi akademis yang mem
 
 ### 1. Pengalaman Pribadi Selama Magang
 
-Magang di CV Sinar Agung Jaya selama hampir lima bulan adalah salah satu periode belajar paling intensif yang pernah saya alami  -  dan intensitasnya bukan dari jam yang panjang, melainkan dari kualitas masalah yang harus dihadapi setiap harinya.
+Magang di CV Sinar Agung Jaya selama hampir lima bulan adalah salah satu periode belajar paling intensif yang pernah saya alami, di mana intensitasnya bukan dari jam yang panjang, melainkan dari kualitas masalah yang harus dihadapi setiap harinya.
 
 Di minggu pertama, saya jujur agak kaget dengan skala sistemnya. Saya terbiasa dengan proyek kuliah yang bisa dipahami sepenuhnya dalam satu malam. Viviashop tidak bisa. Ada 35 model, ada puluhan controller, ada file routes yang lebih dari seribu baris. Saya butuh waktu lebih lama dari yang saya harapkan hanya untuk memahami alur request sederhana dari browser ke database dan kembali lagi.
 
-Tapi dari sana, saya belajar sesuatu yang tidak diajarkan di kuliah, yaitu seni membaca dan memahami sistem yang sudah berjalan. Bukan membaca tutorial  -  membaca kode nyata yang ditulis oleh orang lain, dalam kondisi tekanan waktu yang nyata, dengan keputusan-keputusan yang tidak selalu ideal tapi masuk akal pada saat dibuat. Keterampilan membaca kode ini ternyata sama pentingnya dengan kemampuan menulis kode.
+Tapi dari sana, saya belajar sesuatu yang tidak diajarkan di kuliah, yaitu seni membaca dan memahami sistem yang sudah berjalan. Bukan membaca tutorial, melainkan membaca kode nyata yang ditulis oleh orang lain, dalam kondisi tekanan waktu yang nyata, dengan keputusan-keputusan yang tidak selalu ideal tapi masuk akal pada saat dibuat. Keterampilan membaca kode ini ternyata sama pentingnya dengan kemampuan menulis kode.
 
-Tantangan yang paling berkesan adalah ketika menghadapi bug yang hanya muncul di production  -  tidak bisa direproduksi di lokal. Kasus error 500 di server production (April 2026) mengajarkan saya tentang pentingnya logging yang baik, sebab tanpa informasi log yang memadai, pencarian bug di production akan terasa sangat menyulitkan. Setelah kasus itu, saya selalu memastikan untuk menambahkan log yang bermakna di setiap controller yang saya modifikasi.
+Tantangan yang paling berkesan adalah ketika menghadapi bug yang hanya muncul di production dan tidak bisa direproduksi di lokal. Kasus error 500 di server production (April 2026) mengajarkan saya tentang pentingnya logging yang baik, sebab tanpa informasi log yang memadai, pencarian bug di production akan terasa sangat menyulitkan. Setelah kasus itu, saya selalu memastikan untuk menambahkan log yang bermakna di setiap controller yang saya modifikasi.
 
-Pengalaman yang paling memuaskan? Ketika optimasi N+1 query di `ProductController` berhasil menurunkan waktu muat dari 5 detik menjadi 1 detik  -  diverifikasi langsung dengan data dummy. Ada kepuasan yang spesifik ketika solusi yang Anda rancang benar-benar menghasilkan perbedaan yang terukur.
+Pengalaman yang paling memuaskan? Ketika optimasi N+1 query di `ProductController` berhasil menurunkan waktu muat dari 5 detik menjadi 1 detik, sebuah hasil yang diverifikasi langsung dengan data dummy. Ada kepuasan yang spesifik ketika solusi yang Anda rancang benar-benar menghasilkan perbedaan yang terukur.
 
 ### 2. Keterampilan yang Dikembangkan
 
 **Keterampilan teknis yang berkembang secara signifikan:**
 
-- *Laravel 10 secara mendalam*  -  dari sekadar tahu cara membuat CRUD sederhana, menjadi mampu memahami lifecycle request, middleware, event/listener, artisan command, service layer, dan queue. Lebih penting: saya jadi paham bagaimana berbagai komponen ini berinteraksi satu sama lain di dalam sistem yang sudah kompleks.
-- *Database query optimization*  -  eager loading, indexing, dan `chunk()` untuk data besar bukan lagi konsep abstrak. Saya sudah merasakan langsung perbedaannya.
-- *API integration*  -  mengelola tiga integrasi berbeda (Midtrans, RajaOngkir, Gemini) mengajarkan banyak tentang penanganan error di batas sistem, manajemen credential, dan cara debugging masalah yang terjadi di jaringan.
-- *PHPUnit testing*  -  dari sekadar tahu cara menjalankan test, menjadi bisa menulis test yang meaningful dan memahami kapan test itu perlu dan kapan justru kontraproduktif.
-- *Sistem AI/LLM integration*  -  ini yang paling baru: memahami cara kerja `ToolDispatcher` dan pola *function calling* di LLM, lalu mengimplementasikan tool baru yang sesuai dengan pola tersebut.
+- *Laravel 10 secara mendalam.* Dari sekadar tahu cara membuat CRUD sederhana, menjadi mampu memahami lifecycle request, middleware, event/listener, artisan command, service layer, dan queue. Lebih penting: saya jadi paham bagaimana berbagai komponen ini berinteraksi satu sama lain di dalam sistem yang sudah kompleks.
+- *Database query optimization.* Eager loading, indexing, dan `chunk()` untuk data besar bukan lagi konsep abstrak. Saya sudah merasakan langsung perbedaannya.
+- *API integration.* Mengelola tiga integrasi berbeda (Midtrans, RajaOngkir, Gemini) mengajarkan banyak tentang penanganan error di batas sistem, manajemen credential, dan cara debugging masalah yang terjadi di jaringan.
+- *PHPUnit testing.* Dari sekadar tahu cara menjalankan test, menjadi bisa menulis test yang meaningful dan memahami kapan test itu perlu dan kapan justru kontraproduktif.
+- *Sistem AI/LLM integration.* Ini yang paling baru: memahami cara kerja `ToolDispatcher` dan pola *function calling* di LLM, lalu mengimplementasikan tool baru yang sesuai dengan pola tersebut.
 
 **Keterampilan interpersonal yang berkembang:**
 
-- *Manajemen prioritas di lingkungan multi-tugas*  -  setiap hari ada beberapa tugas yang bisa dikerjakan, dan tidak semuanya bisa diselesaikan hari itu juga. Belajar memilih mana yang paling kritis dan mengomunikasikannya ke pembimbing adalah keterampilan yang perlu dilatih.
-- *Komunikasi teknis yang efektif*  -  menjelaskan masalah teknis kepada pembimbing dengan cara yang cukup jelas agar bisa mendapat arah yang tepat, tanpa terlalu banyak detail yang tidak perlu.
-- *Ketahanan terhadap ketidakpastian*  -  banyak hari di mana saya tidak tahu jawaban atas masalah yang sedang dihadapi. Belajar untuk tetap sistematis dan tidak panik dalam kondisi seperti ini adalah keterampilan non-teknis yang sangat berharga.
+- *Manajemen prioritas di lingkungan multi-tugas.* Setiap hari ada beberapa tugas yang bisa dikerjakan, dan tidak semuanya bisa diselesaikan hari itu juga. Belajar memilih mana yang paling kritis dan mengomunikasikannya ke pembimbing adalah keterampilan yang perlu dilatih.
+- *Komunikasi teknis yang efektif.* Menjelaskan masalah teknis kepada pembimbing dengan cara yang cukup jelas agar bisa mendapat arah yang tepat, tanpa terlalu banyak detail yang tidak perlu.
+- *Ketahanan terhadap ketidakpastian.* Banyak hari di mana saya tidak tahu jawaban atas masalah yang sedang dihadapi. Belajar untuk tetap sistematis dan tidak panik dalam kondisi seperti ini adalah keterampilan non-teknis yang sangat berharga.
 
 ### 3. Pengaruh Magang terhadap Karier
 
 Sebelum magang, pandangan saya tentang karier di bidang pengembangan perangkat lunak masih cukup abstrak. Saya hanya tahu ingin bekerja di sektor teknologi tanpa memahami peran spesifik yang sesuai dengan minat saya.
 
-Setelah empat bulan di Viviashop, gambarannya jauh lebih jelas. Saya menemukan bahwa saya menikmati pekerjaan yang ada di persimpangan antara sistem yang kompleks dan dampak bisnis yang nyata  -  bukan sekadar menulis kode yang elegan secara teknis, tetapi kode yang menyelesaikan masalah nyata yang dihadapi oleh orang nyata. Proyek AI agent Viviashop secara khusus membuka minat baru untuk mempelajari bagaimana mengintegrasikan kemampuan LLM ke dalam aplikasi bisnis yang sudah berjalan, bukan sekadar membuat prototipe sederhana.
+Setelah empat bulan di Viviashop, gambarannya jauh lebih jelas. Saya menemukan bahwa saya menikmati pekerjaan yang ada di persimpangan antara sistem yang kompleks dan dampak bisnis yang nyata, di mana fokus saya bukan sekadar menulis kode yang elegan secara teknis, tetapi kode yang menyelesaikan masalah nyata bagi pengguna. Proyek AI agent Viviashop secara khusus membuka minat baru untuk mempelajari bagaimana mengintegrasikan kemampuan LLM ke dalam aplikasi bisnis yang sudah berjalan, bukan sekadar membuat prototipe sederhana.
 
-Saya juga jadi lebih sadar bahwa *full-stack development* yang sesungguhnya  -  dari query optimization di database sampai integrasi API eksternal sampai antarmuka pengguna  -  adalah kompetensi yang sangat dihargai. Ini mendorong saya untuk tidak hanya fokus pada satu aspek teknis tertentu, tetapi membangun pemahaman yang cukup kuat di seluruh stack.
+Saya juga jadi lebih sadar bahwa *full-stack development* yang sesungguhnya, mulai dari query optimization di database hingga integrasi API eksternal dan antarmuka pengguna, merupakan kompetensi yang sangat dihargai. Ini mendorong saya untuk tidak hanya fokus pada satu aspek teknis tertentu, tetapi membangun pemahaman yang cukup kuat di seluruh stack.
 
 ### 4. Penerapan Ilmu yang Diperoleh di Kampus
 
-Cukup banyak yang bisa diterapkan langsung. Konsep MVC yang dipelajari di kuliah ternyata bukan hanya teori  -  ia adalah cara nyata sebuah tim membagi tanggung jawab dalam sistem yang besar. Prinsip SOLID dari mata kuliah Rekayasa Perangkat Lunak terasa sangat relevan ketika saya merefaktor service dan mengimplementasikan tool AI baru mengikuti pola yang sudah ada.
+Cukup banyak yang bisa diterapkan langsung. Konsep MVC yang dipelajari di kuliah ternyata bukan hanya teori, melainkan cara nyata sebuah tim membagi tanggung jawab dalam sistem yang besar. Prinsip SOLID dari mata kuliah Rekayasa Perangkat Lunak terasa sangat relevan ketika saya merefaktor service dan mengimplementasikan tool AI baru mengikuti pola yang sudah ada.
 
-Gap yang paling terasa: mata kuliah tidak cukup menekankan *membaca dan memahami kode orang lain*. Hampir semua penugasan kuliah dimulai dari halaman kosong. Di dunia kerja nyata, sebagian besar waktu dihabiskan untuk memahami dan memodifikasi kode yang sudah ada  -  bukan menulis dari awal. Ini gap yang perlu lebih banyak perhatian di kurikulum.
+Gap yang paling terasa: mata kuliah tidak cukup menekankan *membaca dan memahami kode orang lain*. Hampir semua penugasan kuliah dimulai dari halaman kosong. Di dunia kerja nyata, sebagian besar waktu dihabiskan untuk memahami dan memodifikasi kode yang sudah ada, bukan menulis baru dari awal. Ini gap yang perlu lebih banyak perhatian di kurikulum.
 
-Satu lagi yang mengejutkan: kompleksitas teknikal debt di sistem nyata jauh lebih tinggi dari yang pernah saya bayangkan. Di kuliah, kita selalu bisa mulai fresh. Di sini, setiap keputusan dipengaruhi oleh keputusan-keputusan yang sudah dibuat sebelumnya  -  dan bekerja dengan constraint itu adalah keterampilan tersendiri.
+Satu lagi yang mengejutkan: kompleksitas teknikal debt di sistem nyata jauh lebih tinggi dari yang pernah saya bayangkan. Di kuliah, kita selalu bisa mulai fresh. Di sini, setiap keputusan dipengaruhi oleh keputusan-keputusan yang sudah dibuat sebelumnya, sehingga bekerja dengan batasan tersebut menjadi keterampilan tersendiri.
 
 ---
 
@@ -119,7 +119,7 @@ Saat ini, codebase Viviashop tidak memiliki coverage test yang memadai. Semua te
 
 **2. Dokumentasi Arsitektur Formal**
 
-Tidak ada diagram arsitektur yang tersedia saat saya bergabung. Onboarding membutuhkan waktu lebih lama dari seharusnya karena saya harus membangun pemahaman arsitektur dari kode itu sendiri. Dokumen sederhana yang menggambarkan namespace, alur request utama, dan posisi masing-masing service akan sangat mempersingkat waktu onboarding anggota tim baru  -  termasuk mahasiswa magang berikutnya.
+Tidak ada diagram arsitektur yang tersedia saat saya bergabung. Onboarding membutuhkan waktu lebih lama dari seharusnya karena saya harus membangun pemahaman arsitektur dari kode itu sendiri. Dokumen sederhana yang menggambarkan namespace, alur request utama, dan posisi masing-masing service akan sangat mempersingkat waktu onboarding anggota tim baru, termasuk mahasiswa magang berikutnya.
 
 **3. Konsolidasi File-file Legacy**
 
@@ -127,7 +127,7 @@ Beberapa file legacy (`CartControllerNew.php`, `ProductRequest_updated.php`, `Br
 
 **4. Penerapan Environment Staging yang Lebih Terstruktur**
 
-Saat ini batas antara staging dan production tidak selalu jelas  -  terutama untuk konfigurasi Midtrans yang menggunakan live keys bahkan di lingkungan development. Memisahkan konfigurasi ini dengan lebih tegas (misalnya dengan `.env.staging` yang selalu menggunakan sandbox keys) akan mengurangi risiko transaksi uji yang tidak sengaja mempengaruhi akun production.
+Saat ini batas antara staging dan production tidak selalu jelas, terutama untuk konfigurasi Midtrans yang menggunakan live keys bahkan di lingkungan development. Memisahkan konfigurasi ini dengan lebih tegas (misalnya dengan `.env.staging` yang selalu menggunakan sandbox keys) akan mengurangi risiko transaksi uji yang tidak sengaja mempengaruhi akun production.
 
 **5. Struktur Orientasi untuk Mahasiswa Magang Berikutnya**
 
@@ -141,7 +141,7 @@ Pengalaman mengikuti program Magang Berdampak UNESA juga memberikan beberapa mas
 
 **1. Pembekalan Teknis yang Lebih Spesifik per Bidang**
 
-Pembekalan yang ada saat ini bersifat umum  -  etika kerja, cara pengisian logbook, dan mekanisme pelaporan. Untuk mahasiswa Teknik Informatika yang akan bekerja di lingkungan pengembangan perangkat lunak, tambahan pembekalan teknis yang spesifik akan sangat membantu, seperti tata cara bekerja dengan repository Git dalam tim, dasar-dasar code review, serta teknik membaca kode orang lain.
+Pembekalan yang ada saat ini bersifat umum, mencakup etika kerja, cara pengisian logbook, dan mekanisme pelaporan. Untuk mahasiswa Teknik Informatika yang akan bekerja di lingkungan pengembangan perangkat lunak, tambahan pembekalan teknis yang spesifik akan sangat membantu, seperti tata cara bekerja dengan repository Git dalam tim, dasar-dasar code review, serta teknik membaca kode orang lain.
 
 **2. Mekanisme Konsultasi DPL yang Lebih Terstruktur**
 
@@ -153,7 +153,7 @@ Dengan model magang yang memungkinkan WFA di hari libur nasional, perlu ada keje
 
 **4. Pengayaan Kurikulum dengan Studi Kasus Sistem Nyata**
 
-Gap terbesar yang saya rasakan antara kuliah dan dunia kerja adalah pengalaman bekerja dengan sistem yang sudah ada. Menyertakan satu atau dua studi kasus dari sistem nyata (tidak harus yang sempurna  -  justru yang sudah ada technical debt-nya lebih realistis) sebagai bahan kuliah akan mempersiapkan mahasiswa lebih baik untuk realitas di lapangan.
+Gap terbesar yang saya rasakan antara kuliah dan dunia kerja adalah pengalaman bekerja dengan sistem yang sudah ada. Menyertakan satu atau dua studi kasus dari sistem nyata (tidak harus yang sempurna, bahkan yang memiliki technical debt justru lebih realistis) sebagai bahan kuliah akan mempersiapkan mahasiswa lebih baik untuk realitas di lapangan.
 
 ---
 
@@ -161,27 +161,27 @@ Gap terbesar yang saya rasakan antara kuliah dan dunia kerja adalah pengalaman b
 
 **Soft Skill yang Akan Ditingkatkan:**
 
-- *Komunikasi tertulis teknis*  -  selama magang, saya menyadari bahwa kemampuan menulis dokumentasi yang jelas dan efisien adalah aset yang sering diremehkan. Saya berencana untuk lebih sering berlatih menulis dokumentasi teknis, bukan hanya kode.
-- *Manajemen prioritas*  -  mengelola beberapa tugas dengan urgensi yang berbeda adalah keterampilan yang perlu terus diasah. Saya akan mulai menggunakan sistem manajemen tugas yang lebih eksplisit (Notion, Linear, atau Jira) untuk proyek-proyek personal.
-- *Kepemimpinan teknis*  -  saya ingin bisa memimpin diskusi teknis, bukan hanya berpartisipasi di dalamnya. Langkah pertama: aktif berkontribusi di code review proyek open source.
+- *Komunikasi tertulis teknis.* Selama magang, saya menyadari bahwa kemampuan menulis dokumentasi yang jelas dan efisien adalah aset yang sering diremehkan. Saya berencana untuk lebih sering berlatih menulis dokumentasi teknis, bukan hanya kode.
+- *Manajemen prioritas.* Mengelola beberapa tugas dengan urgensi yang berbeda adalah keterampilan yang perlu terus diasah. Saya akan mulai menggunakan sistem manajemen tugas yang lebih eksplisit (Notion, Linear, atau Jira) untuk proyek-proyek personal.
+- *Kepemimpinan teknis.* Saya ingin bisa memimpin diskusi teknis, bukan hanya berpartisipasi di dalamnya. Langkah pertama: aktif berkontribusi di code review proyek open source.
 
 **Hard Skill yang Akan Dikuasai:**
 
-- *Docker dan container orchestration*  -  selama magang, deployment dilakukan secara manual ke VPS. Saya ingin memahami cara mengelola lingkungan dengan container, yang akan membuat proses deployment lebih konsisten dan reproducible.
-- *Testing yang lebih dalam*  -  menulis test yang baik ternyata bukan hal yang trivial. Saya berencana untuk mempelajari lebih dalam tentang pengujian berbasis properti (*property-based testing*) dan pengujian kontrak API.
-- *LLM integration patterns*  -  pengalaman dengan Gemini API di Viviashop membuka minat yang kuat. Saya ingin memahami lebih dalam tentang pola-pola integrasi LLM ke dalam aplikasi bisnis: RAG (*Retrieval-Augmented Generation*), *function calling*, dan *agent orchestration*.
-- *TypeScript dan ekosistem JavaScript modern*  -  sebagian besar pekerjaan frontend di Viviashop masih menggunakan jQuery. Saya ingin memperkuat pemahaman tentang framework JavaScript modern untuk memiliki opsi yang lebih luas.
+- *Docker dan container orchestration.* Selama magang, deployment dilakukan secara manual ke VPS. Saya ingin memahami cara mengelola lingkungan dengan container, yang akan membuat proses deployment lebih konsisten dan reproducible.
+- *Testing yang lebih dalam.* Menulis test yang baik ternyata bukan hal yang trivial. Saya berencana untuk mempelajari lebih dalam tentang pengujian berbasis properti (*property-based testing*) dan pengujian kontrak API.
+- *LLM integration patterns.* Pengalaman dengan Gemini API di Viviashop membuka minat yang kuat. Saya ingin memahami lebih dalam tentang pola-pola integrasi LLM ke dalam aplikasi bisnis: RAG (*Retrieval-Augmented Generation*), *function calling*, dan *agent orchestration*.
+- *TypeScript dan ekosistem JavaScript modern.* Sebagian besar pekerjaan frontend di Viviashop masih menggunakan jQuery. Saya ingin memperkuat pemahaman tentang framework JavaScript modern untuk memiliki opsi yang lebih luas.
 
 **Langkah Nyata:**
 
 - Mengikuti kursus *Docker for Developers* dalam 3 bulan ke depan.
 - Membangun satu proyek mandiri yang mengintegrasikan LLM (misalnya, chatbot sederhana dengan tool calling) untuk mengkonsolidasi pemahaman yang diperoleh selama magang.
-- Berkontribusi ke proyek open source berbasis Laravel  -  mulai dari memperbaiki bug kecil sebelum mengajukan fitur baru.
+- Berkontribusi ke proyek open source berbasis Laravel, mulai dari memperbaiki bug kecil sebelum mengajukan fitur baru.
 - Menyelesaikan sertifikasi Laravel melalui program resmi Laracasts atau Laravel Certification.
 
 **Tujuan Jangka Menengah:**
 
-Dalam dua tahun ke depan, saya ingin memiliki portofolio yang mencerminkan kemampuan *full-stack development* yang matang  -  khususnya dalam konteks aplikasi web yang mengintegrasikan AI. Saya juga tertarik untuk berkontribusi pada proyek-proyek yang memiliki dampak nyata bagi UMKM di Indonesia, karena pengalaman di Viviashop menunjukkan betapa besarnya nilai yang bisa diberikan teknologi yang tepat untuk bisnis skala menengah.
+Dalam dua tahun ke depan, saya ingin memiliki portofolio yang mencerminkan kemampuan *full-stack development* yang matang, khususnya dalam konteks aplikasi web yang mengintegrasikan AI. Saya juga tertarik untuk berkontribusi pada proyek-proyek yang memiliki dampak nyata bagi UMKM di Indonesia, karena pengalaman di Viviashop menunjukkan betapa besarnya nilai yang bisa diberikan teknologi yang tepat untuk bisnis skala menengah.
 
 ---
 
@@ -189,17 +189,17 @@ Dalam dua tahun ke depan, saya ingin memiliki portofolio yang mencerminkan kemam
 
 **Potensi Kerja Sama Berkelanjutan**
 
-CV Sinar Agung Jaya secara aktif mengembangkan platform Viviashop, yang berarti selalu ada ruang untuk kontribusi pengembang tambahan. Menjelang akhir magang, ada diskusi informal tentang kemungkinan keterlibatan paruh waktu atau freelance untuk modul-modul yang belum sempat diselesaikan  -  khususnya pengembangan lebih lanjut dari fitur AI agent dan integrasi Instagram. Ini mengindikasikan bahwa hubungan kerja tidak harus berhenti di tanggal 1 Juni 2026.
+CV Sinar Agung Jaya secara aktif mengembangkan platform Viviashop, yang berarti selalu ada ruang untuk kontribusi pengembang tambahan. Menjelang akhir magang, ada diskusi informal tentang kemungkinan keterlibatan paruh waktu atau freelance untuk modul-modul yang belum sempat diselesaikan, khususnya pengembangan lebih lanjut dari fitur AI agent dan integrasi Instagram. Ini mengindikasikan bahwa hubungan kerja tidak harus berhenti di tanggal 1 Juni 2026.
 
 **Pengembangan Kurikulum Berbasis Industri**
 
-Pengalaman bekerja dengan sistem AI agent berbasis LLM yang diintegrasikan ke dalam aplikasi web Laravel adalah topik yang belum banyak masuk ke kurikulum Teknik Informatika di Indonesia. Topik ini  -  bagaimana merancang arsitektur *tool use* untuk LLM, bagaimana menulis prompt yang efektif untuk konteks bisnis tertentu, dan bagaimana mengelola riwayat percakapan dalam sistem stateful  -  sangat layak dijadikan modul praktikum atau proyek akhir semester.
+Pengalaman bekerja dengan sistem AI agent berbasis LLM yang diintegrasikan ke dalam aplikasi web Laravel adalah topik yang belum banyak masuk ke kurikulum Teknik Informatika di Indonesia. Topik ini, yang membahas cara merancang arsitektur *tool use* untuk LLM, cara menulis prompt yang efektif untuk konteks bisnis tertentu, serta pengelolaan riwayat percakapan dalam sistem stateful, sangat layak dijadikan modul praktikum atau proyek akhir semester.
 
 Selain itu, pengalaman bekerja dengan sistem manajemen stok multi-layer dan tantangan konsistensi data yang menyertainya bisa menjadi studi kasus yang kaya untuk mata kuliah Basis Data Lanjut atau Rekayasa Perangkat Lunak.
 
 **Replikasi atau Scaling Up**
 
-Model kolaborasi ini  -  mahasiswa Teknik Informatika yang ditempatkan di perusahaan yang sedang aktif membangun platform digital  -  memiliki potensi replikasi yang baik. Banyak UMKM dan perusahaan menengah di Indonesia yang sedang dalam proses digitalisasi dan membutuhkan tenaga pengembang, tetapi tidak memiliki anggaran untuk mempekerjakan pengembang senior penuh waktu. Program magang yang terstruktur dengan baik bisa menjadi solusi *win-win* yang menguntungkan kedua belah pihak.
+Model kolaborasi ini, di mana mahasiswa Teknik Informatika ditempatkan di perusahaan yang sedang aktif membangun platform digital, memiliki potensi replikasi yang baik. Banyak UMKM dan perusahaan menengah di Indonesia yang sedang dalam proses digitalisasi dan membutuhkan tenaga pengembang, tetapi tidak memiliki anggaran untuk mempekerjakan pengembang senior penuh waktu. Program magang yang terstruktur dengan baik bisa menjadi solusi *win-win* yang menguntungkan kedua belah pihak.
 
 Syaratnya: mitra yang dipilih harus memiliki tim teknis yang bisa memberikan bimbingan nyata (bukan hanya memberikan tugas administratif), dan program magang harus memiliki mekanisme evaluasi yang memastikan mahasiswa benar-benar berkontribusi, bukan hanya mengamati.
 
@@ -210,7 +210,7 @@ Syaratnya: mitra yang dipilih harus memiliki tim teknis yang bisa memberikan bim
 
 ## 7.1 Simpulan
 
-Tujuan khusus pertama magang ini adalah mengidentifikasi dan menganalisis arsitektur sistem Viviashop secara menyeluruh agar kontribusi pengembangan dapat dilakukan secara terarah. Tujuan ini tercapai karena saya berhasil memahami ekosistem 35 model Eloquent, empat namespace controller, lima service layer, 13 tool AI agent, serta tujuh integrasi layanan eksternal. Pemahaman ini menjadi fondasi dari seluruh kontribusi teknis yang dilakukan selama 960 jam magang  -  tidak ada perbaikan atau penambahan fitur yang dilakukan tanpa terlebih dahulu memahami konteks sistem yang ada.
+Tujuan khusus pertama magang ini adalah mengidentifikasi dan menganalisis arsitektur sistem Viviashop secara menyeluruh agar kontribusi pengembangan dapat dilakukan secara terarah. Tujuan ini tercapai karena saya berhasil memahami ekosistem 35 model Eloquent, empat namespace controller, lima service layer, 13 tool AI agent, serta tujuh integrasi layanan eksternal. Pemahaman ini menjadi fondasi dari seluruh kontribusi teknis yang dilakukan selama 960 jam magang, sehingga tidak ada perbaikan atau penambahan fitur yang dilakukan tanpa terlebih dahulu memahami konteks sistem yang ada.
 
 Tujuan khusus kedua adalah mengembangkan, memperbaiki, dan mengoptimasi fitur-fitur konkret dalam platform Viviashop. Tujuan ini juga tercapai dengan bukti-bukti konkret, seperti keberhasilan optimasi N+1 query yang menurunkan waktu muat dari 5 detik menjadi 1 detik, implementasi `SuggestSupplierTool` yang terdaftar di `ToolRegistry` dengan unit test yang passing, konsolidasi `StockManagementService` yang menghilangkan duplikasi logika update stok, perbaikan 96 bug dan penambahan fitur yang terdokumentasi dalam logbook, serta keberhasilan sistem berjalan stabil setelah *final testing* secara menyeluruh menjelang akhir periode magang.
 
@@ -222,15 +222,15 @@ Tujuan khusus ketiga adalah menghasilkan dokumentasi teknis yang dapat ditindakl
 
 **Untuk CV Sinar Agung Jaya / Viviashop:**
 
-Investasi waktu untuk meningkatkan test coverage dan membuat dokumentasi arsitektur formal akan menghasilkan manfaat yang signifikan  -  tidak hanya untuk mempercepat onboarding anggota baru, tetapi juga untuk mengurangi risiko regresi setiap kali ada perubahan di sistem. Konsolidasi file-file legacy yang masih ada di repository juga akan mengurangi kebingungan dan menurunkan beban kognitif tim. Untuk pengembangan AI agent ke depan, saya merekomendasikan untuk mengeksplorasi `CreatePurchaseDraftTool` dan `AggregateBusinessMetricsTool` yang sudah ada tetapi belum dioptimalkan sepenuhnya  -  kedua tool ini memiliki potensi besar untuk mendukung pengambilan keputusan bisnis berbasis data.
+Investasi waktu untuk meningkatkan test coverage dan membuat dokumentasi arsitektur formal akan menghasilkan manfaat yang signifikan, tidak hanya untuk mempercepat onboarding anggota baru, tetapi juga untuk mengurangi risiko regresi setiap kali ada perubahan di sistem. Konsolidasi file-file legacy yang masih ada di repository juga akan mengurangi kebingungan dan menurunkan beban kognitif tim. Untuk pengembangan AI agent ke depan, saya merekomendasikan untuk mengeksplorasi `CreatePurchaseDraftTool` dan `AggregateBusinessMetricsTool` yang sudah ada tetapi belum dioptimalkan sepenuhnya, karena kedua tool ini memiliki potensi besar untuk mendukung pengambilan keputusan bisnis berbasis data.
 
 **Untuk UNESA / Program Studi Teknik Informatika:**
 
-Tambahkan penekanan pada kemampuan membaca dan memahami kode yang sudah ada  -  tidak hanya menulis kode baru. Ini adalah gap paling nyata antara kemampuan yang diasah di kuliah dan yang dibutuhkan di lapangan. Pertimbangkan juga untuk menyertakan studi kasus sistem nyata (dengan technical debt-nya) sebagai bahan pembelajaran, bukan hanya proyek yang dimulai dari nol. Untuk program magang, mekanisme konsultasi DPL yang lebih terstruktur dan pembekalan teknis yang lebih spesifik per bidang akan meningkatkan kualitas seluruh pengalaman magang.
+Tambahkan penekanan pada kemampuan membaca dan memahami kode yang sudah ada, tidak hanya menulis kode baru. Ini adalah gap paling nyata antara kemampuan yang diasah di kuliah dan yang dibutuhkan di lapangan. Pertimbangkan juga untuk menyertakan studi kasus sistem nyata (dengan technical debt-nya) sebagai bahan pembelajaran, bukan hanya proyek yang dimulai dari nol. Untuk program magang, mekanisme konsultasi DPL yang lebih terstruktur dan pembekalan teknis yang lebih spesifik per bidang akan meningkatkan kualitas seluruh pengalaman magang.
 
 **Untuk Mahasiswa yang Akan Magang Setelahnya:**
 
-Pertama, luangkan waktu yang cukup untuk membaca dan memahami sistem sebelum mulai menulis kode  -  tidak ada shortcut untuk ini. Kedua, jangan tunggu sampai tahu segalanya sebelum bertanya; bertanya dengan cerdas lebih dihargai daripada diam dan berjuang sendirian. Ketiga, isi logbook dengan jujur dan spesifik  -  bukan hanya "belajar Laravel", tapi "mengidentifikasi dan memperbaiki N+1 query di ProductController yang menyebabkan load time 5 detik". Logbook yang spesifik jauh lebih bermanfaat, baik untuk refleksi sendiri maupun untuk laporan akhir yang kredibel. Dan terakhir, nikmati prosesnya. Magang di lingkungan pengembangan perangkat lunak nyata adalah salah satu pengalaman belajar terbaik yang bisa Anda dapatkan sebelum lulus.
+Pertama, luangkan waktu yang cukup untuk membaca dan memahami sistem sebelum mulai menulis kode, karena tidak ada jalan pintas untuk hal ini. Kedua, jangan tunggu sampai tahu segalanya sebelum bertanya; bertanya dengan cerdas lebih dihargai daripada diam dan berjuang sendirian. Ketiga, isi logbook dengan jujur dan spesifik, bukan hanya "belajar Laravel", melainkan seperti "mengidentifikasi dan memperbaiki N+1 query di ProductController yang menyebabkan load time 5 detik". Logbook yang spesifik jauh lebih bermanfaat, baik untuk refleksi sendiri maupun untuk laporan akhir yang kredibel. Dan terakhir, nikmati prosesnya. Magang di lingkungan pengembangan perangkat lunak nyata adalah salah satu pengalaman belajar terbaik yang bisa Anda dapatkan sebelum lulus.
 
 ---
 
