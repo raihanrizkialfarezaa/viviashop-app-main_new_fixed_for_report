@@ -147,13 +147,13 @@ Gambar 7. Dokumentasi Aktivitas Magang
 
 ## 1.1 Latar Belakang
 
-Perguruan tinggi di Indonesia saat ini berhadapan dengan tekanan yang nyata karena banyak lulusan yang secara akademis kompeten tetapi belum terbiasa dengan ritme kerja nyata. Program magang hadir sebagai jembatan, bukan pemanis di akhir kurikulum, melainkan ruang di mana teori benar-benar diuji. Melalui keterlibatan langsung di dunia kerja, mahasiswa memperoleh pengalaman yang tidak bisa direplikasi di dalam kelas, seperti merespons tenggat yang bergerak, bekerja dengan sistem yang sudah berjalan, dan membuat keputusan teknis dengan konsekuensi nyata. Untuk program studi S1 Teknik Informatika, magang bukan sekadar pelengkap SKS, melainkan ujian apakah kemampuan yang dibangun selama tiga tahun perkuliahan cukup untuk menghadapi satu sprint pengembangan perangkat lunak di dunia nyata.
+Program magang bertujuan menyelaraskan kompetensi akademis mahasiswa dengan kebutuhan industri teknologi informasi. Melalui keterlibatan langsung dalam operasional mitra, mahasiswa memperoleh pengalaman praktis seperti mengelola siklus pengembangan perangkat lunak, berkolaborasi dalam tim, serta menyelesaikan masalah teknis pada sistem produksi aktif. Bagi Program Studi S1 Teknik Informatika, hal ini menjadi sarana konversi mata kuliah berbasis implementasi proyek nyata di industri.
 
 Industri teknologi informasi di Indonesia tumbuh dengan kecepatan yang konsisten melampaui rata-rata industri lain. Sektor e-commerce nasional mencatat nilai transaksi yang menembus ratusan triliun rupiah per tahun, dengan pertumbuhan pengguna digital yang terus meningkat seiring penetrasi internet ke wilayah-wilayah yang sebelumnya belum terjangkau. Di saat bersamaan, adopsi teknologi cloud, kecerdasan buatan, dan sistem integrasi API menjadi kebutuhan dasar, bukan lagi keunggulan diferensiatif. Dunia usaha, termasuk skala UMKM dan menengah, tidak lagi bisa menunda digitalisasi operasional mereka. Kondisi ini melahirkan permintaan yang tidak kecil terhadap tenaga pengembang perangkat lunak yang tidak hanya memahami sintaksis, tetapi juga mampu bekerja dalam ekosistem proyek yang kompleks.
 
-CV Sinar Agung Jaya dipilih sebagai lokasi magang karena menawarkan ruang belajar yang langka, yaitu sebuah perusahaan yang secara aktif membangun platform digital milik sendiri untuk mendukung operasional bisnis riilnya. Platform Viviashop, yang dikembangkan di dalam perusahaan ini, bukan proyek sampingan atau prototipe. Ini adalah sistem produksi aktif yang menangani transaksi e-commerce, layanan cetak dokumen (print service), manajemen stok multi-layer, laporan keuangan, hingga chatbot berbasis kecerdasan buatan yang terintegrasi dengan Google Gemini API. Bergabung ke dalam tim pengembang Viviashop berarti langsung berhadapan dengan codebase Laravel 10 yang sudah berisi lebih dari 35 model Eloquent, 40+ controller, dan 27 artisan command, bukan proyek baru yang bisa dimulai dari nol dengan asumsi-asumsi yang nyaman. Kompleksitas ini menjadi daya tarik sekaligus tantangan yang memberikan nilai pembelajaran tertinggi.
+CV Sinar Agung Jaya dipilih sebagai lokasi magang karena secara aktif mengembangkan dan mengoperasikan platform e-commerce serta print service mandiri bernama Viviashop. Platform ini merupakan sistem produksi aktif yang mengintegrasikan transaksi e-commerce, manajemen stok, laporan keuangan, dan asisten kecerdasan buatan berbasis Google Gemini API. Pengembangan dilakukan pada codebase Laravel 10 dengan struktur kompleks yang meliputi 35 model Eloquent, 40 controller, dan 27 artisan command. Hal ini memberikan tantangan teknis nyata bagi mahasiswa dalam memahami dan memodifikasi sistem skala produksi.
 
-Magang ini dirancang bukan hanya untuk menyerap pengalaman, tetapi untuk berkontribusi secara terukur. Kontribusi yang diharapkan bukan dari sudut pandang satu proyek besar yang diselesaikan sendirian, melainkan dari rangkaian perbaikan nyata, fitur yang ditambahkan, bug yang diperbaiki, dan dokumentasi yang ditulis, yang keseluruhannya terekam dalam logbook selama 960 jam. Pendekatan ini sejalan dengan prinsip program Magang Berdampak yang digagas UNESA, di mana mahasiswa bukan pengamat pasif di tempat mitra, melainkan kontributor aktif yang kehadiran dan karyanya meninggalkan jejak nyata. Indikator keberhasilan magang ini diukur melalui logbook harian yang terdokumentasi di sistem kampus, laporan akhir yang dapat dipertanggungjawabkan secara teknis, serta evaluasi dari pembimbing mitra atas kualitas kerja dan kedisiplinan selama periode berlangsung. Luaran yang dihasilkan, mulai dari fitur-fitur yang dikembangkan hingga dokumentasi teknis yang disusun, menjadi bukti konkret bahwa 960 jam yang dihabiskan di CV Sinar Agung Jaya memberi dampak yang bisa diidentifikasi, bukan sekadar waktu yang terlewat.
+Kegiatan magang ini berfokus pada kontribusi teknis langsung melalui perbaikan sistem, pengembangan fitur, penanganan bug, dan penyusunan dokumentasi teknis. Pelaksanaan magang mengacu pada program Magang Berdampak S1 Teknik Informatika UNESA dengan durasi 960 jam kerja. Kinerja dan progres kerja dievaluasi berdasarkan dokumentasi logbook harian pada sistem universitas, laporan akhir pertanggungjawaban teknis, serta penilaian kompetensi kerja dari pembimbing mitra.
 
 ---
 
@@ -203,7 +203,7 @@ Berdasarkan observasi awal terhadap kondisi dan kebutuhan CV Sinar Agung Jaya se
 
 ### Bagi Mahasiswa
 
-- Pengalaman kerja nyata dalam proyek perangkat lunak berskala produksi, bukan proyek kelas yang bisa di-reset kapan saja.
+- Pengalaman kerja dalam proyek perangkat lunak berskala produksi.
 - Penerapan langsung ilmu dari mata kuliah Konstruksi Perangkat Lunak, Analisis dan Desain Perangkat Lunak, Verifikasi dan Validasi Perangkat Lunak, Web Semantik, dan Virtualisasi dan Komputasi Awan dalam konteks kerja riil.
 - Peningkatan kompetensi teknis: Laravel 10, MySQL query optimization, API integration, Vite asset bundling, PHPUnit testing, dan pengembangan sistem AI berbasis LLM (Gemini API).
 - Kemampuan membaca, memahami, dan berkontribusi pada codebase yang sudah berjalan, sebuah keterampilan yang sangat berbeda dari memulai proyek dari nol.
@@ -284,7 +284,7 @@ Pilar kedua adalah solusi Teknologi Informasi. Perusahaan menyediakan pengadaan 
 
 Pilar ketiga adalah konveksi kebutuhan event dan operasional: produksi tas, rompi, jaket, dan seragam lapangan untuk lembaga-lembaga yang memerlukan perlengkapan seragam dalam jumlah besar. Lini ini lebih bersifat manufaktur tradisional, tetapi rantai pengadaan dan manajemen pesanannya juga diintegrasikan ke dalam sistem.
 
-Ketiga lini ini terhubung melalui satu platform digital: Viviashop. Dari sudut pandang teknis, Viviashop adalah aplikasi web monolitik berbasis Laravel 10 yang mengelola seluruh alur bisnis, mulai dari katalog produk, keranjang belanja, checkout, payment gateway, manajemen stok, laporan keuangan, hingga dashboard performa karyawan. Platform ini bukan sekadar toko online; ini adalah sistem ERP (Enterprise Resource Planning) yang dirancang khusus untuk skala dan kebutuhan operasional CV Sinar Agung Jaya.
+Ketiga lini ini terhubung melalui satu platform digital: Viviashop. Dari sudut pandang teknis, Viviashop adalah aplikasi web monolitik berbasis Laravel 10 yang mengelola seluruh alur bisnis, mulai dari katalog produk, keranjang belanja, checkout, payment gateway, manajemen stok, laporan keuangan, hingga dashboard performa karyawan. Platform ini berfungsi sebagai sistem ERP (Enterprise Resource Planning) terintegrasi untuk mendukung operasional CV Sinar Agung Jaya.
 
 ### Posisi e-Commerce dalam Ekosistem Bisnis CV Sinar Agung Jaya
 
@@ -299,7 +299,7 @@ Produk dan layanan utama yang ditawarkan melalui Viviashop mencakup:
 - **Smart Print.** Variasi layanan cetak yang menggunakan deteksi otomatis jenis kertas dan tipe cetak menggunakan `SmartPrintVariantService`.
 - **Layanan pengadaan.** Melalui modul pembelian (`Pembelian`, `PembelianDetail`, `Supplier`) yang mengintegrasikan rantai pasokan ke dalam platform yang sama.
 
-Keunggulan kompetitif Viviashop terletak pada integrasi yang erat antara sistem e-commerce, manajemen stok, laporan keuangan, dan kecerdasan buatan dalam satu platform. Chatbot AI berbasis Google Gemini yang terintegrasi di dalam sistem bukan sekadar asisten virtual dekoratif, melainkan dapat memanggil 13 tool yang berbeda secara dinamis, dari pencarian produk berbasis SQL hingga pemindaian stok kritis dan pembuatan draft pembelian secara otomatis.
+Keunggulan kompetitif Viviashop terletak pada integrasi yang erat antara sistem e-commerce, manajemen stok, laporan keuangan, dan kecerdasan buatan dalam satu platform. Chatbot AI berbasis Google Gemini yang terintegrasi di dalam sistem dapat memanggil 13 tool berbeda secara dinamis, dari pencarian produk berbasis SQL hingga pemindaian stok kritis dan pembuatan draft pembelian secara otomatis.
 
 ---
 
@@ -315,7 +315,7 @@ Struktur organisasi formal CV Sinar Agung Jaya tidak terdokumentasikan secara ek
 - **Bagian Operasional.** Tim yang menangani pengadaan, konveksi, dan layanan cetak di sisi non-digital.
 - **Mahasiswa Magang (posisi saya).** Ditempatkan di dalam tim pengembang, dengan akses penuh ke repository dan lingkungan pengembangan lokal, berkontribusi langsung pada pengembangan fitur dan perbaikan bug.
 
-Posisi mahasiswa magang dalam struktur ini bukan posisi observasional. Dari hari pertama, saya mendapat akses ke repository aktif dan mulai mengeksplorasi kode yang berjalan di lingkungan produksi. Pembimbing mitra berperan sebagai *tech lead*, memberikan arahan tugas, melakukan code review, dan menjadi tempat konsultasi ketika saya menghadapi masalah yang tidak bisa dipecahkan sendiri.
+Sebagai mahasiswa magang, saya langsung terlibat aktif dengan mendapatkan akses ke repositori git untuk berpartisipasi dalam pengembangan platform. Pembimbing mitra berperan sebagai *tech lead*, memberikan arahan tugas, melakukan code review, dan membimbing penyelesaian kendala teknis.
 
 [PERLU INPUT MANUAL, diagram resmi struktur organisasi dari manajemen CV Sinar Agung Jaya untuk dilampirkan sebagai gambar di laporan cetak]
 
@@ -325,14 +325,14 @@ Posisi mahasiswa magang dalam struktur ini bukan posisi observasional. Dari hari
 
 ### Konsep dan Indikator Program Magang Berdampak
 
-Program magang berdampak (*impactful internship*) adalah model magang yang secara eksplisit mengukur dan merencanakan kontribusi nyata, bukan sekadar pengalaman pasif. Berbeda dengan model magang konvensional di mana mahasiswa cenderung mengamati dan mengerjakan tugas administratif, program magang berdampak mendorong mahasiswa untuk mengidentifikasi masalah nyata di tempat mitra dan berkontribusi pada penyelesaiannya melalui kompetensi akademis yang mereka miliki (Purdue University, 2021; UNESA Panduan Mobilitas Akademik, 2024).
+Program magang berdampak (*impactful internship*) menitikberatkan pada kontribusi langsung mahasiswa dalam menyelesaikan permasalahan di tempat mitra melalui penerapan kompetensi akademik (Purdue University, 2021; UNESA Panduan Mobilitas Akademik, 2024).
 
 Indikator keberhasilannya mencakup dua sisi:
 
 **Outcome untuk mahasiswa:**
-- Perolehan keterampilan teknis yang terverifikasi dan dapat dibuktikan (bukan sekadar pengakuan verbal)
+- Perolehan keterampilan teknis yang terverifikasi secara praktis.
 - Pemahaman konteks kerja nyata: bagaimana sebuah tim bekerja, bagaimana keputusan teknis diambil di bawah tekanan waktu, dan bagaimana mengelola prioritas yang saling bersaing
-- Perluasan jaringan profesional yang fungsional, tidak hanya mengenal nama, tetapi sudah bekerja bersama
+- Perluasan jaringan profesional melalui kolaborasi kerja tim secara langsung.
 
 **Outcome untuk mitra:**
 - Kontribusi yang terukur: fitur yang selesai, bug yang terperbaiki, dokumentasi yang tertulis
@@ -371,7 +371,7 @@ Dampak dari keterlibatan mahasiswa diukur melalui tiga instrumen utama:
 
 ## 3.1 Bentuk Penugasan (Task Assignment)
 
-Selama magang di CV Sinar Agung Jaya, saya ditempatkan sebagai anggota tim pengembang perangkat lunak Viviashop. Posisi ini tidak memiliki label jabatan formal yang spesifik, melainkan dalam praktiknya saya berfungsi sebagai *software developer* yang bekerja berdampingan dengan pengembang senior dan langsung berkontribusi pada codebase aktif.
+Selama magang di CV Sinar Agung Jaya, saya ditempatkan sebagai software developer dalam tim pengembang perangkat lunak Viviashop, berkolaborasi dengan pengembang senior pada codebase aktif.
 
 Tanggung jawab utama yang dibebankan mencakup beberapa area:
 
@@ -788,7 +788,7 @@ Pengalaman bekerja pada platform Viviashop selama 960 jam memberikan kesempatan 
 
 **Sistem AI Berbasis LLM.** Integrasi Google Gemini ke dalam Viviashop membuka wawasan tentang bagaimana model bahasa besar digunakan dalam konteks aplikasi bisnis nyata. Schick et al. (2023) mendeskripsikan pola *tool use*, di mana LLM bisa memanggil fungsi eksternal secara dinamis, sebagai salah satu kemampuan paling signifikan dari LLM generasi terbaru. Arsitektur `ToolDispatcher` di Viviashop adalah implementasi langsung dari pola ini, dan bekerja dengannya memberikan pemahaman praktis tentang cara mengintegrasikan AI ke dalam workflow bisnis yang sudah ada.
 
-**Temuan Teknis yang Memperluas Pemahaman Akademis.** Satu temuan yang cukup menarik: pengelolaan stok multi-layer di Viviashop (tiga layer bersamaan dengan satu model legacy) menunjukkan bahwa sistem yang dibangun secara iteratif sering kali mengakumulasi lapisan abstraksi yang tidak selalu kohesif. Ini adalah realitas technical debt yang baru bisa dipahami setelah berhadapan langsung dengannya, bukan sekadar membacanya tentangnya di buku.
+**Temuan Teknis Pemeliharaan Sistem.** Pengelolaan stok multi-layer di Viviashop (tiga layer bersamaan dengan satu model legacy) menunjukkan akumulasi lapisan abstraksi akibat pengembangan secara iteratif. Kasus ini memberikan studi nyata mengenai *technical debt* yang terjadi dalam sistem berskala produksi.
 
 ---
 
@@ -823,7 +823,7 @@ Selama magang berlangsung, keterampilan perencanaan terus digunakan. Setiap hari
 
 Pembekalan yang diberikan oleh Sub Direktorat Mobilitas Akademik UNESA sebelum keberangkatan juga menjadi bagian dari mata kuliah ini: etika kerja profesional, cara mengisi logbook yang baik, dan mekanisme pelaporan kepada DPL. Keterampilan-keterampilan administratif ini terasa sepele, tapi dalam praktiknya sangat membantu saya menjaga konsistensi selama empat bulan lebih.
 
-Bukti nyata dari penerapan kompetensi perencanaan adalah 96 entri logbook yang terisi konsisten, yang bukan hanya sebagai kewajiban administratif, tetapi sebagai catatan kerja yang berguna ketika saya perlu mengingat apa yang sudah dikerjakan dan apa yang belum.
+Penerapan kompetensi perencanaan ditunjukkan melalui konsistensi pengisian 96 entri logbook harian sebagai catatan riwayat progres pekerjaan.
 
 [FOTO/GAMBAR: Dokumentasi logbook harian yang disubmit ke sistem Mobilitas Akademik UNESA]
 
@@ -907,7 +907,7 @@ Analisis dan Desain Perangkat Lunak mengajarkan bagaimana memahami kebutuhan sis
 
 **Desain API yang Konsisten.** Ketika saya memperbaiki endpoint di `api.php` (Februari 2026) dan membuat dokumentasi API internal (Maret 2026), saya belajar tentang pentingnya konsistensi desain API: response structure yang konsisten, status code yang bermakna, dan error message yang informatif. Tanpa konsistensi ini, klien API, baik frontend maupun sistem AI agent, tidak bisa menulis kode yang reliable.
 
-**Gap Antara Teori dan Praktik.** Satu hal yang tidak cukup ditekankan di mata kuliah: desain tidak pernah selesai. Setiap perubahan kebutuhan menghasilkan technical debt baru. Viviashop memiliki dua controller cart (`CartController` dan `CartControllerNew`), dua seeder brand (`BrandSeeder` dan `BrandSeederNew`), dan beberapa model legacy yang sudah tidak disarankan penggunaannya (`RekamanStok`). Ini bukan kegagalan desain, melainkan hasil dari pengembangan iteratif di bawah tekanan waktu. Memahami ini mengubah cara saya melihat "desain yang baik": bukan yang sempurna dari awal, tetapi yang cukup baik untuk saat ini sambil membuka pintu untuk evolusi di masa depan.
+**Evaluasi Evolusi Desain Sistem.** Dalam praktik pengembangan industri, desain sistem terus berevolusi seiring perubahan kebutuhan bisnis, yang berpotensi memunculkan *technical debt*. Hal ini terlihat pada keberadaan kelas redundan seperti `CartControllerNew` dan `BrandSeederNew` di Viviashop. Kondisi ini menggambarkan bahwa desain perangkat lunak dalam skala produksi dituntut adaptif dan dapat dievolusikan secara iteratif.
 
 [FOTO/GAMBAR: Diagram arsitektur sistem AI Agent Viviashop (AIAgentService, ToolDispatcher, ToolRegistry, ToolHandler)]
 
@@ -941,11 +941,9 @@ Pengalaman bekerja dengan empat layanan cloud berbeda (Cloudinary, Gemini, Midtr
 
 Berikut beberapa hambatan nyata yang saya hadapi selama di lapangan, diurutkan dari yang paling mengganggu produktivitas:
 
-**1. Kompleksitas Codebase yang Tinggi di Awal Magang**
+Hambatan awal yang dirasakan pada awal magang adalah kompleksitas codebase. Sistem Viviashop memiliki 35 model Eloquent dengan relasi bertingkat, 40 controller dalam empat namespace, serta file `routes/web.php` sepanjang 1.150 baris yang berisi rute pengujian. Proses pemahaman alur data dasar sistem memerlukan waktu penyesuaian sebelum kontribusi aktif dapat dilakukan.
 
-Ini adalah hambatan yang paling terasa di minggu-minggu pertama. Viviashop bukan proyek yang bisa dipelajari dalam satu atau dua hari. Codebase memiliki 35 model Eloquent dengan relasi yang bertingkat, lebih dari 40 controller yang tersebar di empat namespace berbeda, dan file `routes/web.php` yang berisi lebih dari 1.150 baris termasuk sekitar dua lusin route debug/test yang tidak terdokumentasikan dengan jelas. Saya butuh hampir satu minggu penuh hanya untuk memahami alur data dasar dari request masuk ke response keluar, sebelum bisa mulai berkontribusi dengan percaya diri.
-
-Yang memperumit situasi: tidak ada diagram arsitektur formal dan tidak ada `.env.example` (seperti yang tercatat di dokumentasi teknis). Saya harus membangun pemahaman dari kode itu sendiri, dan itu memakan waktu.
+Yang memperumit situasi: tidak ada diagram arsitektur formal dan tidak ada `.env.example` (seperti yang tercatat di dokumentasi teknis). Saya harus membangun pemahaman dari kode itu sendiri, dan hal tersebut membutuhkan waktu pengerjaan tambahan.
 
 **2. Inkonistensi Teknis yang Sudah Ada di Sistem (Technical Debt)**
 
@@ -1000,11 +998,11 @@ I Made Suartana, S.Kom., M.Kom. memberikan bimbingan dari sisi akademis yang mem
 
 ### 1. Pengalaman Pribadi Selama Magang
 
-Magang di CV Sinar Agung Jaya selama hampir lima bulan adalah salah satu periode belajar paling intensif yang pernah saya alami, di mana intensitasnya bukan dari jam yang panjang, melainkan dari kualitas masalah yang harus dihadapi setiap harinya.
+Magang di CV Sinar Agung Jaya memberikan pengalaman belajar intensif melalui penyelesaian berbagai kendala teknis pada sistem produksi setiap harinya.
 
-Di minggu pertama, saya jujur agak kaget dengan skala sistemnya. Saya terbiasa dengan proyek kuliah yang bisa dipahami sepenuhnya dalam satu malam. Viviashop tidak bisa. Ada 35 model, ada puluhan controller, ada file routes yang lebih dari seribu baris. Saya butuh waktu lebih lama dari yang saya harapkan hanya untuk memahami alur request sederhana dari browser ke database dan kembali lagi.
+Pada awal magang, pemahaman alur kerja Viviashop memerlukan waktu penyesuaian yang cukup karena skala sistem yang memiliki 35 model Eloquent, puluhan controller, serta rute web yang melebihi 1.150 baris.
 
-Tapi dari sana, saya belajar sesuatu yang tidak diajarkan di kuliah, yaitu seni membaca dan memahami sistem yang sudah berjalan. Bukan membaca tutorial, melainkan membaca kode nyata yang ditulis oleh orang lain, dalam kondisi tekanan waktu yang nyata, dengan keputusan-keputusan yang tidak selalu ideal tapi masuk akal pada saat dibuat. Keterampilan membaca kode ini ternyata sama pentingnya dengan kemampuan menulis kode.
+Pengalaman ini melatih kemampuan membaca, menganalisis, dan memodifikasi kode program yang sudah ada. Keterampilan ini sangat penting dalam industri karena sebagian besar waktu pengembangan dihabiskan untuk memelihara codebase yang berjalan.
 
 Tantangan yang paling berkesan adalah ketika menghadapi bug yang hanya muncul di production dan tidak bisa direproduksi di lokal. Kasus error 500 di server production (April 2026) mengajarkan saya tentang pentingnya logging yang baik, sebab tanpa informasi log yang memadai, pencarian bug di production akan terasa sangat menyulitkan. Setelah kasus itu, saya selalu memastikan untuk menambahkan log yang bermakna di setiap controller yang saya modifikasi.
 
@@ -1030,17 +1028,17 @@ Pengalaman yang paling memuaskan? Ketika optimasi N+1 query di `ProductControlle
 
 Sebelum magang, pandangan saya tentang karier di bidang pengembangan perangkat lunak masih cukup abstrak. Saya hanya tahu ingin bekerja di sektor teknologi tanpa memahami peran spesifik yang sesuai dengan minat saya.
 
-Setelah empat bulan di Viviashop, gambarannya jauh lebih jelas. Saya menemukan bahwa saya menikmati pekerjaan yang ada di persimpangan antara sistem yang kompleks dan dampak bisnis yang nyata, di mana fokus saya bukan sekadar menulis kode yang elegan secara teknis, tetapi kode yang menyelesaikan masalah nyata bagi pengguna. Proyek AI agent Viviashop secara khusus membuka minat baru untuk mempelajari bagaimana mengintegrasikan kemampuan LLM ke dalam aplikasi bisnis yang sudah berjalan, bukan sekadar membuat prototipe sederhana.
+Pengalaman magang ini memperjelas arah karier saya di bidang rekayasa perangkat lunak. Saya menemukan ketertarikan pada pengembangan full-stack dan integrasi kecerdasan buatan (LLM) pada aplikasi bisnis skala produksi.
 
-Saya juga jadi lebih sadar bahwa *full-stack development* yang sesungguhnya, mulai dari query optimization di database hingga integrasi API eksternal dan antarmuka pengguna, merupakan kompetensi yang sangat dihargai. Ini mendorong saya untuk tidak hanya fokus pada satu aspek teknis tertentu, tetapi membangun pemahaman yang cukup kuat di seluruh stack.
+Selain itu, optimasi database, integrasi API pihak ketiga, dan pengembangan antarmuka pengguna merupakan kompetensi utama yang dikembangkan secara mendalam untuk mendukung kesiapan kerja.
 
 ### 4. Penerapan Ilmu yang Diperoleh di Kampus
 
-Cukup banyak yang bisa diterapkan langsung. Konsep MVC yang dipelajari di kuliah ternyata bukan hanya teori, melainkan cara nyata sebuah tim membagi tanggung jawab dalam sistem yang besar. Prinsip SOLID dari mata kuliah Rekayasa Perangkat Lunak terasa sangat relevan ketika saya merefaktor service dan mengimplementasikan tool AI baru mengikuti pola yang sudah ada.
+Konsep MVC yang dipelajari di perkuliahan diterapkan langsung dalam struktur pembagian tanggung jawab di codebase. Prinsip SOLID juga memandu proses refaktorisasi service dan implementasi tool AI baru agar tetap modular.
 
-Gap yang paling terasa: mata kuliah tidak cukup menekankan *membaca dan memahami kode orang lain*. Hampir semua penugasan kuliah dimulai dari halaman kosong. Di dunia kerja nyata, sebagian besar waktu dihabiskan untuk memahami dan memodifikasi kode yang sudah ada, bukan menulis baru dari awal. Ini gap yang perlu lebih banyak perhatian di kurikulum.
+Gap yang dirasakan adalah kurangnya penekanan pada kemampuan membaca dan menganalisis kode yang sudah ada dalam penugasan akademis. Di industri, pemeliharaan codebase lama merupakan aktivitas utama pengembang.
 
-Satu lagi yang mengejutkan: kompleksitas teknikal debt di sistem nyata jauh lebih tinggi dari yang pernah saya bayangkan. Di kuliah, kita selalu bisa mulai fresh. Di sini, setiap keputusan dipengaruhi oleh keputusan-keputusan yang sudah dibuat sebelumnya, sehingga bekerja dengan batasan tersebut menjadi keterampilan tersendiri.
+Bekerja dengan codebase yang sudah berjalan juga mengenalkan saya pada konsep *technical debt* skala industri, di mana modifikasi sistem harus memperhatikan dampak dan dependensi dengan fitur yang sudah ada sebelumnya.
 
 ---
 
@@ -1136,7 +1134,7 @@ Selain itu, pengalaman bekerja dengan sistem manajemen stok multi-layer dan tant
 
 Model kolaborasi ini, di mana mahasiswa Teknik Informatika ditempatkan di perusahaan yang sedang aktif membangun platform digital, memiliki potensi replikasi yang baik. Banyak UMKM dan perusahaan menengah di Indonesia yang sedang dalam proses digitalisasi dan membutuhkan tenaga pengembang, tetapi tidak memiliki anggaran untuk mempekerjakan pengembang senior penuh waktu. Program magang yang terstruktur dengan baik bisa menjadi solusi *win-win* yang menguntungkan kedua belah pihak.
 
-Syaratnya: mitra yang dipilih harus memiliki tim teknis yang bisa memberikan bimbingan nyata (bukan hanya memberikan tugas administratif), dan program magang harus memiliki mekanisme evaluasi yang memastikan mahasiswa benar-benar berkontribusi, bukan hanya mengamati.
+Persyaratannya meliputi penyediaan bimbingan teknis yang memadai dari tim mitra serta mekanisme evaluasi kontribusi mahasiswa yang terukur.
 
 ---
 
@@ -1161,11 +1159,11 @@ Investasi waktu untuk meningkatkan test coverage dan membuat dokumentasi arsitek
 
 **Untuk UNESA / Program Studi Teknik Informatika:**
 
-Tambahkan penekanan pada kemampuan membaca dan memahami kode yang sudah ada, tidak hanya menulis kode baru. Ini adalah gap paling nyata antara kemampuan yang diasah di kuliah dan yang dibutuhkan di lapangan. Pertimbangkan juga untuk menyertakan studi kasus sistem nyata (dengan technical debt-nya) sebagai bahan pembelajaran, bukan hanya proyek yang dimulai dari nol. Untuk program magang, mekanisme konsultasi DPL yang lebih terstruktur dan pembekalan teknis yang lebih spesifik per bidang akan meningkatkan kualitas seluruh pengalaman magang.
+Fokus kurikulum disarankan memberikan porsi lebih besar pada kemampuan membaca dan menganalisis codebase yang sudah ada, serta menyertakan studi kasus pemeliharaan sistem dengan batasan arsitektur riil.
 
 **Untuk Mahasiswa yang Akan Magang Setelahnya:**
 
-Pertama, luangkan waktu yang cukup untuk membaca dan memahami sistem sebelum mulai menulis kode, karena tidak ada jalan pintas untuk hal ini. Kedua, jangan tunggu sampai tahu segalanya sebelum bertanya; bertanya dengan cerdas lebih dihargai daripada diam dan berjuang sendirian. Ketiga, isi logbook dengan jujur dan spesifik, bukan hanya "belajar Laravel", melainkan seperti "mengidentifikasi dan memperbaiki N+1 query di ProductController yang menyebabkan load time 5 detik". Logbook yang spesifik jauh lebih bermanfaat, baik untuk refleksi sendiri maupun untuk laporan akhir yang kredibel. Dan terakhir, nikmati prosesnya. Magang di lingkungan pengembangan perangkat lunak nyata adalah salah satu pengalaman belajar terbaik yang bisa Anda dapatkan sebelum lulus.
+Saran bagi mahasiswa magang berikutnya meliputi: meluangkan waktu awal untuk memahami struktur codebase secara teratur, aktif berkonsultasi mengenai kendala teknis secara sistematis, serta mencatat entri logbook harian secara detail dan spesifik guna mempermudah penyusunan laporan pertanggungjawaban.
 
 ---
 

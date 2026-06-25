@@ -147,7 +147,7 @@ Pengalaman bekerja pada platform Viviashop selama 960 jam memberikan kesempatan 
 
 **Sistem AI Berbasis LLM.** Integrasi Google Gemini ke dalam Viviashop membuka wawasan tentang bagaimana model bahasa besar digunakan dalam konteks aplikasi bisnis nyata. Schick et al. (2023) mendeskripsikan pola *tool use*, di mana LLM bisa memanggil fungsi eksternal secara dinamis, sebagai salah satu kemampuan paling signifikan dari LLM generasi terbaru. Arsitektur `ToolDispatcher` di Viviashop adalah implementasi langsung dari pola ini, dan bekerja dengannya memberikan pemahaman praktis tentang cara mengintegrasikan AI ke dalam workflow bisnis yang sudah ada.
 
-**Temuan Teknis yang Memperluas Pemahaman Akademis.** Satu temuan yang cukup menarik: pengelolaan stok multi-layer di Viviashop (tiga layer bersamaan dengan satu model legacy) menunjukkan bahwa sistem yang dibangun secara iteratif sering kali mengakumulasi lapisan abstraksi yang tidak selalu kohesif. Ini adalah realitas technical debt yang baru bisa dipahami setelah berhadapan langsung dengannya, bukan sekadar membacanya tentangnya di buku.
+**Temuan Teknis Pemeliharaan Sistem.** Pengelolaan stok multi-layer di Viviashop (tiga layer bersamaan dengan satu model legacy) menunjukkan akumulasi lapisan abstraksi akibat pengembangan secara iteratif. Kasus ini memberikan studi nyata mengenai *technical debt* yang terjadi dalam sistem berskala produksi.
 
 ---
 

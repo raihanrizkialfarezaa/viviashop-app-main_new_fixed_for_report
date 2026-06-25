@@ -6,11 +6,9 @@
 
 Berikut beberapa hambatan nyata yang saya hadapi selama di lapangan, diurutkan dari yang paling mengganggu produktivitas:
 
-**1. Kompleksitas Codebase yang Tinggi di Awal Magang**
+Hambatan awal yang dirasakan pada awal magang adalah kompleksitas codebase. Sistem Viviashop memiliki 35 model Eloquent dengan relasi bertingkat, 40 controller dalam empat namespace, serta file `routes/web.php` sepanjang 1.150 baris yang berisi rute pengujian. Proses pemahaman alur data dasar sistem memerlukan waktu penyesuaian sebelum kontribusi aktif dapat dilakukan.
 
-Ini adalah hambatan yang paling terasa di minggu-minggu pertama. Viviashop bukan proyek yang bisa dipelajari dalam satu atau dua hari. Codebase memiliki 35 model Eloquent dengan relasi yang bertingkat, lebih dari 40 controller yang tersebar di empat namespace berbeda, dan file `routes/web.php` yang berisi lebih dari 1.150 baris termasuk sekitar dua lusin route debug/test yang tidak terdokumentasikan dengan jelas. Saya butuh hampir satu minggu penuh hanya untuk memahami alur data dasar dari request masuk ke response keluar, sebelum bisa mulai berkontribusi dengan percaya diri.
-
-Yang memperumit situasi: tidak ada diagram arsitektur formal dan tidak ada `.env.example` (seperti yang tercatat di dokumentasi teknis). Saya harus membangun pemahaman dari kode itu sendiri, dan itu memakan waktu.
+Yang memperumit situasi: tidak ada diagram arsitektur formal dan tidak ada `.env.example` (seperti yang tercatat di dokumentasi teknis). Saya harus membangun pemahaman dari kode itu sendiri, dan hal tersebut membutuhkan waktu pengerjaan tambahan.
 
 **2. Inkonistensi Teknis yang Sudah Ada di Sistem (Technical Debt)**
 
@@ -65,11 +63,11 @@ I Made Suartana, S.Kom., M.Kom. memberikan bimbingan dari sisi akademis yang mem
 
 ### 1. Pengalaman Pribadi Selama Magang
 
-Magang di CV Sinar Agung Jaya selama hampir lima bulan adalah salah satu periode belajar paling intensif yang pernah saya alami, di mana intensitasnya bukan dari jam yang panjang, melainkan dari kualitas masalah yang harus dihadapi setiap harinya.
+Magang di CV Sinar Agung Jaya memberikan pengalaman belajar intensif melalui penyelesaian berbagai kendala teknis pada sistem produksi setiap harinya.
 
-Di minggu pertama, saya jujur agak kaget dengan skala sistemnya. Saya terbiasa dengan proyek kuliah yang bisa dipahami sepenuhnya dalam satu malam. Viviashop tidak bisa. Ada 35 model, ada puluhan controller, ada file routes yang lebih dari seribu baris. Saya butuh waktu lebih lama dari yang saya harapkan hanya untuk memahami alur request sederhana dari browser ke database dan kembali lagi.
+Pada awal magang, pemahaman alur kerja Viviashop memerlukan waktu penyesuaian yang cukup karena skala sistem yang memiliki 35 model Eloquent, puluhan controller, serta rute web yang melebihi 1.150 baris.
 
-Tapi dari sana, saya belajar sesuatu yang tidak diajarkan di kuliah, yaitu seni membaca dan memahami sistem yang sudah berjalan. Bukan membaca tutorial, melainkan membaca kode nyata yang ditulis oleh orang lain, dalam kondisi tekanan waktu yang nyata, dengan keputusan-keputusan yang tidak selalu ideal tapi masuk akal pada saat dibuat. Keterampilan membaca kode ini ternyata sama pentingnya dengan kemampuan menulis kode.
+Pengalaman ini melatih kemampuan membaca, menganalisis, dan memodifikasi kode program yang sudah ada. Keterampilan ini sangat penting dalam industri karena sebagian besar waktu pengembangan dihabiskan untuk memelihara codebase yang berjalan.
 
 Tantangan yang paling berkesan adalah ketika menghadapi bug yang hanya muncul di production dan tidak bisa direproduksi di lokal. Kasus error 500 di server production (April 2026) mengajarkan saya tentang pentingnya logging yang baik, sebab tanpa informasi log yang memadai, pencarian bug di production akan terasa sangat menyulitkan. Setelah kasus itu, saya selalu memastikan untuk menambahkan log yang bermakna di setiap controller yang saya modifikasi.
 
@@ -95,17 +93,17 @@ Pengalaman yang paling memuaskan? Ketika optimasi N+1 query di `ProductControlle
 
 Sebelum magang, pandangan saya tentang karier di bidang pengembangan perangkat lunak masih cukup abstrak. Saya hanya tahu ingin bekerja di sektor teknologi tanpa memahami peran spesifik yang sesuai dengan minat saya.
 
-Setelah empat bulan di Viviashop, gambarannya jauh lebih jelas. Saya menemukan bahwa saya menikmati pekerjaan yang ada di persimpangan antara sistem yang kompleks dan dampak bisnis yang nyata, di mana fokus saya bukan sekadar menulis kode yang elegan secara teknis, tetapi kode yang menyelesaikan masalah nyata bagi pengguna. Proyek AI agent Viviashop secara khusus membuka minat baru untuk mempelajari bagaimana mengintegrasikan kemampuan LLM ke dalam aplikasi bisnis yang sudah berjalan, bukan sekadar membuat prototipe sederhana.
+Pengalaman magang ini memperjelas arah karier saya di bidang rekayasa perangkat lunak. Saya menemukan ketertarikan pada pengembangan full-stack dan integrasi kecerdasan buatan (LLM) pada aplikasi bisnis skala produksi.
 
-Saya juga jadi lebih sadar bahwa *full-stack development* yang sesungguhnya, mulai dari query optimization di database hingga integrasi API eksternal dan antarmuka pengguna, merupakan kompetensi yang sangat dihargai. Ini mendorong saya untuk tidak hanya fokus pada satu aspek teknis tertentu, tetapi membangun pemahaman yang cukup kuat di seluruh stack.
+Selain itu, optimasi database, integrasi API pihak ketiga, dan pengembangan antarmuka pengguna merupakan kompetensi utama yang dikembangkan secara mendalam untuk mendukung kesiapan kerja.
 
 ### 4. Penerapan Ilmu yang Diperoleh di Kampus
 
-Cukup banyak yang bisa diterapkan langsung. Konsep MVC yang dipelajari di kuliah ternyata bukan hanya teori, melainkan cara nyata sebuah tim membagi tanggung jawab dalam sistem yang besar. Prinsip SOLID dari mata kuliah Rekayasa Perangkat Lunak terasa sangat relevan ketika saya merefaktor service dan mengimplementasikan tool AI baru mengikuti pola yang sudah ada.
+Konsep MVC yang dipelajari di perkuliahan diterapkan langsung dalam struktur pembagian tanggung jawab di codebase. Prinsip SOLID juga memandu proses refaktorisasi service dan implementasi tool AI baru agar tetap modular.
 
-Gap yang paling terasa: mata kuliah tidak cukup menekankan *membaca dan memahami kode orang lain*. Hampir semua penugasan kuliah dimulai dari halaman kosong. Di dunia kerja nyata, sebagian besar waktu dihabiskan untuk memahami dan memodifikasi kode yang sudah ada, bukan menulis baru dari awal. Ini gap yang perlu lebih banyak perhatian di kurikulum.
+Gap yang dirasakan adalah kurangnya penekanan pada kemampuan membaca dan menganalisis kode yang sudah ada dalam penugasan akademis. Di industri, pemeliharaan codebase lama merupakan aktivitas utama pengembang.
 
-Satu lagi yang mengejutkan: kompleksitas teknikal debt di sistem nyata jauh lebih tinggi dari yang pernah saya bayangkan. Di kuliah, kita selalu bisa mulai fresh. Di sini, setiap keputusan dipengaruhi oleh keputusan-keputusan yang sudah dibuat sebelumnya, sehingga bekerja dengan batasan tersebut menjadi keterampilan tersendiri.
+Bekerja dengan codebase yang sudah berjalan juga mengenalkan saya pada konsep *technical debt* skala industri, di mana modifikasi sistem harus memperhatikan dampak dan dependensi dengan fitur yang sudah ada sebelumnya.
 
 ---
 
@@ -201,7 +199,7 @@ Selain itu, pengalaman bekerja dengan sistem manajemen stok multi-layer dan tant
 
 Model kolaborasi ini, di mana mahasiswa Teknik Informatika ditempatkan di perusahaan yang sedang aktif membangun platform digital, memiliki potensi replikasi yang baik. Banyak UMKM dan perusahaan menengah di Indonesia yang sedang dalam proses digitalisasi dan membutuhkan tenaga pengembang, tetapi tidak memiliki anggaran untuk mempekerjakan pengembang senior penuh waktu. Program magang yang terstruktur dengan baik bisa menjadi solusi *win-win* yang menguntungkan kedua belah pihak.
 
-Syaratnya: mitra yang dipilih harus memiliki tim teknis yang bisa memberikan bimbingan nyata (bukan hanya memberikan tugas administratif), dan program magang harus memiliki mekanisme evaluasi yang memastikan mahasiswa benar-benar berkontribusi, bukan hanya mengamati.
+Persyaratannya meliputi penyediaan bimbingan teknis yang memadai dari tim mitra serta mekanisme evaluasi kontribusi mahasiswa yang terukur.
 
 ---
 
@@ -226,11 +224,11 @@ Investasi waktu untuk meningkatkan test coverage dan membuat dokumentasi arsitek
 
 **Untuk UNESA / Program Studi Teknik Informatika:**
 
-Tambahkan penekanan pada kemampuan membaca dan memahami kode yang sudah ada, tidak hanya menulis kode baru. Ini adalah gap paling nyata antara kemampuan yang diasah di kuliah dan yang dibutuhkan di lapangan. Pertimbangkan juga untuk menyertakan studi kasus sistem nyata (dengan technical debt-nya) sebagai bahan pembelajaran, bukan hanya proyek yang dimulai dari nol. Untuk program magang, mekanisme konsultasi DPL yang lebih terstruktur dan pembekalan teknis yang lebih spesifik per bidang akan meningkatkan kualitas seluruh pengalaman magang.
+Fokus kurikulum disarankan memberikan porsi lebih besar pada kemampuan membaca dan menganalisis codebase yang sudah ada, serta menyertakan studi kasus pemeliharaan sistem dengan batasan arsitektur riil.
 
 **Untuk Mahasiswa yang Akan Magang Setelahnya:**
 
-Pertama, luangkan waktu yang cukup untuk membaca dan memahami sistem sebelum mulai menulis kode, karena tidak ada jalan pintas untuk hal ini. Kedua, jangan tunggu sampai tahu segalanya sebelum bertanya; bertanya dengan cerdas lebih dihargai daripada diam dan berjuang sendirian. Ketiga, isi logbook dengan jujur dan spesifik, bukan hanya "belajar Laravel", melainkan seperti "mengidentifikasi dan memperbaiki N+1 query di ProductController yang menyebabkan load time 5 detik". Logbook yang spesifik jauh lebih bermanfaat, baik untuk refleksi sendiri maupun untuk laporan akhir yang kredibel. Dan terakhir, nikmati prosesnya. Magang di lingkungan pengembangan perangkat lunak nyata adalah salah satu pengalaman belajar terbaik yang bisa Anda dapatkan sebelum lulus.
+Saran bagi mahasiswa magang berikutnya meliputi: meluangkan waktu awal untuk memahami struktur codebase secara teratur, aktif berkonsultasi mengenai kendala teknis secara sistematis, serta mencatat entri logbook harian secara detail dan spesifik guna mempermudah penyusunan laporan pertanggungjawaban.
 
 ---
 

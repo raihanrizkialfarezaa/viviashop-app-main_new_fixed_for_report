@@ -12,7 +12,7 @@ Pilar kedua adalah solusi Teknologi Informasi. Perusahaan menyediakan pengadaan 
 
 Pilar ketiga adalah konveksi kebutuhan event dan operasional: produksi tas, rompi, jaket, dan seragam lapangan untuk lembaga-lembaga yang memerlukan perlengkapan seragam dalam jumlah besar. Lini ini lebih bersifat manufaktur tradisional, tetapi rantai pengadaan dan manajemen pesanannya juga diintegrasikan ke dalam sistem.
 
-Ketiga lini ini terhubung melalui satu platform digital: Viviashop. Dari sudut pandang teknis, Viviashop adalah aplikasi web monolitik berbasis Laravel 10 yang mengelola seluruh alur bisnis, mulai dari katalog produk, keranjang belanja, checkout, payment gateway, manajemen stok, laporan keuangan, hingga dashboard performa karyawan. Platform ini bukan sekadar toko online; ini adalah sistem ERP (Enterprise Resource Planning) yang dirancang khusus untuk skala dan kebutuhan operasional CV Sinar Agung Jaya.
+Ketiga lini ini terhubung melalui satu platform digital: Viviashop. Dari sudut pandang teknis, Viviashop adalah aplikasi web monolitik berbasis Laravel 10 yang mengelola seluruh alur bisnis, mulai dari katalog produk, keranjang belanja, checkout, payment gateway, manajemen stok, laporan keuangan, hingga dashboard performa karyawan. Platform ini berfungsi sebagai sistem ERP (Enterprise Resource Planning) terintegrasi untuk mendukung operasional CV Sinar Agung Jaya.
 
 ### Posisi e-Commerce dalam Ekosistem Bisnis CV Sinar Agung Jaya
 
@@ -27,7 +27,7 @@ Produk dan layanan utama yang ditawarkan melalui Viviashop mencakup:
 - **Smart Print.** Variasi layanan cetak yang menggunakan deteksi otomatis jenis kertas dan tipe cetak menggunakan `SmartPrintVariantService`.
 - **Layanan pengadaan.** Melalui modul pembelian (`Pembelian`, `PembelianDetail`, `Supplier`) yang mengintegrasikan rantai pasokan ke dalam platform yang sama.
 
-Keunggulan kompetitif Viviashop terletak pada integrasi yang erat antara sistem e-commerce, manajemen stok, laporan keuangan, dan kecerdasan buatan dalam satu platform. Chatbot AI berbasis Google Gemini yang terintegrasi di dalam sistem bukan sekadar asisten virtual dekoratif, melainkan dapat memanggil 13 tool yang berbeda secara dinamis, dari pencarian produk berbasis SQL hingga pemindaian stok kritis dan pembuatan draft pembelian secara otomatis.
+Keunggulan kompetitif Viviashop terletak pada integrasi yang erat antara sistem e-commerce, manajemen stok, laporan keuangan, dan kecerdasan buatan dalam satu platform. Chatbot AI berbasis Google Gemini yang terintegrasi di dalam sistem dapat memanggil 13 tool berbeda secara dinamis, dari pencarian produk berbasis SQL hingga pemindaian stok kritis dan pembuatan draft pembelian secara otomatis.
 
 ---
 
@@ -43,7 +43,7 @@ Struktur organisasi formal CV Sinar Agung Jaya tidak terdokumentasikan secara ek
 - **Bagian Operasional.** Tim yang menangani pengadaan, konveksi, dan layanan cetak di sisi non-digital.
 - **Mahasiswa Magang (posisi saya).** Ditempatkan di dalam tim pengembang, dengan akses penuh ke repository dan lingkungan pengembangan lokal, berkontribusi langsung pada pengembangan fitur dan perbaikan bug.
 
-Posisi mahasiswa magang dalam struktur ini bukan posisi observasional. Dari hari pertama, saya mendapat akses ke repository aktif dan mulai mengeksplorasi kode yang berjalan di lingkungan produksi. Pembimbing mitra berperan sebagai *tech lead*, memberikan arahan tugas, melakukan code review, dan menjadi tempat konsultasi ketika saya menghadapi masalah yang tidak bisa dipecahkan sendiri.
+Sebagai mahasiswa magang, saya langsung terlibat aktif dengan mendapatkan akses ke repositori git untuk berpartisipasi dalam pengembangan platform. Pembimbing mitra berperan sebagai *tech lead*, memberikan arahan tugas, melakukan code review, dan membimbing penyelesaian kendala teknis.
 
 [PERLU INPUT MANUAL, diagram resmi struktur organisasi dari manajemen CV Sinar Agung Jaya untuk dilampirkan sebagai gambar di laporan cetak]
 
@@ -53,14 +53,14 @@ Posisi mahasiswa magang dalam struktur ini bukan posisi observasional. Dari hari
 
 ### Konsep dan Indikator Program Magang Berdampak
 
-Program magang berdampak (*impactful internship*) adalah model magang yang secara eksplisit mengukur dan merencanakan kontribusi nyata, bukan sekadar pengalaman pasif. Berbeda dengan model magang konvensional di mana mahasiswa cenderung mengamati dan mengerjakan tugas administratif, program magang berdampak mendorong mahasiswa untuk mengidentifikasi masalah nyata di tempat mitra dan berkontribusi pada penyelesaiannya melalui kompetensi akademis yang mereka miliki (Purdue University, 2021; UNESA Panduan Mobilitas Akademik, 2024).
+Program magang berdampak (*impactful internship*) menitikberatkan pada kontribusi langsung mahasiswa dalam menyelesaikan permasalahan di tempat mitra melalui penerapan kompetensi akademik (Purdue University, 2021; UNESA Panduan Mobilitas Akademik, 2024).
 
 Indikator keberhasilannya mencakup dua sisi:
 
 **Outcome untuk mahasiswa:**
-- Perolehan keterampilan teknis yang terverifikasi dan dapat dibuktikan (bukan sekadar pengakuan verbal)
+- Perolehan keterampilan teknis yang terverifikasi secara praktis.
 - Pemahaman konteks kerja nyata: bagaimana sebuah tim bekerja, bagaimana keputusan teknis diambil di bawah tekanan waktu, dan bagaimana mengelola prioritas yang saling bersaing
-- Perluasan jaringan profesional yang fungsional, tidak hanya mengenal nama, tetapi sudah bekerja bersama
+- Perluasan jaringan profesional melalui kolaborasi kerja tim secara langsung.
 
 **Outcome untuk mitra:**
 - Kontribusi yang terukur: fitur yang selesai, bug yang terperbaiki, dokumentasi yang tertulis

@@ -27,7 +27,7 @@ Selama magang berlangsung, keterampilan perencanaan terus digunakan. Setiap hari
 
 Pembekalan yang diberikan oleh Sub Direktorat Mobilitas Akademik UNESA sebelum keberangkatan juga menjadi bagian dari mata kuliah ini: etika kerja profesional, cara mengisi logbook yang baik, dan mekanisme pelaporan kepada DPL. Keterampilan-keterampilan administratif ini terasa sepele, tapi dalam praktiknya sangat membantu saya menjaga konsistensi selama empat bulan lebih.
 
-Bukti nyata dari penerapan kompetensi perencanaan adalah 96 entri logbook yang terisi konsisten, yang bukan hanya sebagai kewajiban administratif, tetapi sebagai catatan kerja yang berguna ketika saya perlu mengingat apa yang sudah dikerjakan dan apa yang belum.
+Penerapan kompetensi perencanaan ditunjukkan melalui konsistensi pengisian 96 entri logbook harian sebagai catatan riwayat progres pekerjaan.
 
 [FOTO/GAMBAR: Dokumentasi logbook harian yang disubmit ke sistem Mobilitas Akademik UNESA]
 
@@ -111,7 +111,7 @@ Analisis dan Desain Perangkat Lunak mengajarkan bagaimana memahami kebutuhan sis
 
 **Desain API yang Konsisten.** Ketika saya memperbaiki endpoint di `api.php` (Februari 2026) dan membuat dokumentasi API internal (Maret 2026), saya belajar tentang pentingnya konsistensi desain API: response structure yang konsisten, status code yang bermakna, dan error message yang informatif. Tanpa konsistensi ini, klien API, baik frontend maupun sistem AI agent, tidak bisa menulis kode yang reliable.
 
-**Gap Antara Teori dan Praktik.** Satu hal yang tidak cukup ditekankan di mata kuliah: desain tidak pernah selesai. Setiap perubahan kebutuhan menghasilkan technical debt baru. Viviashop memiliki dua controller cart (`CartController` dan `CartControllerNew`), dua seeder brand (`BrandSeeder` dan `BrandSeederNew`), dan beberapa model legacy yang sudah tidak disarankan penggunaannya (`RekamanStok`). Ini bukan kegagalan desain, melainkan hasil dari pengembangan iteratif di bawah tekanan waktu. Memahami ini mengubah cara saya melihat "desain yang baik": bukan yang sempurna dari awal, tetapi yang cukup baik untuk saat ini sambil membuka pintu untuk evolusi di masa depan.
+**Evaluasi Evolusi Desain Sistem.** Dalam praktik pengembangan industri, desain sistem terus berevolusi seiring perubahan kebutuhan bisnis, yang berpotensi memunculkan *technical debt*. Hal ini terlihat pada keberadaan kelas redundan seperti `CartControllerNew` dan `BrandSeederNew` di Viviashop. Kondisi ini menggambarkan bahwa desain perangkat lunak dalam skala produksi dituntut adaptif dan dapat dievolusikan secara iteratif.
 
 [FOTO/GAMBAR: Diagram arsitektur sistem AI Agent Viviashop (AIAgentService, ToolDispatcher, ToolRegistry, ToolHandler)]
 

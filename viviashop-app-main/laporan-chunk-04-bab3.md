@@ -4,7 +4,7 @@
 
 ## 3.1 Bentuk Penugasan (Task Assignment)
 
-Selama magang di CV Sinar Agung Jaya, saya ditempatkan sebagai anggota tim pengembang perangkat lunak Viviashop. Posisi ini tidak memiliki label jabatan formal yang spesifik, melainkan dalam praktiknya saya berfungsi sebagai *software developer* yang bekerja berdampingan dengan pengembang senior dan langsung berkontribusi pada codebase aktif.
+Selama magang di CV Sinar Agung Jaya, saya ditempatkan sebagai software developer dalam tim pengembang perangkat lunak Viviashop, berkolaborasi dengan pengembang senior pada codebase aktif.
 
 Tanggung jawab utama yang dibebankan mencakup beberapa area:
 
